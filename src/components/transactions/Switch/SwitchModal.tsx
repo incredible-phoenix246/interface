@@ -1,4 +1,4 @@
-import { AaveV3Ethereum } from '@bgd-labs/aave-address-book';
+import { AaveV3Ethereum } from '@eden-labs/address-book';
 import { Trans } from '@lingui/macro';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';

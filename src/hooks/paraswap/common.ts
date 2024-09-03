@@ -1,6 +1,6 @@
 import { ChainId, valueToWei } from '@aave/contract-helpers';
 import { normalize, normalizeBN, valueToBigNumber } from '@aave/math-utils';
-import { MiscBase, MiscEthereum } from '@bgd-labs/aave-address-book';
+import { MiscBase, MiscEthereum } from '@eden-labs/address-book';
 import {
   BuildTxFunctions,
   constructBuildTx,

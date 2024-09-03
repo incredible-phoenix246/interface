@@ -918,14 +918,6 @@ msgstr "Differential"
 msgid "Disable E-Mode"
 msgstr "Disable E-Mode"
 
-#: src/layouts/AppHeader.tsx
-msgid "Disable fork"
-msgstr "Disable fork"
-
-#: src/layouts/AppHeader.tsx
-msgid "Disable testnet"
-msgstr "Disable testnet"
-
 #: src/components/transactions/CollateralChange/CollateralChangeActions.tsx
 msgid "Disable {symbol} as collateral"
 msgstr "Disable {symbol} as collateral"
@@ -1184,10 +1176,6 @@ msgstr "Flashloan is disabled for this asset, hence this position cannot be migr
 #: src/ui-config/errorMapping.tsx
 msgid "For repayment of a specific type of debt, the user needs to have debt that type"
 msgstr "For repayment of a specific type of debt, the user needs to have debt that type"
-
-#: src/layouts/AppHeader.tsx
-msgid "Fork mode is ON"
-msgstr "Fork mode is ON"
 
 #: src/modules/governance/proposal/ProposalLifecycle.tsx
 msgid "Forum discussion"
@@ -2521,10 +2509,6 @@ msgstr "Test Assets"
 msgid "Testnet mode"
 msgstr "Testnet mode"
 
-#: src/layouts/AppHeader.tsx
-msgid "Testnet mode is ON"
-msgstr "Testnet mode is ON"
-
 #: src/layouts/FeedbackDialog.tsx
 msgid "Thank you for submitting feedback!"
 msgstr "Thank you for submitting feedback!"
@@ -2557,14 +2541,6 @@ msgstr "The Stable Rate is not enabled for this currency"
 #: src/ui-config/errorMapping.tsx
 msgid "The address of the pool addresses provider is invalid"
 msgstr "The address of the pool addresses provider is invalid"
-
-#: src/layouts/AppHeader.tsx
-msgid "The app is running in fork mode."
-msgstr "The app is running in fork mode."
-
-#: src/layouts/AppHeader.tsx
-msgid "The app is running in testnet mode. Learn how it works in"
-msgstr "The app is running in testnet mode. Learn how it works in"
 
 #: src/ui-config/errorMapping.tsx
 msgid "The caller of the function is not an AToken"

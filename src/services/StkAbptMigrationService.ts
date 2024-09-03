@@ -1,4 +1,4 @@
-import { AaveSafetyModule } from '@bgd-labs/aave-address-book';
+import { AaveSafetyModule } from '@eden-labs/address-book';
 import { SignatureLike } from '@ethersproject/bytes';
 
 export class StkAbptMigrationService {

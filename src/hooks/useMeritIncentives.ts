@@ -1,5 +1,5 @@
 import { ReserveIncentiveResponse } from '@aave/math-utils/dist/esm/formatters/incentive/calculate-reserve-incentives';
-import { AaveV3Ethereum } from '@bgd-labs/aave-address-book';
+import { AaveV3Ethereum } from '@eden-labs/address-book';
 import { useQuery } from '@tanstack/react-query';
 import { useRootStore } from 'src/store/root';
 

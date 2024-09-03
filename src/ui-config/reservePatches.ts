@@ -3,7 +3,7 @@ import {
   AaveV3Gnosis,
   AaveV3Optimism,
   AaveV3Polygon,
-} from '@bgd-labs/aave-address-book';
+} from '@eden-labs/address-book';
 import { unPrefixSymbol } from 'src/hooks/app-data-provider/useAppDataProvider';
 
 /**

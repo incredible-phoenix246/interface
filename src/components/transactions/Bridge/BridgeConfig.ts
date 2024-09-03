@@ -4,7 +4,7 @@ import {
   AaveV3ArbitrumSepolia,
   AaveV3Ethereum,
   AaveV3Sepolia,
-} from '@bgd-labs/aave-address-book';
+} from '@eden-labs/address-book';
 import { BaseNetworkConfig, networkConfigs } from 'src/ui-config/networksConfig';
 import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
 

@@ -7,7 +7,7 @@ import { NAV_BAR } from 'src/utils/mixPanelEvents';
 import { Link } from '../../components/primitives/Link';
 import { useProtocolDataContext } from '../../hooks/useProtocolDataContext';
 import { navigation } from '../../ui-config/menu-items';
-import { MoreMenu } from '../MoreMenu';
+// import { MoreMenu } from '../MoreMenu';
 
 interface NavItemsProps {
   setOpen?: (value: boolean) => void;
@@ -32,10 +32,10 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
     <List
       sx={{
         display: 'flex',
-        alignItems: { xs: 'flex-start', md: 'center' },
-        flexDirection: { xs: 'column', md: 'row' },
+        alignItems: { xs: 'flex-start', md: 'flex-start' },
+        flexDirection: { xs: 'column', md: 'column' },
       }}
-      disablePadding
+      disablePadding={false}
     >
       {navigation
         .filter((item) => !item.isVisible || item.isVisible(currentMarketData))
@@ -43,7 +43,7 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
           <ListItem
             sx={{
               width: { xs: '100%', md: 'unset' },
-              mr: { xs: 0, md: 2 },
+              mb: { xs: 0, md: 2 },
             }}
             data-cy={item.dataCy}
             disablePadding
@@ -76,10 +76,10 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
                   '&:after': {
                     content: "''",
                     position: 'absolute',
-                    width: '100%',
+                    width: '2px',
                     transform: 'scaleX(0)',
-                    height: '2px',
-                    bottom: '-6px',
+                    height: '100%',
+                    // bottom: '-6px',
                     left: '0',
                     background: theme.palette.gradients.aaveGradient,
                     transformOrigin: 'bottom right',
@@ -93,9 +93,9 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
           </ListItem>
         ))}
 
-      <ListItem sx={{ display: { xs: 'none', md: 'flex' }, width: 'unset' }} disablePadding>
+      {/* <ListItem sx={{ display: { xs: 'none', md: 'flex' }, width: 'unset' }} disablePadding>
         <MoreMenu />
-      </ListItem>
+      </ListItem> */}
     </List>
   );
 };

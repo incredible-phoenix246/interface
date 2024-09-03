@@ -12,7 +12,7 @@ import {
   GovernanceV3Optimism,
   GovernanceV3Polygon,
   GovernanceV3Scroll,
-} from '@bgd-labs/aave-address-book';
+} from '@eden-labs/address-book';
 
 export const ipfsGateway = 'https://cloudflare-ipfs.com/ipfs';
 export const fallbackIpfsGateway = 'https://ipfs.io/ipfs';

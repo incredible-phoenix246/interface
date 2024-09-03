@@ -1,33 +1,47 @@
 import { Box } from '@mui/material';
 import React, { ReactNode } from 'react';
-import AnalyticsConsent from 'src/components/Analytics/AnalyticsConsent';
 import { FeedbackModal } from 'src/layouts/FeedbackDialog';
-import { FORK_ENABLED } from 'src/utils/marketsAndNetworksConfig';
 
-import { AppFooter } from './AppFooter';
-import { AppHeader } from './AppHeader';
-import TopBarNotify from './TopBarNotify';
+// import { AppFooter } from './AppFooter';
+import { AppHeader } from './AppHeader'; // Sidebar now
+// import TopBarNotify from './TopBarNotify';
 
 export function MainLayout({ children }: { children: ReactNode }) {
-  const APP_BANNER_VERSION = '1.0.0';
+  // const APP_BANNER_VERSION = '1.0.0';
 
   return (
     <>
-      <TopBarNotify
-        learnMoreLink="/markets/?marketName=proto_lido_v3"
-        buttonText="View Market"
-        notifyText="Aave Governance has deployed a new Lido market on Ethereum V3"
-        bannerVersion={APP_BANNER_VERSION}
-        icon={'/icons/tokens/ldo.svg'}
-      />
-      <AppHeader />
-      <Box component="main" sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-        {children}
-      </Box>
+      <Box sx={{ display: 'flex', height: '100vh' }}>
+        <Box
+          component="nav"
+          sx={{
+            width: { sm: 240 }, // Adjust the sidebar width as needed
+            flexShrink: { sm: 0 },
+            backgroundColor: 'background.default',
+            borderRight: '1px solid',
+            borderColor: 'divider',
+            height: '100vh',
+          }}
+        >
+          <AppHeader />
+          {/* <AppFooter /> */}
+        </Box>
 
-      <AppFooter />
-      <FeedbackModal />
-      {FORK_ENABLED ? null : <AnalyticsConsent />}
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            padding: 3, // Adjust padding as needed
+            backgroundColor: 'background.default',
+          }}
+        >
+          {children}
+
+          <FeedbackModal />
+        </Box>
+      </Box>
     </>
   );
 }

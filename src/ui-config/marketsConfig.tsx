@@ -7,6 +7,7 @@ import {
   AaveV2Polygon,
   AaveV3Arbitrum,
   AaveV3ArbitrumSepolia,
+  AaveV3AssetChainTestnet,
   AaveV3Avalanche,
   AaveV3Base,
   AaveV3BaseSepolia,
@@ -25,7 +26,7 @@ import {
   AaveV3Scroll,
   AaveV3ScrollSepolia,
   AaveV3Sepolia,
-} from '@bgd-labs/aave-address-book';
+} from '@eden-labs/address-book';
 import { ReactNode } from 'react';
 
 // Enable for premissioned market
@@ -35,7 +36,7 @@ export type MarketDataType = {
   marketTitle: string;
   market: CustomMarket;
   // the network the market operates on
-  chainId: ChainId;
+  chainId: ChainId | number;
   enabledFeatures?: {
     liquiditySwap?: boolean;
     staking?: boolean;
@@ -84,6 +85,7 @@ export enum CustomMarket {
   proto_base_sepolia_v3 = 'proto_base_sepolia_v3',
   // v3 mainnets
   proto_mainnet_v3 = 'proto_mainnet_v3',
+  proto_asset_chain_testnet_v3 = 'proto_asset_chain_testnet_v3',
   proto_optimism_v3 = 'proto_optimism_v3',
   proto_fantom_v3 = 'proto_fantom_v3',
   proto_harmony_v3 = 'proto_harmony_v3',
@@ -111,6 +113,32 @@ const apiKey = process.env.NEXT_PUBLIC_SUBGRAPH_API_KEY;
 export const marketsData: {
   [key in keyof typeof CustomMarket]: MarketDataType;
 } = {
+  [CustomMarket.proto_asset_chain_testnet_v3]: {
+    marketTitle: 'Asset Chain Testnet',
+    market: CustomMarket.proto_asset_chain_testnet_v3,
+    chainId: AaveV3AssetChainTestnet.CHAIN_ID,
+    v3: true,
+    enabledFeatures: {
+      // governance: true,
+      staking: true,
+      // liquiditySwap: true,
+      collateralRepay: true,
+      faucet: true,
+      incentives: true,
+      withdrawAndSwitch: true,
+      // debtSwitch: true,
+      // switch: true,
+    },
+    addresses: {
+      FAUCET: AaveV3AssetChainTestnet.FAUCET,
+      LENDING_POOL_ADDRESS_PROVIDER: AaveV3AssetChainTestnet.POOL_ADDRESSES_PROVIDER,
+      LENDING_POOL: AaveV3AssetChainTestnet.POOL,
+      WETH_GATEWAY: AaveV3AssetChainTestnet.WETH_GATEWAY,
+      UI_INCENTIVE_DATA_PROVIDER: AaveV3AssetChainTestnet.UI_INCENTIVE_DATA_PROVIDER,
+      WALLET_BALANCE_PROVIDER: AaveV3AssetChainTestnet.WALLET_BALANCE_PROVIDER,
+      UI_POOL_DATA_PROVIDER: AaveV3AssetChainTestnet.UI_POOL_DATA_PROVIDER,
+    },
+  },
   [CustomMarket.proto_mainnet_v3]: {
     marketTitle: 'Ethereum',
     market: CustomMarket.proto_mainnet_v3,

@@ -91,6 +91,7 @@ export const ListWrapper = ({
   return (
     <Paper
       sx={{
+        backgroundColor: '#17212B',
         mt: withTopMargin ? 4 : 0,
         border: 1,
         borderColor: 'divider',

@@ -40,7 +40,7 @@ import {
   LPSupplyParamsType,
   LPSupplyWithPermitType,
 } from '@aave/contract-helpers/dist/esm/v3-pool-contract/lendingPoolTypes';
-import { AaveSafetyModule, AaveV3Ethereum } from '@bgd-labs/aave-address-book';
+import { AaveSafetyModule, AaveV3Ethereum } from '@eden-labs/address-book';
 import { BigNumber, PopulatedTransaction, Signature, utils } from 'ethers';
 import { splitSignature } from 'ethers/lib/utils';
 import { ClaimRewardsActionsProps } from 'src/components/transactions/ClaimRewards/ClaimRewardsActions';
