@@ -35,6 +35,7 @@ export function AppHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    localStorage.setItem('testnetsEnabled', 'true');
     if (mobileDrawerOpen && !md) {
       setMobileDrawerOpen(false);
     }
