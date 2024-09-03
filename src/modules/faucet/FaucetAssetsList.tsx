@@ -137,7 +137,7 @@ export default function FaucetAssetsList() {
                 <Button
                   href="https://faucet.circle.com/"
                   component={Link}
-                  variant="contained"
+                  variant="outlined"
                   endIcon={
                     <SvgIcon sx={{ width: 14, height: 14 }}>
                       <ExternalLinkIcon />
@@ -147,7 +147,7 @@ export default function FaucetAssetsList() {
                   <Trans>Faucet</Trans>
                 </Button>
               ) : (
-                <Button variant="contained" onClick={() => openFaucet(reserve.underlyingAsset)}>
+                <Button variant="outlined" onClick={() => openFaucet(reserve.underlyingAsset)}>
                   <Trans>Faucet</Trans>
                 </Button>
               )}

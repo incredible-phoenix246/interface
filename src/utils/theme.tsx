@@ -201,8 +201,8 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         standardInputLine: getColor('#383D511F', '#EBEBEF6B'),
       },
       gradients: {
-        aaveGradient: 'linear-gradient(248.86deg, #B6509E 10.51%, #2EBAC6 93.41%)',
-        newGradient: 'linear-gradient(79.67deg, #8C3EBC 0%, #007782 95.82%)',
+        aaveGradient: 'linear-gradient(248.86deg, #0D131A 10.51%, #9669ED 43.41%)',
+        newGradient: 'linear-gradient(79.67deg, #0D131A 0%, #007782 95.82%)',
       },
     },
     spacing: 4,
@@ -435,6 +435,8 @@ export function getThemedComponents(theme: Theme) {
             style: {
               color: theme.palette.common.white,
               border: '1px solid',
+              borderRadius: '0.5rem',
+
               borderColor: '#EBEBED1F',
               backgroundColor: '#383D51',
               '&:hover, &.Mui-focusVisible': {
@@ -446,6 +448,7 @@ export function getThemedComponents(theme: Theme) {
             props: { variant: 'gradient' },
             style: {
               color: theme.palette.common.white,
+              borderRadius: '0.5rem',
               background: theme.palette.gradients.aaveGradient,
               transition: 'all 0.2s ease',
               '&:hover, &.Mui-focusVisible': {
@@ -459,6 +462,7 @@ export function getThemedComponents(theme: Theme) {
             style: {
               background: theme.palette.background.surface,
               borderColor: theme.palette.divider,
+              borderRadius: '0.5rem',
             },
           },
         ],

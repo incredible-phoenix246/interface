@@ -76,7 +76,7 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
                   '&:after': {
                     content: "''",
                     position: 'absolute',
-                    width: '2px',
+                    width: '3px',
                     transform: 'scaleX(0)',
                     height: '100%',
                     // bottom: '-6px',

@@ -43,6 +43,7 @@ export const BasicModal = ({
         sx={{
           position: 'relative',
           margin: '10px',
+          backgroundColor: '#0D131A',
           overflowY: 'auto',
           width: '100%',
           maxWidth: { xs: '359px', xsm: `${contentMaxWidth}px` },

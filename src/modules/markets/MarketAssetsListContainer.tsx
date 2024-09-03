@@ -90,7 +90,7 @@ export const MarketAssetsListContainer = () => {
           onSearchTermChange={setSearchTerm}
           title={
             <>
-              {currentMarketData.marketTitle} <Trans>assets</Trans>
+              Market <Trans>overview</Trans>
             </>
           }
           searchPlaceholder={sm ? 'Search asset' : 'Search asset name, symbol, or address'}
@@ -127,9 +127,9 @@ export const MarketAssetsListContainer = () => {
           {showFrozenMarketsToggle && (
             <Warning severity="info">
               <Trans>
-                These assets are temporarily frozen or paused by Aave community decisions, meaning
-                that further supply / borrow, or rate swap of these assets are unavailable.
-                Withdrawals and debt repayments are allowed. Follow the{' '}
+                These assets are temporarily frozen or paused by community decisions, meaning that
+                further supply / borrow, or rate swap of these assets are unavailable. Withdrawals
+                and debt repayments are allowed. Follow the{' '}
                 <Link
                   onClick={() => {
                     trackEvent(GENERAL.EXTERNAL_LINK, {
@@ -137,10 +137,10 @@ export const MarketAssetsListContainer = () => {
                       frozenMarket: currentNetworkConfig.name,
                     });
                   }}
-                  href="https://governance.aave.com"
+                  href="https://governance.eden.com"
                   underline="always"
                 >
-                  Aave governance forum
+                  Eden governance forum
                 </Link>{' '}
                 for further updates.
               </Trans>

@@ -1,28 +1,28 @@
 import { MenuIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+// import { useLingui } from '@lingui/react';
 import {
   Box,
   Button,
   Divider,
   List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
+  // ListItem,
+  // ListItemIcon,
+  // ListItemText,
   SvgIcon,
   Typography,
 } from '@mui/material';
 import React, { ReactNode, useEffect, useState } from 'react';
-import { PROD_ENV } from 'src/utils/marketsAndNetworksConfig';
 
-import { Link } from '../components/primitives/Link';
-import { moreNavigation } from '../ui-config/menu-items';
+// import { PROD_ENV } from 'src/utils/marketsAndNetworksConfig';
+// import { Link } from '../components/primitives/Link';
+// import { moreNavigation } from '../ui-config/menu-items';
 import { DarkModeSwitcher } from './components/DarkModeSwitcher';
 import { DrawerWrapper } from './components/DrawerWrapper';
 import { LanguageListItem, LanguagesList } from './components/LanguageSwitcher';
 import { MobileCloseButton } from './components/MobileCloseButton';
 import { NavItems } from './components/NavItems';
-import { TestNetModeSwitcher } from './components/TestNetModeSwitcher';
+// import { TestNetModeSwitcher } from './components/TestNetModeSwitcher';
 
 interface MobileMenuProps {
   open: boolean;
@@ -45,7 +45,7 @@ const MenuItemsWrapper = ({ children, title }: { children: ReactNode; title: Rea
 );
 
 export const MobileMenu = ({ open, setOpen, headerHeight }: MobileMenuProps) => {
-  const { i18n } = useLingui();
+  // const { i18n } = useLingui();
   const [isLanguagesListOpen, setIsLanguagesListOpen] = useState(false);
 
   useEffect(() => setIsLanguagesListOpen(false), [open]);
@@ -76,11 +76,11 @@ export const MobileMenu = ({ open, setOpen, headerHeight }: MobileMenuProps) => 
             <MenuItemsWrapper title={<Trans>Global settings</Trans>}>
               <List>
                 <DarkModeSwitcher />
-                {PROD_ENV && <TestNetModeSwitcher />}
+                {/* {PROD_ENV && <TestNetModeSwitcher />} */}
                 <LanguageListItem onClick={() => setIsLanguagesListOpen(true)} />
               </List>
             </MenuItemsWrapper>
-            <MenuItemsWrapper title={<Trans>Links</Trans>}>
+            {/* <MenuItemsWrapper title={<Trans>Links</Trans>}>
               <List>
                 <ListItem
                   sx={{ color: '#F1F1F3' }}
@@ -102,7 +102,7 @@ export const MobileMenu = ({ open, setOpen, headerHeight }: MobileMenuProps) => 
                   </ListItem>
                 ))}
               </List>
-            </MenuItemsWrapper>
+            </MenuItemsWrapper> */}
           </>
         ) : (
           <List sx={{ px: 2 }}>

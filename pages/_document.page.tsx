@@ -10,8 +10,8 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="theme-color" content="#1B2030" />
-          <link rel="icon" href="/favicon.ico" sizes="any" />
-          <link rel="shortcut icon" href="/favicon.ico" />
+          {/* <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="shortcut icon" href="/favicon.ico" /> */}
           {/* <link rel="apple-touch-icon" sizes="16x16" href="/favicon.png" />
           <link rel="apple-touch-icon" sizes="32x32" href="/favicon32.png" />
           <link rel="shortcut icon" sizes="32x32" href="/favicon32.ico" />

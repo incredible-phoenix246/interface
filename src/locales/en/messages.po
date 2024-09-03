@@ -1229,10 +1229,6 @@ msgstr "Go to Balancer Pool"
 msgid "Go to V3 Dashboard"
 msgstr "Go to V3 Dashboard"
 
-#: src/ui-config/menu-items/index.tsx
-msgid "Governance"
-msgstr "Governance"
-
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Greek"
 msgstr "Greek"
@@ -1411,10 +1407,6 @@ msgstr "Lido"
 msgid "Linked addresses"
 msgstr "Linked addresses"
 
-#: src/layouts/MobileMenu.tsx
-msgid "Links"
-msgstr "Links"
-
 #: src/modules/history/HistoryFilterMenu.tsx
 msgid "Liqudation"
 msgstr "Liqudation"
@@ -1493,8 +1485,11 @@ msgstr "Manage analytics"
 msgid "Market"
 msgstr "Market"
 
-#: src/modules/markets/MarketsTopPanel.tsx
 #: src/ui-config/menu-items/index.tsx
+msgid "Market Overview"
+msgstr "Market Overview"
+
+#: src/modules/markets/MarketsTopPanel.tsx
 msgid "Markets"
 msgstr "Markets"
 
@@ -1573,7 +1568,6 @@ msgstr "Merit Program rewards are claimed through the"
 msgid "Migrate"
 msgstr "Migrate"
 
-#: src/layouts/MobileMenu.tsx
 #: src/layouts/MoreMenu.tsx
 msgid "Migrate to Aave V3"
 msgstr "Migrate to Aave V3"
@@ -1741,7 +1735,6 @@ msgstr "Not enough voting power to participate in this proposal"
 msgid "Not reached"
 msgstr "Not reached"
 
-#: pages/v3-migration.page.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 msgid "Nothing borrowed yet"
 msgstr "Nothing borrowed yet"
@@ -1755,7 +1748,6 @@ msgstr "Nothing found"
 msgid "Nothing staked"
 msgstr "Nothing staked"
 
-#: pages/v3-migration.page.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 msgid "Nothing supplied yet"
 msgstr "Nothing supplied yet"
@@ -1818,10 +1810,6 @@ msgstr "Please connect your wallet to be able to switch your tokens."
 #: src/modules/faucet/FaucetAssetsList.tsx
 msgid "Please connect your wallet to get free testnet assets."
 msgstr "Please connect your wallet to get free testnet assets."
-
-#: pages/v3-migration.page.tsx
-msgid "Please connect your wallet to see migration tool."
-msgstr "Please connect your wallet to see migration tool."
 
 #: src/components/ConnectWalletPaper.tsx
 #: src/components/ConnectWalletPaperStaking.tsx
@@ -2620,8 +2608,8 @@ msgid "There was some error. Please try changing the parameters or <0><1>copy th
 msgstr "There was some error. Please try changing the parameters or <0><1>copy the error</1></0>"
 
 #: src/modules/markets/MarketAssetsListContainer.tsx
-msgid "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Aave governance forum</0> for further updates."
-msgstr "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Aave governance forum</0> for further updates."
+msgid "These assets are temporarily frozen or paused by community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Eden governance forum</0> for further updates."
+msgstr "These assets are temporarily frozen or paused by community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Eden governance forum</0> for further updates."
 
 #: src/components/transactions/Withdraw/WithdrawError.tsx
 msgid "These funds have been borrowed and are not available for withdrawal at this time."
@@ -2815,8 +2803,8 @@ msgid "Transaction history"
 msgstr "Transaction history"
 
 #: src/modules/history/HistoryWrapper.tsx
-msgid "Transaction history is not currently available for this market"
-msgstr "Transaction history is not currently available for this market"
+msgid "Transaction history is not currently available"
+msgstr "Transaction history is not currently available"
 
 #: src/components/transactions/FlowCommons/TxModalDetails.tsx
 msgid "Transaction overview"
@@ -3110,8 +3098,8 @@ msgid "With a voting power of <0/>"
 msgstr "With a voting power of <0/>"
 
 #: src/modules/faucet/FaucetTopPanel.tsx
-msgid "With testnet Faucet you can get free assets to test the Aave Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value. <0>Learn more</0>"
-msgstr "With testnet Faucet you can get free assets to test the Aave Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value. <0>Learn more</0>"
+msgid "With testnet Faucet you can get free assets to test the Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value."
+msgstr "With testnet Faucet you can get free assets to test the Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value."
 
 #: src/components/transactions/Withdraw/WithdrawAndSwitchModalContent.tsx
 #: src/components/transactions/Withdraw/WithdrawAndUnwrapActions.tsx
@@ -3344,10 +3332,6 @@ msgstr "Zero address not valid"
 msgid "about SuperFest."
 msgstr "about SuperFest."
 
-#: src/modules/markets/MarketAssetsListContainer.tsx
-msgid "assets"
-msgstr "assets"
-
 #: src/components/AddressBlockedModal.tsx
 msgid "blocked activities"
 msgstr "blocked activities"
@@ -3393,6 +3377,10 @@ msgstr "of"
 #: src/modules/governance/FormattedProposalTime.tsx
 msgid "on"
 msgstr "on"
+
+#: src/modules/markets/MarketAssetsListContainer.tsx
+msgid "overview"
+msgstr "overview"
 
 #: src/components/transactions/Warnings/SNXWarning.tsx
 msgid "please check that the amount you want to supply is not currently being used for staking. If it is being used for staking, your transaction might fail."

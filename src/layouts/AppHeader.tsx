@@ -134,8 +134,8 @@ export function AppHeader() {
             size="small"
             color="primary"
             sx={{
-              backgroundColor: '#00C289',
-              '&:hover, &.Mui-focusVisible': { backgroundColor: '#0D131A' },
+              backgroundColor: '#9669ED',
+              '&:hover, &.Mui-focusVisible': { backgroundColor: '#9669ED' },
             }}
           >
             EDEN FINANCE
