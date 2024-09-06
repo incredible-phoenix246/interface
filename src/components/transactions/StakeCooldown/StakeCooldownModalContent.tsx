@@ -151,10 +151,10 @@ export const StakeCooldownModalContent = ({ stakeAssetName, icon }: StakeCooldow
   };
 
   const event = {
-    title: 'Unstaking window for Aave',
+    title: 'Unstaking window for Eden',
     start: googleDate(stakeCooldownSeconds),
     end: googleDate(stakeCooldownSeconds + stakeUnstakeWindow),
-    description: 'Unstaking window for Aave staking activated',
+    description: 'Unstaking window for Eden staking activated',
   };
 
   const googleCalendarUrl = createGoogleCalendarUrl(event);

@@ -45,8 +45,8 @@ msgid "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to 
 msgstr "<0>Ampleforth</0> est un actif de rebasage. Consultez la <1>documentation</1> pour en savoir plus."
 
 #: src/components/transactions/Borrow/ParameterChangewarning.tsx
-msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Aave governance forum</1> for updates."
-msgstr "<0>Attention:</0> Les changements de paramètres via la gouvernance peuvent modifier le facteur de santé de votre compte et le risque de liquidation. Suivez le <1>forum de gouvernance d’Aave</1> pour les mises à jour."
+msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Eden governance forum</1> for updates."
+msgstr "<0>Attention:</0> Les changements de paramètres via la gouvernance peuvent modifier le facteur de santé de votre compte et le risque de liquidation. Suivez le <1>forum de gouvernance d’Eden</1> pour les mises à jour."
 
 #: src/modules/dashboard/lists/SlippageList.tsx
 msgid "<0>Slippage tolerance </0><1>{selectedSlippage}% </1><2>{0}</2>"
@@ -121,25 +121,25 @@ msgid "AToken supply is not zero"
 msgstr "L'approvisionnement en aTokens n'est pas nul"
 
 #: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Aave Governance"
-msgstr "Gouvernance Aave"
+msgid "Eden Governance"
+msgstr "Gouvernance Eden"
 
 #: src/modules/reserve-overview/AddTokenDropdown.tsx
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
-msgid "Aave aToken"
-msgstr "Aave aToken"
+msgid "Eden aToken"
+msgstr "Eden aToken"
 
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
-msgid "Aave debt token"
-msgstr "Jeton de dette Aave"
+msgid "Eden debt token"
+msgstr "Jeton de dette Eden"
 
 #: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Aave is a fully decentralized, community governed protocol by the AAVE token-holders. AAVE token-holders collectively discuss, propose, and vote on upgrades to the protocol. AAVE token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice. To learn more check out the Governance"
-msgstr "Aave est un protocole entièrement décentralisé et régi par la communauté par les détenteurs de jetons AAVE. Les détenteurs de jetons AAVE discutent, proposent et votent collectivement sur les mises à niveau du protocole. Les détenteurs de jetons AAVE (réseau Ethereum uniquement) peuvent soit voter eux-mêmes sur de nouvelles propositions, soit choisir l’adresse de leur choix. Pour en savoir plus, consultez la page Gouvernance"
+msgid "Eden is a fully decentralized, community governed protocol by the AAVE token-holders. AAVE token-holders collectively discuss, propose, and vote on upgrades to the protocol. AAVE token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice. To learn more check out the Governance"
+msgstr "Eden est un protocole entièrement décentralisé et régi par la communauté par les détenteurs de jetons AAVE. Les détenteurs de jetons AAVE discutent, proposent et votent collectivement sur les mises à niveau du protocole. Les détenteurs de jetons AAVE (réseau Ethereum uniquement) peuvent soit voter eux-mêmes sur de nouvelles propositions, soit choisir l’adresse de leur choix. Pour en savoir plus, consultez la page Gouvernance"
 
 #: src/modules/staking/StakingPanel.tsx
-msgid "Aave per month"
-msgstr "Aave par mois"
+msgid "Eden per month"
+msgstr "Eden par mois"
 
 #: src/modules/reserve-overview/Gho/GhoReserveConfiguration.tsx
 msgid "About GHO"
@@ -562,8 +562,8 @@ msgid "Borrowing is currently unavailable for {0}."
 msgstr "L'emprunt n'est actuellement pas disponible pour {0}."
 
 #: src/components/Warnings/BorrowDisabledWarning.tsx
-msgid "Borrowing is disabled due to an Aave community decision. <0>More details</0>"
-msgstr "L’emprunt est désactivé en raison d’une décision de la communauté Aave. <0>Plus d’informations</0>"
+msgid "Borrowing is disabled due to an Eden community decision. <0>More details</0>"
+msgstr "L’emprunt est désactivé en raison d’une décision de la communauté Eden. <0>Plus d’informations</0>"
 
 #: src/ui-config/errorMapping.tsx
 msgid "Borrowing is not enabled"
@@ -969,8 +969,8 @@ msgid "Discount model parameters"
 msgstr "Paramètres du modèle de remise"
 
 #: src/modules/reserve-overview/Gho/GhoDiscountCalculator.tsx
-msgid "Discount parameters are decided by the Aave community and may be changed over time. Check Governance for updates and vote to participate. <0>Learn more</0>"
-msgstr "Les paramètres de remise sont décidés par la communauté Aave et peuvent être modifiés au fil du temps. Consultez la section Gouvernance pour les mises à jour et votez pour participer. <0>Pour en savoir plus</0>"
+msgid "Discount parameters are decided by the Eden community and may be changed over time. Check Governance for updates and vote to participate. <0>Learn more</0>"
+msgstr "Les paramètres de remise sont décidés par la communauté Eden et peuvent être modifiés au fil du temps. Consultez la section Gouvernance pour les mises à jour et votez pour participer. <0>Pour en savoir plus</0>"
 
 #: src/modules/reserve-overview/Gho/GhoDiscountCalculator.tsx
 msgid "Discountable amount"
@@ -986,7 +986,7 @@ msgstr "Télécharger"
 
 #: src/components/transactions/Repay/CollateralRepayModalContent.tsx
 #: src/components/transactions/Swap/SwapModalContent.tsx
-msgid "Due to health factor impact, a flashloan is required to perform this transaction, but Aave Governance has disabled flashloan availability for this asset. Try lowering the amount or supplying additional collateral."
+msgid "Due to health factor impact, a flashloan is required to perform this transaction, but Eden Governance has disabled flashloan availability for this asset. Try lowering the amount or supplying additional collateral."
 msgstr ""
 
 #: src/components/Warnings/StETHCollateralWarning.tsx
@@ -994,8 +994,8 @@ msgid "Due to internal stETH mechanics required for rebasing support, it is not 
 msgstr "En raison de la mécanique interne de stETH requise pour le rebasage de la prise en charge, il n’est pas possible d’effectuer un changement de garantie où stETH est le jeton source."
 
 #: src/components/transactions/Warnings/MarketWarning.tsx
-msgid "Due to the Horizon bridge exploit, certain assets on the Harmony network are not at parity with Ethereum, which affects the Aave V3 Harmony market."
-msgstr "En raison de l’exploit du pont Horizon, certains actifs du réseau Harmony ne sont pas à parité avec Ethereum, ce qui affecte le marché Aave V3 Harmony."
+msgid "Due to the Horizon bridge exploit, certain assets on the Harmony network are not at parity with Ethereum, which affects the Eden V3 Harmony market."
+msgstr "En raison de l’exploit du pont Horizon, certains actifs du réseau Harmony ne sont pas à parité avec Ethereum, ce qui affecte le marché Eden V3 Harmony."
 
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 msgid "During the cooldown period, you will not earn any merit rewards. However, rewards earned up to this point will remain unaffected."
@@ -1022,8 +1022,8 @@ msgid "E-Mode increases your LTV for a selected category of assets up to<0/>. <1
 msgstr "E-Mode augmente votre LTV pour une catégorie d'actifs sélectionnée jusqu'à <0/>. <1>En savoir plus</1>"
 
 #: src/modules/reserve-overview/ReserveEModePanel.tsx
-msgid "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Aave Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Aave V3 Technical Paper</2>."
-msgstr "Le E-mode augmente votre LTV pour une catégorie d'actifs sélectionnée, ce qui signifie que lorsque le E-mode est activé, vous aurez un pouvoir d'emprunt plus élevé sur les actifs de la même catégorie de mode E qui sont définis par Aave Governance. Vous pouvez accéder au E-Mode depuis votre <0>Tableau de bord</0>. Pour en savoir plus sur le E-mode et les restrictions appliquées, consultez la <1>FAQ</1> ou le <2>Document technique Aave V3</2>."
+msgid "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Eden Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Eden V3 Technical Paper</2>."
+msgstr "Le E-mode augmente votre LTV pour une catégorie d'actifs sélectionnée, ce qui signifie que lorsque le E-mode est activé, vous aurez un pouvoir d'emprunt plus élevé sur les actifs de la même catégorie de mode E qui sont définis par Eden Governance. Vous pouvez accéder au E-Mode depuis votre <0>Tableau de bord</0>. Pour en savoir plus sur le E-mode et les restrictions appliquées, consultez la <1>FAQ</1> ou le <2>Document technique Eden V3</2>."
 
 #: src/modules/governance/RepresentativesInfoPanel.tsx
 msgid "Edit"
@@ -1335,7 +1335,7 @@ msgid "Interest rate strategy"
 msgstr "Stratégie de taux d’intérêt"
 
 #: src/components/infoTooltips/FixedAPYTooltip.tsx
-msgid "Interest rate that is determined by Aave Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
+msgid "Interest rate that is determined by Eden Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 msgstr ""
 
 #: src/ui-config/errorMapping.tsx
@@ -1592,7 +1592,7 @@ msgstr "Émigrer"
 
 #: src/layouts/MobileMenu.tsx
 #: src/layouts/MoreMenu.tsx
-msgid "Migrate to Aave V3"
+msgid "Migrate to Eden V3"
 msgstr ""
 
 #: src/components/TopInfoPanel/PageTitle.tsx
@@ -1652,8 +1652,8 @@ msgid "Minimum amount received"
 msgstr ""
 
 #: src/modules/reserve-overview/Gho/GhoDiscountCalculator.tsx
-msgid "Minimum staked Aave amount"
-msgstr "Montant minimum d’Aave mis en jeu"
+msgid "Minimum staked Eden amount"
+msgstr "Montant minimum d’Eden mis en jeu"
 
 #: src/components/transactions/Switch/SwitchModalContent.tsx
 msgid "Minimum {0} received"
@@ -1968,8 +1968,8 @@ msgid "Read more here."
 msgstr "Pour en savoir plus, cliquez ici."
 
 #: src/components/infoTooltips/ReadOnlyModeTooltip.tsx
-msgid "Read-only mode allows to see address positions in Aave, but you won't be able to perform transactions."
-msgstr "Le mode lecture seule permet de voir les positions d’adresses dans Aave, mais vous ne pourrez pas effectuer de transactions."
+msgid "Read-only mode allows to see address positions in Eden, but you won't be able to perform transactions."
+msgstr "Le mode lecture seule permet de voir les positions d’adresses dans Eden, mais vous ne pourrez pas effectuer de transactions."
 
 #: src/layouts/WalletWidget.tsx
 msgid "Read-only mode."
@@ -2075,8 +2075,8 @@ msgid "Reserve factor"
 msgstr "Facteur de réserve"
 
 #: src/components/infoTooltips/ReserveFactorTooltip.tsx
-msgid "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Aave governance to promote ecosystem growth."
-msgstr "Le facteur de réserve est un pourcentage de l’intérêt qui va à un {0} qui est contrôlé par la gouvernance Aave pour promouvoir la croissance de l’écosystème."
+msgid "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Eden governance to promote ecosystem growth."
+msgstr "Le facteur de réserve est un pourcentage de l’intérêt qui va à un {0} qui est contrôlé par la gouvernance Eden pour promouvoir la croissance de l’écosystème."
 
 #: src/modules/reserve-overview/ReserveConfigurationWrapper.tsx
 msgid "Reserve status & configuration"
@@ -2543,12 +2543,12 @@ msgid "The % of your total borrowing power used. This is based on the amount of 
 msgstr "Le % de votre pouvoir d'emprunt total utilisé. Ceci est basé sur le montant de votre garantie fournie et le montant total que vous pouvez emprunter."
 
 #: src/modules/staking/GetABPTokenModal.tsx
-msgid "The Aave Balancer Pool Token (ABPT) is a liquidity pool token. You can receive ABPT by depositing a combination of AAVE + wstETH in the Balancer liquidity pool. You can then stake your BPT in the Safety Module to secure the protocol and earn Safety Incentives."
+msgid "The Eden Balancer Pool Token (ABPT) is a liquidity pool token. You can receive ABPT by depositing a combination of AAVE + wstETH in the Balancer liquidity pool. You can then stake your BPT in the Safety Module to secure the protocol and earn Safety Incentives."
 msgstr ""
 
 #: src/modules/reserve-overview/Gho/GhoReserveTopDetails.tsx
-msgid "The Aave Protocol is programmed to always use the price of 1 GHO = $1. This is different from using market pricing via oracles for other crypto assets. This creates stabilizing arbitrage opportunities when the price of GHO fluctuates."
-msgstr "Le protocole Aave est programmé pour toujours utiliser le prix de 1 GHO = 1 $. C’est différent de l’utilisation des prix du marché via des oracles pour d’autres actifs cryptographiques. Cela crée des opportunités d’arbitrage stabilisatrices lorsque le prix du GHO fluctue."
+msgid "The Eden Protocol is programmed to always use the price of 1 GHO = $1. This is different from using market pricing via oracles for other crypto assets. This creates stabilizing arbitrage opportunities when the price of GHO fluctuates."
+msgstr "Le protocole Eden est programmé pour toujours utiliser le prix de 1 GHO = 1 $. C’est différent de l’utilisation des prix du marché via des oracles pour d’autres actifs cryptographiques. Cela crée des opportunités d’arbitrage stabilisatrices lorsque le prix du GHO fluctue."
 
 #: src/components/infoTooltips/MaxLTVTooltip.tsx
 msgid "The Maximum LTV ratio represents the maximum borrowing power of a specific collateral. For example, if a collateral has an LTV of 75%, the user can borrow up to 0.75 worth of ETH in the principal currency for every 1 ETH worth of collateral."
@@ -2597,7 +2597,7 @@ msgstr "La période de recharge est de {0}. Après {1} de temps de recharge, vou
 
 #: src/modules/staking/StakingPanel.tsx
 #: src/modules/staking/StakingPanelNoWallet.tsx
-msgid "The current incentives period, decided on by the Aave community, has ended. Governance is in the process on renewing, check for updates. <0>Learn more</0>."
+msgid "The current incentives period, decided on by the Eden community, has ended. Governance is in the process on renewing, check for updates. <0>Learn more</0>."
 msgstr ""
 
 #: src/modules/migration/MigrationBottomPanel.tsx
@@ -2649,8 +2649,8 @@ msgid "There was some error. Please try changing the parameters or <0><1>copy th
 msgstr "Il y a eu une erreur. Veuillez essayer de modifier les paramètres ou <0><1>copier l'erreur</1></0>"
 
 #: src/modules/markets/MarketAssetsListContainer.tsx
-msgid "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Aave governance forum</0> for further updates."
-msgstr "Ces actifs sont temporairement gelés ou suspendus par des décisions de la communauté Aave, ce qui signifie qu’il n’est pas possible d’obtenir / emprunter ou d’échanger des taux de ces actifs. Les retraits et les remboursements de dettes sont autorisés. Suivez le <0>forum de gouvernance d’Aave pour d’autres</0> mises à jour."
+msgid "These assets are temporarily frozen or paused by Eden community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Eden governance forum</0> for further updates."
+msgstr "Ces actifs sont temporairement gelés ou suspendus par des décisions de la communauté Eden, ce qui signifie qu’il n’est pas possible d’obtenir / emprunter ou d’échanger des taux de ces actifs. Les retraits et les remboursements de dettes sont autorisés. Suivez le <0>forum de gouvernance d’Eden pour d’autres</0> mises à jour."
 
 #: src/components/transactions/Withdraw/WithdrawError.tsx
 msgid "These funds have been borrowed and are not available for withdrawal at this time."
@@ -2693,24 +2693,24 @@ msgid "This asset has reached its supply cap. Nothing is available to be supplie
 msgstr "Cet actif a atteint son plafond d'offre. Rien n'est disponible pour être fourni à partir de ce marché."
 
 #: src/components/infoTooltips/SuperFestTooltip.tsx
-msgid "This asset is eligible for rewards through SuperFest. Aave Labs does not guarantee the program and accepts no liability."
+msgid "This asset is eligible for rewards through SuperFest. Eden Labs does not guarantee the program and accepts no liability."
 msgstr ""
 
 #: src/components/infoTooltips/FrozenTooltip.tsx
-msgid "This asset is frozen due to an Aave Protocol Governance decision. <0>More details</0>"
-msgstr "Cet actif est gelé en raison d’une décision de gouvernance du protocole Aave. <0>Plus d’informations</0>"
+msgid "This asset is frozen due to an Eden Protocol Governance decision. <0>More details</0>"
+msgstr "Cet actif est gelé en raison d’une décision de gouvernance du protocole Eden. <0>Plus d’informations</0>"
 
 #: src/components/infoTooltips/RenFILToolTip.tsx
-msgid "This asset is frozen due to an Aave Protocol Governance decision. On the 20th of December 2022, renFIL will no longer be supported and cannot be bridged back to its native network. It is recommended to withdraw supply positions and repay borrow positions so that renFIL can be bridged back to FIL before the deadline. After this date, it will no longer be possible to convert renFIL to FIL. <0>More details</0>"
-msgstr "Cet actif est gelé en raison d’une décision de gouvernance du protocole Aave. Le 20 décembre 2022, renFIL ne sera plus pris en charge et ne pourra plus être reconnecté à son réseau natif. Il est recommandé de retirer les positions d’offre et de rembourser les positions d’emprunt afin que renFIL puisse être relié à FIL avant la date limite. Après cette date, il ne sera plus possible de convertir renFIL en FIL. <0>Plus d’informations</0>"
+msgid "This asset is frozen due to an Eden Protocol Governance decision. On the 20th of December 2022, renFIL will no longer be supported and cannot be bridged back to its native network. It is recommended to withdraw supply positions and repay borrow positions so that renFIL can be bridged back to FIL before the deadline. After this date, it will no longer be possible to convert renFIL to FIL. <0>More details</0>"
+msgstr "Cet actif est gelé en raison d’une décision de gouvernance du protocole Eden. Le 20 décembre 2022, renFIL ne sera plus pris en charge et ne pourra plus être reconnecté à son réseau natif. Il est recommandé de retirer les positions d’offre et de rembourser les positions d’emprunt afin que renFIL puisse être relié à FIL avant la date limite. Après cette date, il ne sera plus possible de convertir renFIL en FIL. <0>Plus d’informations</0>"
 
 #: src/modules/reserve-overview/ReserveConfiguration.tsx
-msgid "This asset is frozen due to an Aave community decision. <0>More details</0>"
-msgstr "Cet actif est gelé en raison d’une décision de la communauté Aave. <0>Plus d’informations</0>"
+msgid "This asset is frozen due to an Eden community decision. <0>More details</0>"
+msgstr "Cet actif est gelé en raison d’une décision de la communauté Eden. <0>Plus d’informations</0>"
 
 #: src/components/Warnings/OffboardingWarning.tsx
-msgid "This asset is planned to be offboarded due to an Aave Protocol Governance decision. <0>More details</0>"
-msgstr "Il est prévu que cet actif soit désactivé en raison d’une décision de gouvernance du protocole Aave. <0>Plus d’informations</0>"
+msgid "This asset is planned to be offboarded due to an Eden Protocol Governance decision. <0>More details</0>"
+msgstr "Il est prévu que cet actif soit désactivé en raison d’une décision de gouvernance du protocole Eden. <0>Plus d’informations</0>"
 
 #: src/components/transactions/Bridge/BridgeModalContent.tsx
 msgid "This fee is in addition to gas costs, which is paid to Chainlink CCIP service providers. <0>Learn more</0>"
@@ -2721,7 +2721,7 @@ msgid "This gas calculation is only an estimation. Your wallet will set the pric
 msgstr "Ce calcul de gaz n'est qu'une estimation. Votre portefeuille fixera le prix de la transaction. Vous pouvez modifier les paramètres de gaz directement depuis votre fournisseur de portefeuille."
 
 #: src/components/incentives/MeritIncentivesTooltipContent.tsx
-msgid "This is a program initiated and implemented by the decentralised Aave community. Aave Labs does not guarantee the program and accepts no liability."
+msgid "This is a program initiated and implemented by the decentralised Eden community. Eden Labs does not guarantee the program and accepts no liability."
 msgstr ""
 
 #: src/components/infoTooltips/AvailableTooltip.tsx
@@ -2762,8 +2762,8 @@ msgid "To borrow you need to supply any asset to be used as collateral."
 msgstr "Pour emprunter, vous devez fournir tout actif à utiliser comme garantie."
 
 #: src/components/infoTooltips/ApprovalTooltip.tsx
-msgid "To continue, you need to grant Aave smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
-msgstr "Pour continuer, vous devez autoriser les contrats intelligents Aave à déplacer vos fonds depuis votre portefeuille. En fonction de l’actif et du portefeuille que vous utilisez, cela se fait en signant le message d’autorisation (sans gaz) ou en soumettant une transaction d’approbation (nécessite du gaz). <0>Pour en savoir plus</0>"
+msgid "To continue, you need to grant Eden smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
+msgstr "Pour continuer, vous devez autoriser les contrats intelligents Eden à déplacer vos fonds depuis votre portefeuille. En fonction de l’actif et du portefeuille que vous utilisez, cela se fait en signant le message d’autorisation (sans gaz) ou en soumettant une transaction d’approbation (nécessite du gaz). <0>Pour en savoir plus</0>"
 
 #: src/components/transactions/Emode/EmodeModalContent.tsx
 msgid "To enable E-mode for the {0} category, all borrow positions outside of this category must be closed."
@@ -3139,8 +3139,8 @@ msgid "With a voting power of <0/>"
 msgstr "Avec un pouvoir de vote de <0/>"
 
 #: src/modules/faucet/FaucetTopPanel.tsx
-msgid "With testnet Faucet you can get free assets to test the Aave Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value. <0>Learn more</0>"
-msgstr "Avec testnet Faucet, vous pouvez obtenir des ressources gratuites pour tester le protocole Aave. Assurez-vous de changer votre fournisseur de portefeuille pour le réseau de test approprié, sélectionnez l’actif souhaité et cliquez sur « Faucet » pour obtenir des jetons transférés vers votre portefeuille. Les actifs d’un réseau de test ne sont pas « réels », ce qui signifie qu’ils n’ont aucune valeur monétaire. <0>Pour en savoir plus</0>"
+msgid "With testnet Faucet you can get free assets to test the Eden Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value. <0>Learn more</0>"
+msgstr "Avec testnet Faucet, vous pouvez obtenir des ressources gratuites pour tester le protocole Eden. Assurez-vous de changer votre fournisseur de portefeuille pour le réseau de test approprié, sélectionnez l’actif souhaité et cliquez sur « Faucet » pour obtenir des jetons transférés vers votre portefeuille. Les actifs d’un réseau de test ne sont pas « réels », ce qui signifie qu’ils n’ont aucune valeur monétaire. <0>Pour en savoir plus</0>"
 
 #: src/components/transactions/Withdraw/WithdrawAndSwitchModalContent.tsx
 #: src/components/transactions/Withdraw/WithdrawAndUnwrapActions.tsx

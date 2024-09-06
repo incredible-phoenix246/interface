@@ -96,7 +96,7 @@ export default function Staking() {
   }, [trackEvent]);
 
   const tvl = {
-    'Staked Aave': Number(stkAave?.totalSupplyUSDFormatted || '0'),
+    'Staked Eden': Number(stkAave?.totalSupplyUSDFormatted || '0'),
     'Staked GHO': Number(stkGho?.totalSupplyUSDFormatted || '0'),
     'Staked ABPT': Number(stkBpt?.totalSupplyUSDFormatted || '0'),
     'Staked ABPT V2': Number(stkBptV2?.totalSupplyUSDFormatted || '0'),

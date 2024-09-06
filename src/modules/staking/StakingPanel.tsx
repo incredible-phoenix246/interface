@@ -309,7 +309,7 @@ export const StakingPanel: React.FC<StakingPanelProps> = ({
             {distributionEnded && (
               <TextWithTooltip iconColor="warning.main">
                 <Trans>
-                  The current incentives period, decided on by the Aave community, has ended.
+                  The current incentives period, decided on by the Eden community, has ended.
                   Governance is in the process on renewing, check for updates.{' '}
                   <Link
                     href="https://governance.aave.com"
@@ -638,7 +638,7 @@ export const StakingPanel: React.FC<StakingPanelProps> = ({
           title={<Trans>Claimable AAVE</Trans>}
           value={formatEther(stakeUserData?.userIncentivesToClaim || '0')}
           valueUSD={claimableUSD}
-          bottomLineTitle={<Trans>Aave per month</Trans>}
+          bottomLineTitle={<Trans>Eden per month</Trans>}
           dataCy={`rewardBox_${stakedToken}`}
           bottomLineComponent={
             <FormattedNumber

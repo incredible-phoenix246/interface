@@ -146,7 +146,7 @@ export const ProposalOverview = ({ proposal, loading, error }: ProposalOverviewP
                       Link: 'Share on lens',
                     })
                   }
-                  href={`https://hey.xyz/?url=${window.location.href}&text=Check out this proposal on aave governance 👻👻 - ${proposal.subgraphProposal.proposalMetadata.title}&hashtags=Aave&preview=true`}
+                  href={`https://hey.xyz/?url=${window.location.href}&text=Check out this proposal on aave governance 👻👻 - ${proposal.subgraphProposal.proposalMetadata.title}&hashtags=Eden&preview=true`}
                   startIcon={
                     <LensIcon
                       color={palette.mode === 'dark' ? palette.primary.light : palette.text.primary}

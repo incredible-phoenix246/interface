@@ -11,15 +11,15 @@
  -/:             :/-  -/:             :/.     ://:         `/////////////-
 ```
 
-# Aave protocol interface :ghost:
+# Eden protocol interface :ghost:
 
-An open source interface for the decentralized liquidity protocol Aave
+An open source interface for the decentralized liquidity protocol Eden
 
 Enabling users to:
 
-- Manage and monitor their positions on the Aave Protocol, and the overall status of it
-- Manage and monitor their positions on the Aave Safety module
-- Participate in the Aave Governance
+- Manage and monitor their positions on the Eden Protocol, and the overall status of it
+- Manage and monitor their positions on the Eden Safety module
+- Participate in the Eden Governance
 
 ## How to use
 
@@ -67,7 +67,7 @@ Just go to `<your favorite public ipfs gateway>/ipns/app.aave.com`
 
 ## License
 
-[All Rights Reserved © Aave Labs](./LICENSE.md)
+[All Rights Reserved © Eden Labs](./LICENSE.md)
 
 ## Credits
 

@@ -14,7 +14,7 @@ export const GetGhoToken = () => {
 
   return (
     <>
-      <DarkTooltip title="Get GHO to stake within the Aave Protocol">
+      <DarkTooltip title="Get GHO to stake within the Eden Protocol">
         <Button
           variant="outlined"
           size="small"

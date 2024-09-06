@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React, { ReactNode } from 'react';
-import { FeedbackModal } from 'src/layouts/FeedbackDialog';
 
+// import { FeedbackModal } from 'src/layouts/FeedbackDialog';
 // import { AppFooter } from './AppFooter';
 import { AppHeader } from './AppHeader'; // Sidebar now
 // import TopBarNotify from './TopBarNotify';
@@ -11,36 +11,25 @@ export function MainLayout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <Box sx={{ display: 'flex', height: '100vh' }}>
-        <Box
-          component="nav"
-          sx={{
-            width: { sm: 240 }, // Adjust the sidebar width as needed
-            flexShrink: { sm: 0 },
-            backgroundColor: 'background.default',
-            borderRight: '1px solid',
-            borderColor: 'divider',
-            height: '100vh',
-          }}
-        >
-          <AppHeader />
-          {/* <AppFooter /> */}
-        </Box>
-
+      <Box sx={{ height: '100vh', maxWidth: '100vw' }}>
+        <AppHeader />
         <Box
           component="main"
           sx={{
-            flexGrow: 1,
             display: 'flex',
             flexDirection: 'column',
-            padding: 3, // Adjust padding as needed
-            backgroundColor: 'background.default',
+            flex: 1,
+            marginTop: '1rem',
+            padding: 3,
+            ml: {
+              md: '15%',
+            },
           }}
         >
           {children}
-
-          <FeedbackModal />
         </Box>
+
+        {/* <AppFooter /> */}
       </Box>
     </>
   );

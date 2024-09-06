@@ -438,7 +438,7 @@ export function getThemedComponents(theme: Theme) {
               borderRadius: '0.5rem',
 
               borderColor: '#EBEBED1F',
-              backgroundColor: '#383D51',
+              backgroundColor: '#2b3947',
               '&:hover, &.Mui-focusVisible': {
                 backgroundColor: theme.palette.background.header,
               },

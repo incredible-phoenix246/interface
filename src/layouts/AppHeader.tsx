@@ -1,8 +1,8 @@
-import { HomeIcon } from '@heroicons/react/outline';
+// import { HomeIcon } from '@heroicons/react/outline';
 // import { Trans } from '@lingui/macro';
 import {
   Button,
-  SvgIcon,
+  // SvgIcon,
   // Typography,
   useMediaQuery,
   useTheme,
@@ -90,26 +90,35 @@ export function AppHeader() {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       sx={(theme) => ({
-        height: '100vh', // Full height of the viewport
-        position: 'fixed', // Fixed positioning
+        height: {
+          md: '100vh',
+          sm: '3',
+        }, // Full height of the viewport
+        position: {
+          md: 'fixed',
+        }, // Fixed positioning
         top: 0,
         left: 0,
         display: 'flex',
-        width: { sm: 240 }, // Sidebar width
-        border: '1px dashed grey',
+        width: { sm: '100vw', md: 240 }, // Sidebar width
+        // border: '1px dashed grey',
         transition: theme.transitions.create('top'),
         zIndex: theme.zIndex.appBar,
-        bgcolor: theme.palette.background.header,
-        borderColor: 'divider',
+        bgcolor: { sm: '#0D131A', md: '#1D2833' },
+        // borderColor: 'divider',
 
         padding: {
           xs: mobileMenuOpen || walletWidgetOpen ? '8px 20px' : '8px 8px 8px 20px',
           xsm: '8px 20px',
-          md: '40px ',
+          md: '20px ',
         },
-        // alignItems: 'center',
-        flexDirection: 'column',
-        boxShadow: 'inset 0px -1px 0px rgba(242, 243, 247, 0.16)',
+        alignItems: { sm: 'center', md: 'start', lg: 'start', xsm: 'center', xs: 'center' },
+        // alignItems:'center',
+        flexDirection: {
+          sm: 'row',
+          md: 'column',
+        },
+        // boxShadow: 'inset 0px -1px 0px rgba(242, 243, 247, 0.16)',
       })}
     >
       <Box
@@ -118,7 +127,7 @@ export function AppHeader() {
         aria-label="Go to homepage"
         sx={{
           lineHeight: 0,
-          mr: 3,
+          // mr: 3,
           transition: '0.3s ease all',
           '&:hover': { opacity: 0.7 },
         }}
@@ -139,9 +148,9 @@ export function AppHeader() {
             }}
           >
             EDEN FINANCE
-            <SvgIcon sx={{ marginLeft: '2px', fontSize: '16px' }}>
+            {/* <SvgIcon sx={{ marginLeft: '2px', fontSize: '16px' }}>
               <HomeIcon />
-            </SvgIcon>
+            </SvgIcon> */}
           </Button>
           // </ContentWithTooltip>
         )}

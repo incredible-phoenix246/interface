@@ -101,7 +101,7 @@ export const StakingPanelNoWallet: React.FC<StakingPanelNoWalletProps> = ({
           {distributionEnded && stakedToken === 'GHO' && (
             <TextWithTooltip wrapperProps={{ marginBottom: '1px' }} iconColor="warning.main">
               <Trans>
-                The current incentives period, decided on by the Aave community, has ended.
+                The current incentives period, decided on by the Eden community, has ended.
                 Governance is in the process on renewing, check for updates.{' '}
                 <Link
                   href="https://governance.aave.com"

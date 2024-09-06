@@ -58,7 +58,7 @@ export const MobileMenu = ({ open, setOpen, headerHeight }: MobileMenuProps) => 
         <Button
           id="settings-button-mobile"
           variant="surface"
-          sx={{ p: '7px 8px', minWidth: 'unset', ml: 2 }}
+          sx={{ p: '8px 8px', minWidth: 'unset', ml: 2, borderRadius: '100%', bgcolor: '#2b3947' }}
           onClick={() => setOpen(true)}
         >
           <SvgIcon sx={{ color: '#F1F1F3' }} fontSize="small">
@@ -89,7 +89,7 @@ export const MobileMenu = ({ open, setOpen, headerHeight }: MobileMenuProps) => 
                   onClick={() => setOpen(false)}
                 >
                   <ListItemText>
-                    <Trans>Migrate to Aave V3</Trans>
+                    <Trans>Migrate to Eden V3</Trans>
                   </ListItemText>
                 </ListItem>
                 {moreNavigation.map((item, index) => (

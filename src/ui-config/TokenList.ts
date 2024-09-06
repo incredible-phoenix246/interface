@@ -139,7 +139,7 @@ const NETWORK_ASSETS: TokenInfo[] = [
 ];
 
 export const TOKEN_LIST: TokenList = {
-  name: 'Aave Labs Default',
+  name: 'Eden Labs Default',
   timestamp: '2024-01-22T15:47:25.037Z',
   version: {
     major: 11,
@@ -184,7 +184,7 @@ export const TOKEN_LIST: TokenList = {
     {
       chainId: 1,
       address: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9',
-      name: 'Aave',
+      name: 'Eden',
       symbol: 'AAVE',
       decimals: 18,
       logoURI:
@@ -4890,7 +4890,7 @@ export const TOKEN_LIST: TokenList = {
     {
       chainId: 10,
       address: '0x76FB31fb4af56892A25e32cFC43De717950c9278',
-      name: 'Aave',
+      name: 'Eden',
       symbol: 'AAVE',
       decimals: 18,
       logoURI: 'https://assets.coingecko.com/coins/images/12645/thumb/AAVE.png?1601374110',
@@ -5699,7 +5699,7 @@ export const TOKEN_LIST: TokenList = {
     {
       chainId: 56,
       address: '0xfb6115445Bff7b52FeB98650C87f44907E58f802',
-      name: 'Aave',
+      name: 'Eden',
       symbol: 'AAVE',
       decimals: 18,
       logoURI: 'https://assets.coingecko.com/coins/images/12645/thumb/AAVE.png?1601374110',
@@ -6799,7 +6799,7 @@ export const TOKEN_LIST: TokenList = {
     {
       chainId: 137,
       address: '0xD6DF932A45C0f255f85145f286eA0b292B21C90B',
-      name: 'Aave',
+      name: 'Eden',
       symbol: 'AAVE',
       decimals: 18,
       logoURI: 'https://assets.coingecko.com/coins/images/12645/thumb/AAVE.png?1601374110',
@@ -9761,7 +9761,7 @@ export const TOKEN_LIST: TokenList = {
     {
       chainId: 42161,
       address: '0xba5DdD1f9d7F570dc94a51479a000E3BCE967196',
-      name: 'Aave',
+      name: 'Eden',
       symbol: 'AAVE',
       decimals: 18,
       logoURI: 'https://assets.coingecko.com/coins/images/12645/thumb/AAVE.png?1601374110',
@@ -11951,7 +11951,7 @@ export const TOKEN_LIST: TokenList = {
     {
       chainId: 43114,
       address: '0x63a72806098Bd3D9520cC43356dD78afe5D386D9',
-      name: 'Aave',
+      name: 'Eden',
       symbol: 'AAVE',
       decimals: 18,
       logoURI: 'https://assets.coingecko.com/coins/images/12645/thumb/AAVE.png?1601374110',

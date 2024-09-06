@@ -13,7 +13,7 @@ export function Meta({ title, description, imageUrl, timestamp }: MetaProps) {
     <Head>
       <title>Eden Finance - {title}</title>
       <meta name="description" content={description} key="description" />
-      <meta property="og:title" content={`Aave - ${title}`} key="title" />
+      <meta property="og:title" content={`Eden - ${title}`} key="title" />
       <meta property="og:description" content={description} key="ogdescription" />
       {imageUrl && <meta property="og:image" content={imageUrl} key="ogimage" />}
       {imageUrl && <meta name="twitter:image" content={imageUrl} key="twitterimage" />}

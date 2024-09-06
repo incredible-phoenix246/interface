@@ -294,7 +294,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
       {md && connected && open ? (
         <MobileCloseButton setOpen={setOpen} />
       ) : loading ? (
-        <Skeleton height={36} width={126} sx={{ background: '#383D51' }} />
+        <Skeleton height={36} width={126} sx={{ background: '#2b3947' }} />
       ) : (
         <Button
           variant={connected ? 'surface' : 'gradient'}
@@ -307,6 +307,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
           sx={{
             p: connected ? '5px 8px' : undefined,
             minWidth: hideWalletAccountText ? 'unset' : undefined,
+            bgColor: '#2b3947',
           }}
           endIcon={
             connected &&

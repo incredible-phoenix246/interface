@@ -285,7 +285,7 @@ export const GhoBorrowSuccessView = ({ txHash, action, amount, symbol }: Success
                 target="_blank"
                 href={`https://hey.xyz/?url=${
                   window.location.href
-                }&text=${`I just minted ${finalNumber} GHO`}&hashtags=Aave&preview=true`}
+                }&text=${`I just minted ${finalNumber} GHO`}&hashtags=Eden&preview=true`}
                 size="small"
                 sx={{ ml: 'auto' }}
                 onClick={() => trackEvent(GHO_SUCCESS_MODAL.GHO_SHARE_HEY)}

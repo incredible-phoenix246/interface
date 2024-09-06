@@ -28,7 +28,7 @@ export const MeritIncentivesTooltipContent = ({
 
       <Typography variant="caption" color="text.secondary" mb={3}>
         <Trans>
-          This is a program initiated and implemented by the decentralised Aave community. Aave Labs
+          This is a program initiated and implemented by the decentralised Eden community. Eden Labs
           does not guarantee the program and accepts no liability.
         </Trans>{' '}
         <Link
@@ -49,7 +49,7 @@ export const MeritIncentivesTooltipContent = ({
           variant="caption"
           color="text.secondary"
         >
-          Aave Chan Initiative interface
+          Eden Chan Initiative interface
         </Link>
         {'.'}
       </Typography>
