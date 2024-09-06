@@ -83,7 +83,7 @@ export const TxSuccessView = ({
           <Box
             sx={(theme) => ({
               border: theme.palette.mode === 'dark' ? `1px solid ${theme.palette.divider}` : 'none',
-              background: theme.palette.mode === 'dark' ? 'none' : '#F7F7F9',
+              background: theme.palette.mode === 'dark' ? '#0D131A' : '#2b3947',
               borderRadius: '12px',
               display: 'flex',
               flexDirection: 'column',
@@ -112,7 +112,7 @@ export const TxSuccessView = ({
                   image: !/_/.test(addToken.symbol) ? base64 : undefined,
                 });
               }}
-              variant={theme.palette.mode === 'dark' ? 'outlined' : 'contained'}
+              variant={theme.palette.mode === 'dark' ? 'gradient' : 'contained'}
               size="medium"
               sx={{ mt: '8px', mb: '12px' }}
             >

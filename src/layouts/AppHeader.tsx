@@ -12,8 +12,8 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 // import { ContentWithTooltip } from 'src/components/ContentWithTooltip';
 import { useRootStore } from 'src/store/root';
-import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
 
+// import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
 import { Link } from '../components/primitives/Link';
 // import { uiConfig } from '../uiConfig';
 import { NavItems } from './components/NavItems';
@@ -136,7 +136,7 @@ export function AppHeader() {
         {/* <img src={uiConfig.appLogo} alt="AAVE" width={72} height={20} /> */}
       </Box>
       <Box sx={{ mr: sm ? 1 : 3 }}>
-        {ENABLE_TESTNET && (
+        {
           // <ContentWithTooltip tooltipContent={testnetTooltip} offset={[0, -4]} withoutHover>
           <Button
             variant="surface"
@@ -153,7 +153,7 @@ export function AppHeader() {
             </SvgIcon> */}
           </Button>
           // </ContentWithTooltip>
-        )}
+        }
       </Box>
 
       <Box sx={{ display: { xs: 'none', md: 'flex' }, mt: 10 }}>
