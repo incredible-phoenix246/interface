@@ -69,7 +69,7 @@ export const GovernanceTopPanel = () => {
             </Trans>{' '}
             <Link
               onClick={() => trackEvent(GENERAL.EXTERNAL_LINK, { Link: 'FAQ Docs Governance' })}
-              href="https://docs.aave.com/faq/governance"
+              href="https://docs.eden.finance/faq/governance"
               sx={{ textDecoration: 'underline', color: '#8E92A3' }}
             >
               <Trans>documentation</Trans>
@@ -89,9 +89,9 @@ export const GovernanceTopPanel = () => {
         }}
       >
         <ExternalLink text="SNAPSHOTS" href="https://snapshot.org/#/aave.eth" />
-        <ExternalLink text="FORUM" href="https://governance.aave.com/" />
-        <ExternalLink text="FAQ" href="https://docs.aave.com/faq/governance" />
-        <ExternalLink text="GOVERNANCE V2" href="https://governance-v2.aave.com/" />
+        <ExternalLink text="FORUM" href="https://governance.eden.finance/" />
+        <ExternalLink text="FAQ" href="https://docs.eden.finance/faq/governance" />
+        <ExternalLink text="GOVERNANCE V2" href="https://governance-v2.eden.finance/" />
       </Box>
     </TopInfoPanel>
   );

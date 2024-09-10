@@ -102,7 +102,7 @@ export const ReserveEModePanel: React.FC<ReserverEModePanelProps> = ({ reserve }
             </Link>
             . To learn more about E-Mode and applied restrictions in{' '}
             <Link
-              href="https://docs.aave.com/faq/aave-v3-features#high-efficiency-mode-e-mode"
+              href="https://docs.eden.finance/faq/aave-v3-features#high-efficiency-mode-e-mode"
               sx={{ textDecoration: 'underline' }}
               variant="caption"
               color="text.secondary"

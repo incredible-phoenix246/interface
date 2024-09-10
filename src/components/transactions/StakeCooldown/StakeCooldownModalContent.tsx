@@ -180,7 +180,7 @@ export const StakeCooldownModalContent = ({ stakeAssetName, icon }: StakeCooldow
             })
           }
           variant="description"
-          href="https://docs.aave.com/faq/migration-and-staking"
+          href="https://docs.eden.finance/faq/migration-and-staking"
           sx={{ textDecoration: 'underline' }}
         >
           <Trans>Learn more</Trans>

@@ -39,7 +39,7 @@ export default function ProposalPage() {
     <>
       {proposal && (
         <Meta
-          imageUrl="https://app.aave.com/aaveMetaLogo-min.jpg"
+          imageUrl="https://app.eden.finance/aaveMetaLogo-min.jpg"
           title={proposal.subgraphProposal.proposalMetadata.title}
           description={proposal.subgraphProposal.proposalMetadata.shortDescription}
         />

@@ -51,22 +51,22 @@ export function AppFooter() {
 
   const FOOTER_LINKS = [
     {
-      href: 'https://aave.com/term-of-use/',
+      href: 'https://eden.finance/term-of-use/',
       label: <Trans>Terms</Trans>,
       key: 'Terms',
     },
     {
-      href: 'https://aave.com/privacy-policy/',
+      href: 'https://eden.finance/privacy-policy/',
       label: <Trans>Privacy</Trans>,
       key: 'Privacy',
     },
     {
-      href: 'https://docs.aave.com/hub/',
+      href: 'https://docs.eden.finance/hub/',
       label: <Trans>Docs</Trans>,
       key: 'Docs',
     },
     {
-      href: 'https://docs.aave.com/faq/',
+      href: 'https://docs.eden.finance/faq/',
       label: <Trans>FAQS</Trans>,
       key: 'FAQS',
     },

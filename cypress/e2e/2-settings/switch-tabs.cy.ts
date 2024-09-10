@@ -33,8 +33,8 @@ describe.skip('Switch tabs in header', () => {
 
   it('step4: Switch from Governance to More', () => {
     cy.get('#more-button').click();
-    checkLinkOfButtons('FAQ', 'https://docs.aave.com/faq/governance');
-    checkLinkOfButtons('Developers', 'https://docs.aave.com/portal/');
+    checkLinkOfButtons('FAQ', 'https://docs.eden.finance/faq/governance');
+    checkLinkOfButtons('Developers', 'https://docs.eden.finance/portal/');
     checkLinkOfButtons('Github', 'https://github.com/aave/interface');
   });
 });

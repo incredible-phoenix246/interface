@@ -24,7 +24,7 @@ export enum WalletType {
 }
 
 const APP_NAME = 'Eden';
-const APP_LOGO_URL = 'https://aave.com/favicon.ico';
+const APP_LOGO_URL = 'https://eden.finance/favicon.ico';
 
 const mockProvider = {
   request: Promise.resolve(null),

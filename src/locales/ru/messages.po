@@ -2669,8 +2669,8 @@ msgid "This action will reduce your health factor. Please be mindful of the incr
 msgstr "Это действие снизит ваш фактор здоровья. Пожалуйста, помните о повышенном риске ликвидации залога."
 
 #: src/components/AddressBlockedModal.tsx
-msgid "This address is blocked on app.aave.com because it is associated with one or more"
-msgstr "Этот адрес заблокирован на app.aave.com, так как он связан с одним или несколькими"
+msgid "This address is blocked on app.eden.finance because it is associated with one or more"
+msgstr "Этот адрес заблокирован на app.eden.finance, так как он связан с одним или несколькими"
 
 #: src/components/caps/CapsTooltip.tsx
 msgid "This asset has almost reached its borrow cap. There is only {messageValue} available to be borrowed from this market."

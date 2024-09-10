@@ -32,7 +32,7 @@ export const MeritIncentivesTooltipContent = ({
           does not guarantee the program and accepts no liability.
         </Trans>{' '}
         <Link
-          href="https://governance.aave.com/t/arfc-merit-a-new-aave-alignment-user-reward-system/16646"
+          href="https://governance.eden.finance/t/arfc-merit-a-new-aave-alignment-user-reward-system/16646"
           sx={{ textDecoration: 'underline' }}
           variant="caption"
           color="text.secondary"

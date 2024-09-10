@@ -263,7 +263,7 @@ export const SupplyAssetsList = () => {
               <Warning severity="warning">
                 <Trans>
                   Collateral usage is limited because of isolation mode.{' '}
-                  <Link href="https://docs.aave.com/faq/" target="_blank" rel="noopener">
+                  <Link href="https://docs.eden.finance/faq/" target="_blank" rel="noopener">
                     Learn More
                   </Link>
                 </Trans>

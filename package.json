@@ -136,18 +136,18 @@
     "@web3-react/walletlink-connector/@coinbase/wallet-sdk": "3.1.0"
   },
   "contributors": [
-    "Anastasia Khovaeva <anastasia@aave.com>",
-    "Andrew Schmidt <andrew@aave.com>",
-    "David Racero <david.k@aave.com>",
-    "Diego Prudencio <diego@aave.com>",
-    "Drew Cook <drew.c@aave.com>",
-    "Lukas Strassel <lukas@aave.com>",
-    "Mark Grothe <mark.g@aave.com",
-    "Mark Hinschberger <mark@aave.com>",
-    "Nikita Bokarev <nikita@aave.com>",
-    "Oleksandr Tkach <oleksandr@aave.com>",
-    "Pol Sendra <pol@aave.com>",
-    "Vladimir Konstantinovich Yumatov <vladimir@aave.com>"
+    "Anastasia Khovaeva <anastasia@eden.finance>",
+    "Andrew Schmidt <andrew@eden.finance>",
+    "David Racero <david.k@eden.finance>",
+    "Diego Prudencio <diego@eden.finance>",
+    "Drew Cook <drew.c@eden.finance>",
+    "Lukas Strassel <lukas@eden.finance>",
+    "Mark Grothe <mark.g@eden.finance",
+    "Mark Hinschberger <mark@eden.finance>",
+    "Nikita Bokarev <nikita@eden.finance>",
+    "Oleksandr Tkach <oleksandr@eden.finance>",
+    "Pol Sendra <pol@eden.finance>",
+    "Vladimir Konstantinovich Yumatov <vladimir@eden.finance>"
   ],
   "lint-staged": {
     "!(.prettierignore)*.*": "yarn lint:fix",

@@ -2670,7 +2670,7 @@ msgid "This action will reduce your health factor. Please be mindful of the incr
 msgstr ""
 
 #: src/components/AddressBlockedModal.tsx
-msgid "This address is blocked on app.aave.com because it is associated with one or more"
+msgid "This address is blocked on app.eden.finance because it is associated with one or more"
 msgstr ""
 
 #: src/components/caps/CapsTooltip.tsx

@@ -312,7 +312,7 @@ export const StakingPanel: React.FC<StakingPanelProps> = ({
                   The current incentives period, decided on by the Eden community, has ended.
                   Governance is in the process on renewing, check for updates.{' '}
                   <Link
-                    href="https://governance.aave.com"
+                    href="https://governance.eden.finance"
                     sx={{ textDecoration: 'underline' }}
                     variant="caption"
                     color="text.secondary"

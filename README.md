@@ -47,23 +47,23 @@ There's a github action commenting the appropriate IPFS hash embedded in the Clo
 
 For ease of use:
 
-- the DNS of [https://staging.aave.com](https://staging.aave.com) will always point to the latest main IPFS hash with all networks enabled
-- the DNS of [https://app.aave.com](https://app.aave.com) will always point to the latest main IPFS hash with disabled test networks
+- the DNS of [https://staging.eden.finance](https://staging.eden.finance) will always point to the latest main IPFS hash with all networks enabled
+- the DNS of [https://app.eden.finance](https://app.eden.finance) will always point to the latest main IPFS hash with disabled test networks
 
 ### Links known to work at some point:
 
-- [https://app-aave-com.ipns.cf-ipfs.com/#/](https://app-aave-com.ipns.cf-ipfs.com/#/)
-- [https://app-aave-com.ipns.dweb.link/#/](https://app-aave-com.ipns.dweb.link/#/)
+- [https://app-eden.finance.ipns.cf-ipfs.com/#/](https://app-eden.finance.ipns.cf-ipfs.com/#/)
+- [https://app-eden.finance.ipns.dweb.link/#/](https://app-eden.finance.ipns.dweb.link/#/)
 
 ### Troubleshooting
 
-Issue: Cannot connect to `app.aave.com`
+Issue: Cannot connect to `app.eden.finance`
 
-The aave-ui is hosted on IPFS in a decentralized manner. `app.aave.com` just holds a CNAME record to the Cloudflare IPFS gateway. You can use [any](https://ipfs.github.io/public-gateway-checker/) public or private IPFS gateway supporting origin isolation to access aave-ui if for some reason the Cloudflare gateway doesn't work for you
+The aave-ui is hosted on IPFS in a decentralized manner. `app.eden.finance` just holds a CNAME record to the Cloudflare IPFS gateway. You can use [any](https://ipfs.github.io/public-gateway-checker/) public or private IPFS gateway supporting origin isolation to access aave-ui if for some reason the Cloudflare gateway doesn't work for you
 
-Just go to `<your favorite public ipfs gateway>/ipns/app.aave.com`
+Just go to `<your favorite public ipfs gateway>/ipns/app.eden.finance`
 
-⚠️ Make sure the gateway supports origin isolation to avoid possible security issues: you should be redirected to URL that looks like `https://app-aave-com.<your gateway>`
+⚠️ Make sure the gateway supports origin isolation to avoid possible security issues: you should be redirected to URL that looks like `https://app-eden.finance.<your gateway>`
 
 ## License
 

@@ -95,7 +95,7 @@ export const BorrowInfo = ({
                         pool insolvency.
                       </Trans>{' '}
                       <Link
-                        href="https://docs.aave.com/developers/whats-new/supply-borrow-caps"
+                        href="https://docs.eden.finance/developers/whats-new/supply-borrow-caps"
                         underline="always"
                       >
                         <Trans>Learn more</Trans>

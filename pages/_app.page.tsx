@@ -134,7 +134,7 @@ export default function MyApp(props: MyAppProps) {
         description={
           'Eden Finance is an Open Source Protocol to create Non-Custodial Liquidity Markets to earn interest on supplying and borrowing assets with a variable or stable interest rate. The protocol is designed for easy integration into your products and services.'
         }
-        // imageUrl="https://app.eden-finance.com/aave-com-opengraph.png"
+        // imageUrl="https://app.eden-finance.com/eden.finance-opengraph.png"
       />
       <LanguageProvider>
         <QueryClientProvider client={queryClient}>

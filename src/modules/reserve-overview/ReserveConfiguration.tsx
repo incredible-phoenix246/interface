@@ -79,7 +79,7 @@ export const ReserveConfiguration: React.FC<ReserveConfigurationProps> = ({ rese
                 impacted.{' '}
                 <Link
                   href={
-                    'https://governance.aave.com/t/arfc-add-mai-to-arbitrum-aave-v3-market/12759/8'
+                    'https://governance.eden.finance/t/arfc-add-mai-to-arbitrum-aave-v3-market/12759/8'
                   }
                   sx={{ textDecoration: 'underline' }}
                 >

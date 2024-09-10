@@ -30,7 +30,7 @@ export const FaucetTopPanel = () => {
                 testnet are not “real,” meaning they have no monetary value.{' '}
                 {/* <Link
                   color="#A5A8B6"
-                  href="https://docs.aave.com/developers/guides/testing-guide"
+                  href="https://docs.eden.finance/developers/guides/testing-guide"
                   sx={{ textDecoration: 'underline' }}
                 >
                   Learn more
