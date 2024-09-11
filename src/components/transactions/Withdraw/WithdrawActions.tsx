@@ -30,12 +30,14 @@ export const WithdrawActions = ({
   const { action, loadingTxns, mainTxState, approvalTxState, approval, requiresApproval } =
     useTransactionHandler({
       tryPermit: false,
-      handleGetTxns: async () =>
-        withdraw({
+      handleGetTxns: async () => {
+        const t = await withdraw({
           reserve: poolAddress,
           amount: amountToWithdraw,
           aTokenAddress: poolReserve.aTokenAddress,
-        }),
+        });
+        return t;
+      },
       skip: !amountToWithdraw || parseFloat(amountToWithdraw) === 0 || blocked,
       deps: [amountToWithdraw, poolAddress],
       eventTxInfo: {
@@ -58,7 +60,9 @@ export const WithdrawActions = ({
       actionInProgressText={<Trans>Withdrawing {symbol}</Trans>}
       actionText={<Trans>Withdraw {symbol}</Trans>}
       handleAction={action}
-      handleApproval={() => approval([{ amount: amountToWithdraw, underlyingAsset: poolAddress }])}
+      handleApproval={() => {
+        return approval([{ amount: amountToWithdraw, underlyingAsset: poolAddress }]);
+      }}
       requiresApproval={requiresApproval}
       sx={sx}
     />

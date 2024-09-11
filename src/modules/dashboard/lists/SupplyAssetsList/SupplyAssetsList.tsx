@@ -69,6 +69,7 @@ export const SupplyAssetsList = () => {
     localStorage.getItem(localStorageName) === 'true'
   );
 
+  console.log(reserves);
   const tokensToSupply = reserves
     .filter(
       (reserve: ComputedReserveData) =>

@@ -56,6 +56,7 @@ export const WithdrawModalContent = ({
 
   const isMaxSelected = _amount === '-1';
   const maxAmountToWithdraw = calculateMaxWithdrawAmount(user, userReserve, poolReserve);
+  console.log(maxAmountToWithdraw.toString());
   const underlyingBalance = valueToBigNumber(userReserve?.underlyingBalance || '0');
   const unborrowedLiquidity = valueToBigNumber(poolReserve.unborrowedLiquidity);
   const withdrawAmount = isMaxSelected ? maxAmountToWithdraw.toString(10) : _amount;
@@ -67,6 +68,7 @@ export const WithdrawModalContent = ({
     if (maxSelected && maxAmountToWithdraw.eq(underlyingBalance)) {
       trackEvent(GENERAL.MAX_INPUT_SELECTION, { type: 'withdraw' });
       setWithdrawMax('-1');
+      // setWithdrawMax(maxAmountToWithdraw.toString(10));
     } else {
       setWithdrawMax(maxAmountToWithdraw.toString(10));
     }

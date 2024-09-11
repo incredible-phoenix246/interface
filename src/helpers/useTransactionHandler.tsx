@@ -226,6 +226,7 @@ export const useTransactionHandler = ({
         }
       } else {
         try {
+          console.log(approvalTxes);
           setApprovalTxState({ ...approvalTxState, loading: true });
           const params = await Promise.all(approvalTxes.map((approvalTx) => approvalTx.tx()));
           const approvalResponses = await Promise.all(
@@ -310,8 +311,10 @@ export const useTransactionHandler = ({
     }
     if ((!usePermit || !approvalTxes) && actionTx) {
       try {
+        console.log(actionTx.tx);
         setMainTxState({ ...mainTxState, loading: true });
         const params = await actionTx.tx();
+        console.log(params);
         delete params.gasPrice;
         return processTx({
           tx: () => sendTx(params),

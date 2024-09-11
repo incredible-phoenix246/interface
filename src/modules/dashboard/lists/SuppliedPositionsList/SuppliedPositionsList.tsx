@@ -82,7 +82,6 @@ export const SuppliedPositionsList = () => {
             : {}),
         },
       })) || [];
-
   // Transform to the DashboardReserve schema so the sort utils can work with it
   const preSortedReserves = suppliedPositions as DashboardReserve[];
   const sortedReserves = handleSortDashboardReserves(
