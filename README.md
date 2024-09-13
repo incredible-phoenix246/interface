@@ -1,14 +1,32 @@
+```
 
-   ('-.  _ .-') _     ('-.       .-') _  
- _(  OO)( (  OO) )  _(  OO)     ( OO ) ) 
-(,------.\     .'_ (,------.,--./ ,--,'  
- |  .---',`'--..._) |  .---'|   \ |  |\  
- |  |    |  |  \  ' |  |    |    \|  | ) 
-(|  '--. |  |   ' |(|  '--. |  .     |/  
- |  .--' |  |   / : |  .--' |  |\    |   
- |  `---.|  '--'  / |  `---.|  | \   |   
- `------'`-------'  `------'`--'  `--'   
+                                                                                         
+                                                                                         
+EEEEEEEEEEEEEEEEEEEEEEDDDDDDDDDDDDD        EEEEEEEEEEEEEEEEEEEEEENNNNNNNN        NNNNNNNN
+E::::::::::::::::::::ED::::::::::::DDD     E::::::::::::::::::::EN:::::::N       N::::::N
+E::::::::::::::::::::ED:::::::::::::::DD   E::::::::::::::::::::EN::::::::N      N::::::N
+EE::::::EEEEEEEEE::::EDDD:::::DDDDD:::::D  EE::::::EEEEEEEEE::::EN:::::::::N     N::::::N
+  E:::::E       EEEEEE  D:::::D    D:::::D   E:::::E       EEEEEEN::::::::::N    N::::::N
+  E:::::E               D:::::D     D:::::D  E:::::E             N:::::::::::N   N::::::N
+  E::::::EEEEEEEEEE     D:::::D     D:::::D  E::::::EEEEEEEEEE   N:::::::N::::N  N::::::N
+  E:::::::::::::::E     D:::::D     D:::::D  E:::::::::::::::E   N::::::N N::::N N::::::N
+  E:::::::::::::::E     D:::::D     D:::::D  E:::::::::::::::E   N::::::N  N::::N:::::::N
+  E::::::EEEEEEEEEE     D:::::D     D:::::D  E::::::EEEEEEEEEE   N::::::N   N:::::::::::N
+  E:::::E               D:::::D     D:::::D  E:::::E             N::::::N    N::::::::::N
+  E:::::E       EEEEEE  D:::::D    D:::::D   E:::::E       EEEEEEN::::::N     N:::::::::N
+EE::::::EEEEEEEE:::::EDDD:::::DDDDD:::::D  EE::::::EEEEEEEE:::::EN::::::N      N::::::::N
+E::::::::::::::::::::ED:::::::::::::::DD   E::::::::::::::::::::EN::::::N       N:::::::N
+E::::::::::::::::::::ED::::::::::::DDD     E::::::::::::::::::::EN::::::N        N::::::N
+EEEEEEEEEEEEEEEEEEEEEEDDDDDDDDDDDDD        EEEEEEEEEEEEEEEEEEEEEENNNNNNNN         NNNNNNN
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
 
+```
 
 # Eden protocol interface :ghost:
 
