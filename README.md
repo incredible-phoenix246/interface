@@ -1,14 +1,31 @@
 ```
-        .///.                .///.     //.            .//  `/////////////-
-       `++:++`              .++:++`    :++`          `++:  `++:......---.`
-      `/+: -+/`            `++- :+/`    /+/         `/+/   `++.
-      /+/   :+/            /+:   /+/    `/+/        /+/`   `++.
-  -::/++::`  /+:       -::/++::` `/+:    `++:      :++`    `++/:::::::::.
-  -:+++::-`  `/+:      --++/---`  `++-    .++-    -++.     `++/:::::::::.
-   -++.       .++-      -++`       .++.    .++.  .++-      `++.
-  .++-         -++.    .++.         -++.    -++``++-       `++.
- `++:           :++`  .++-           :++`    :+//+:        `++:----------`
- -/:             :/-  -/:             :/.     ://:         `/////////////-
+
+                                                                                         
+                                                                                         
+EEEEEEEEEEEEEEEEEEEEEEDDDDDDDDDDDDD        EEEEEEEEEEEEEEEEEEEEEENNNNNNNN        NNNNNNNN
+E::::::::::::::::::::ED::::::::::::DDD     E::::::::::::::::::::EN:::::::N       N::::::N
+E::::::::::::::::::::ED:::::::::::::::DD   E::::::::::::::::::::EN::::::::N      N::::::N
+EE::::::EEEEEEEEE::::EDDD:::::DDDDD:::::D  EE::::::EEEEEEEEE::::EN:::::::::N     N::::::N
+  E:::::E       EEEEEE  D:::::D    D:::::D   E:::::E       EEEEEEN::::::::::N    N::::::N
+  E:::::E               D:::::D     D:::::D  E:::::E             N:::::::::::N   N::::::N
+  E::::::EEEEEEEEEE     D:::::D     D:::::D  E::::::EEEEEEEEEE   N:::::::N::::N  N::::::N
+  E:::::::::::::::E     D:::::D     D:::::D  E:::::::::::::::E   N::::::N N::::N N::::::N
+  E:::::::::::::::E     D:::::D     D:::::D  E:::::::::::::::E   N::::::N  N::::N:::::::N
+  E::::::EEEEEEEEEE     D:::::D     D:::::D  E::::::EEEEEEEEEE   N::::::N   N:::::::::::N
+  E:::::E               D:::::D     D:::::D  E:::::E             N::::::N    N::::::::::N
+  E:::::E       EEEEEE  D:::::D    D:::::D   E:::::E       EEEEEEN::::::N     N:::::::::N
+EE::::::EEEEEEEE:::::EDDD:::::DDDDD:::::D  EE::::::EEEEEEEE:::::EN::::::N      N::::::::N
+E::::::::::::::::::::ED:::::::::::::::DD   E::::::::::::::::::::EN::::::N       N:::::::N
+E::::::::::::::::::::ED::::::::::::DDD     E::::::::::::::::::::EN::::::N        N::::::N
+EEEEEEEEEEEEEEEEEEEEEEDDDDDDDDDDDDD        EEEEEEEEEEEEEEEEEEEEEENNNNNNNN         NNNNNNN
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+
 ```
 
 # Eden protocol interface :ghost:
@@ -38,32 +55,6 @@ For instructions on local development, deployment, configurations & feature prop
 Also, contributors with at least one pull request that has been merged into the main branch are eligible for a unique GitPOAP. Visit [gitpoap.io](https://www.gitpoap.io/gp/638) to claim it.
 
 <img src="https://www.gitpoap.io/_next/image?url=https%3A%2F%2Fassets.poap.xyz%2Fgitpoap3a-2022-aave-protocol-interface-contributor-2022-logo-1668012040505.png&w=2048&q=75" width="164">
-
-## IPFS deployment
-
-Each commit gets deployed to IPFS automatically
-
-There's a github action commenting the appropriate IPFS hash embedded in the Cloudflare IPFS gateway after each commit
-
-For ease of use:
-
-- the DNS of [https://staging.eden.finance](https://staging.eden.finance) will always point to the latest main IPFS hash with all networks enabled
-- the DNS of [https://app.eden.finance](https://app.eden.finance) will always point to the latest main IPFS hash with disabled test networks
-
-### Links known to work at some point:
-
-- [https://app-eden.finance.ipns.cf-ipfs.com/#/](https://app-eden.finance.ipns.cf-ipfs.com/#/)
-- [https://app-eden.finance.ipns.dweb.link/#/](https://app-eden.finance.ipns.dweb.link/#/)
-
-### Troubleshooting
-
-Issue: Cannot connect to `app.eden.finance`
-
-The aave-ui is hosted on IPFS in a decentralized manner. `app.eden.finance` just holds a CNAME record to the Cloudflare IPFS gateway. You can use [any](https://ipfs.github.io/public-gateway-checker/) public or private IPFS gateway supporting origin isolation to access aave-ui if for some reason the Cloudflare gateway doesn't work for you
-
-Just go to `<your favorite public ipfs gateway>/ipns/app.eden.finance`
-
-⚠️ Make sure the gateway supports origin isolation to avoid possible security issues: you should be redirected to URL that looks like `https://app-eden.finance.<your gateway>`
 
 ## License
 
