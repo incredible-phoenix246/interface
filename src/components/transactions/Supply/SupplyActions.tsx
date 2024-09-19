@@ -96,7 +96,10 @@ export const SupplyActions = React.memo(
       setApprovalTxState({});
     }
 
-    const usePermit = permitAvailable && walletApprovalMethodPreference === ApprovalMethod.PERMIT;
+    const usePermit =
+      permitAvailable &&
+      walletApprovalMethodPreference === ApprovalMethod.PERMIT &&
+      symbol !== 'cNGN';
 
     const { approval } = useApprovalTx({
       usePermit,

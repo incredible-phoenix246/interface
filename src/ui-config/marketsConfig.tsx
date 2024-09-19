@@ -121,13 +121,13 @@ export const marketsData: {
     enabledFeatures: {
       // governance: true,
       staking: true,
-      // liquiditySwap: true,
+      liquiditySwap: true,
       collateralRepay: true,
       faucet: true,
       incentives: true,
       withdrawAndSwitch: true,
-      // debtSwitch: true,
-      // switch: true,
+      debtSwitch: true,
+      switch: true,
     },
     addresses: {
       FAUCET: AaveV3AssetChainTestnet.FAUCET,

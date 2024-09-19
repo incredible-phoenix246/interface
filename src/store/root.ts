@@ -50,6 +50,7 @@ export const useRootStore = create<RootStore>()(
 // hydrate state from localeStorage to not break on ssr issues
 if (typeof document !== 'undefined') {
   document.onreadystatechange = function () {
+    localStorage.setItem('selectedMarket', 'proto_asset_chain_testnet_v3');
     if (document.readyState == 'complete') {
       const selectedMarket =
         getQueryParameter('marketName') || localStorage.getItem('selectedMarket');
@@ -60,6 +61,12 @@ if (typeof document !== 'undefined') {
         if (selectedMarket !== currentMarket) {
           setCurrentMarket(selectedMarket as CustomMarket, true);
         }
+      } else {
+        const setCurrentMarket = useRootStore.getState().setCurrentMarket;
+        setCurrentMarket('proto_asset_chain_testnet_v3' as CustomMarket, true);
+      }
+      if (selectedMarket !== 'proto_asset_chain_testnet_v3') {
+        window.location.reload();
       }
     }
   };
