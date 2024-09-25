@@ -1,5 +1,5 @@
-import { API_ETH_MOCK_ADDRESS } from '@aave/contract-helpers';
 import { valueToBigNumber } from '@aave/math-utils';
+import { API_ETH_MOCK_ADDRESS } from '@eden-labs/contract-helpers';
 import BigNumber from 'bignumber.js';
 
 import { roundToTokenDecimals } from './utils';

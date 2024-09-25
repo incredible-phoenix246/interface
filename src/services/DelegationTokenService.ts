@@ -3,7 +3,7 @@ import {
   DelegateMetaSigParams,
   MetaDelegateHelperService,
   MetaDelegateParams,
-} from '@aave/contract-helpers';
+} from '@eden-labs/contract-helpers';
 import { Provider } from '@ethersproject/providers';
 import { PopulatedTransaction } from 'ethers';
 import { FixedPointDecimal } from 'src/architecture/FixedPointDecimal';

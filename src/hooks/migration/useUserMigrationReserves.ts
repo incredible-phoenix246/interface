@@ -1,9 +1,9 @@
+import { ComputedUserReserve, valueToBigNumber } from '@aave/math-utils';
 import {
   ReservesDataHumanized,
   ReservesIncentiveDataHumanized,
   valueToWei,
-} from '@aave/contract-helpers';
-import { ComputedUserReserve, valueToBigNumber } from '@aave/math-utils';
+} from '@eden-labs/contract-helpers';
 import dayjs from 'dayjs';
 import memoize from 'micro-memoize';
 import { UserReservesDataHumanized } from 'src/services/UIPoolService';

@@ -1,4 +1,4 @@
-import { ChainId } from '@aave/contract-helpers';
+import { ChainId } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Theme } from '@mui/material';
 import { SxProps } from '@mui/system';

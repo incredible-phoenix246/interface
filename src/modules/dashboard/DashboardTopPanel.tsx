@@ -1,5 +1,5 @@
-import { ChainId } from '@aave/contract-helpers';
 import { normalize, UserIncentiveData, valueToBigNumber } from '@aave/math-utils';
+import { ChainId } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
 import Link from 'next/link';

@@ -2,7 +2,7 @@ import {
   EthereumTransactionTypeExtended,
   StakingService,
   StakingServiceV3,
-} from '@aave/contract-helpers';
+} from '@eden-labs/contract-helpers';
 import { SignatureLike } from '@ethersproject/bytes';
 import { stakeConfig } from 'src/ui-config/stakeConfig';
 import { getProvider } from 'src/utils/marketsAndNetworksConfig';

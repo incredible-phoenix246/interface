@@ -1,5 +1,5 @@
-import { AaveGovernanceService, ChainId, Power } from '@aave/contract-helpers';
 import { normalize, valueToBigNumber } from '@aave/math-utils';
+import { AaveGovernanceService, ChainId, Power } from '@eden-labs/contract-helpers';
 import { Provider } from '@ethersproject/providers';
 import { governanceV3Config } from 'src/ui-config/governanceConfig';
 // import { MarketDataType } from 'src/ui-config/marketsConfig';

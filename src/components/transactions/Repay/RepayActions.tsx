@@ -1,4 +1,4 @@
-import { gasLimitRecommendations, InterestRate, ProtocolAction } from '@aave/contract-helpers';
+import { gasLimitRecommendations, InterestRate, ProtocolAction } from '@eden-labs/contract-helpers';
 import { TransactionResponse } from '@ethersproject/providers';
 import { Trans } from '@lingui/macro';
 import { BoxProps } from '@mui/material';

@@ -1,13 +1,13 @@
 import {
-  ReservesDataHumanized,
-  ReservesIncentiveDataHumanized,
-  UserReservesIncentivesDataHumanized,
-} from '@aave/contract-helpers';
-import {
   ComputedUserReserve,
   formatUserSummaryAndIncentives as _formatUserSummaryAndIncentives,
   FormatUserSummaryAndIncentivesResponse,
 } from '@aave/math-utils';
+import {
+  ReservesDataHumanized,
+  ReservesIncentiveDataHumanized,
+  UserReservesIncentivesDataHumanized,
+} from '@eden-labs/contract-helpers';
 import dayjs from 'dayjs';
 import memoize from 'micro-memoize';
 import { UserReservesDataHumanized } from 'src/services/UIPoolService';

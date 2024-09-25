@@ -1,4 +1,4 @@
-import { ApproveType, MAX_UINT_AMOUNT, ProtocolAction } from '@aave/contract-helpers';
+import { ApproveType, MAX_UINT_AMOUNT, ProtocolAction } from '@eden-labs/contract-helpers';
 import { SignatureLike } from '@ethersproject/bytes';
 import { constants } from 'ethers';
 import { parseUnits } from 'ethers/lib/utils';

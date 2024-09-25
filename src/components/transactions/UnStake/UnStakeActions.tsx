@@ -1,4 +1,4 @@
-import { ProtocolAction } from '@aave/contract-helpers';
+import { ProtocolAction } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { BoxProps } from '@mui/material';
 import { useRootStore } from 'src/store/root';

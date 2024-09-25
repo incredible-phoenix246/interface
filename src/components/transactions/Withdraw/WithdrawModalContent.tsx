@@ -1,5 +1,5 @@
-import { API_ETH_MOCK_ADDRESS } from '@aave/contract-helpers';
 import { valueToBigNumber } from '@aave/math-utils';
+import { API_ETH_MOCK_ADDRESS } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Box, Checkbox, Typography } from '@mui/material';
 import { useRef, useState } from 'react';

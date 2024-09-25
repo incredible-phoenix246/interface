@@ -1,4 +1,4 @@
-import { Representative, Rpresented } from '@aave/contract-helpers';
+import { Representative, Rpresented } from '@eden-labs/contract-helpers';
 import { PlusIcon } from '@heroicons/react/outline';
 import { ExternalLinkIcon } from '@heroicons/react/solid';
 import { Trans } from '@lingui/macro';

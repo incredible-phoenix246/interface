@@ -1,4 +1,3 @@
-import { ChainId } from '@aave/contract-helpers';
 import {
   AaveV2Avalanche,
   AaveV2Ethereum,
@@ -27,6 +26,7 @@ import {
   AaveV3ScrollSepolia,
   AaveV3Sepolia,
 } from '@eden-labs/address-book';
+import { ChainId } from '@eden-labs/contract-helpers';
 import { ReactNode } from 'react';
 
 // Enable for premissioned market

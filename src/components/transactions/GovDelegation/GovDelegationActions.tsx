@@ -1,4 +1,4 @@
-import { DelegationType } from '@aave/contract-helpers';
+import { DelegationType } from '@eden-labs/contract-helpers';
 import { useGovernanceDelegate } from 'src/helpers/useGovernanceDelegate';
 
 import { DelegationTxsWrapper } from '../DelegationTxsWrapper';

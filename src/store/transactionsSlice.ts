@@ -1,4 +1,4 @@
-import { ProtocolAction } from '@aave/contract-helpers';
+import { ProtocolAction } from '@eden-labs/contract-helpers';
 import { produce } from 'immer';
 import { CustomMarket } from 'src/ui-config/marketsConfig';
 import { StateCreator } from 'zustand';

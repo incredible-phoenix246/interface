@@ -1,4 +1,4 @@
-import { ERC20Service, gasLimitRecommendations, ProtocolAction } from '@aave/contract-helpers';
+import { ERC20Service, gasLimitRecommendations, ProtocolAction } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { OptimalRate } from '@paraswap/sdk';
 import { useQueryClient } from '@tanstack/react-query';

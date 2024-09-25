@@ -1,4 +1,4 @@
-import { API_ETH_MOCK_ADDRESS } from '@aave/contract-helpers';
+import { API_ETH_MOCK_ADDRESS } from '@eden-labs/contract-helpers';
 
 type ExtensionValue = string | number | boolean | null | undefined;
 

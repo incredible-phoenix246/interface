@@ -1,4 +1,4 @@
-import { InterestRate } from '@aave/contract-helpers';
+import { InterestRate } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Box, Button } from '@mui/material';
 import { useRouter } from 'next/router';

@@ -1,5 +1,5 @@
-import { ChainId } from '@aave/contract-helpers';
 import { BigNumberValue, USD_DECIMALS, valueToBigNumber } from '@aave/math-utils';
+import { ChainId } from '@eden-labs/contract-helpers';
 
 import { CustomMarket } from './marketsAndNetworksConfig';
 

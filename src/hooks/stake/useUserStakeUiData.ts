@@ -1,4 +1,4 @@
-import { Stake } from '@aave/contract-helpers';
+import { Stake } from '@eden-labs/contract-helpers';
 import { useQuery } from '@tanstack/react-query';
 import { useRootStore } from 'src/store/root';
 import { MarketDataType } from 'src/ui-config/marketsConfig';

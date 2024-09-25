@@ -3,7 +3,7 @@ import {
   ReservesDataHumanized,
   UiPoolDataProvider,
   UserReserveDataHumanized,
-} from '@aave/contract-helpers';
+} from '@eden-labs/contract-helpers';
 import { Provider } from '@ethersproject/providers';
 import { MarketDataType } from 'src/ui-config/marketsConfig';
 

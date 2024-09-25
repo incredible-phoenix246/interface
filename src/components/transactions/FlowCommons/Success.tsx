@@ -1,4 +1,4 @@
-import { InterestRate } from '@aave/contract-helpers';
+import { InterestRate } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Box, Button, Typography, useTheme } from '@mui/material';
 import { ReactNode, useState } from 'react';

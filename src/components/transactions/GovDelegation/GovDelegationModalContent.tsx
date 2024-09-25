@@ -1,4 +1,4 @@
-import { DelegationType } from '@aave/contract-helpers';
+import { DelegationType } from '@eden-labs/contract-helpers';
 import { t, Trans } from '@lingui/macro';
 import { FormControl, TextField, Typography } from '@mui/material';
 import { constants, utils } from 'ethers';

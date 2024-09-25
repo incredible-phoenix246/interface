@@ -1,4 +1,4 @@
-import { ChainId } from '@aave/contract-helpers';
+import { ChainId } from '@eden-labs/contract-helpers';
 
 import { getProvider } from '../marketsAndNetworksConfig';
 import { RotationProvider } from '../rotationProvider';

@@ -1,5 +1,5 @@
-import { InterestRate, valueToWei } from '@aave/contract-helpers';
 import { rayDiv, valueToBigNumber } from '@aave/math-utils';
+import { InterestRate, valueToWei } from '@eden-labs/contract-helpers';
 import dayjs from 'dayjs';
 import memoize from 'micro-memoize';
 import { selectFormatBaseCurrencyData } from 'src/store/poolSelectors';

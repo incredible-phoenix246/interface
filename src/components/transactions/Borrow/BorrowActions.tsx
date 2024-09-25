@@ -5,7 +5,7 @@ import {
   InterestRate,
   MAX_UINT_AMOUNT,
   ProtocolAction,
-} from '@aave/contract-helpers';
+} from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { BoxProps } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';

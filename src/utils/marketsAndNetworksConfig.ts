@@ -1,4 +1,4 @@
-import { ChainId, ChainIdToNetwork } from '@aave/contract-helpers';
+import { ChainId, ChainIdToNetwork } from '@eden-labs/contract-helpers';
 import { StaticJsonRpcProvider } from '@ethersproject/providers';
 import { ProviderWithSend } from 'src/components/transactions/GovVote/temporary/VotingMachineService';
 

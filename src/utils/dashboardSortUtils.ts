@@ -1,4 +1,4 @@
-import { InterestRate } from '@aave/contract-helpers';
+import { InterestRate } from '@eden-labs/contract-helpers';
 import { BorrowAssetsItem } from 'src/modules/dashboard/lists/BorrowAssetsList/types';
 import { SupplyAssetsItem } from 'src/modules/dashboard/lists/SupplyAssetsList/types';
 

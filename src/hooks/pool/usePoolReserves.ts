@@ -1,4 +1,4 @@
-import { ReservesDataHumanized } from '@aave/contract-helpers';
+import { ReservesDataHumanized } from '@eden-labs/contract-helpers';
 import { useQueries, UseQueryOptions } from '@tanstack/react-query';
 import { MarketDataType } from 'src/ui-config/marketsConfig';
 import { POLLING_INTERVAL, queryKeysFactory } from 'src/ui-config/queries';

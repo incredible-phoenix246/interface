@@ -1,4 +1,4 @@
-import { ChainId } from '@aave/contract-helpers';
+import { ChainId } from '@eden-labs/contract-helpers';
 import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
 import { Box, Button, SvgIcon, Typography, useMediaQuery, useTheme } from '@mui/material';

@@ -1,4 +1,4 @@
-import { gasLimitRecommendations, ProtocolAction, valueToWei } from '@aave/contract-helpers';
+import { gasLimitRecommendations, ProtocolAction, valueToWei } from '@eden-labs/contract-helpers';
 import { SignatureLike } from '@ethersproject/bytes';
 import { TransactionResponse } from '@ethersproject/providers';
 import { Trans } from '@lingui/macro';

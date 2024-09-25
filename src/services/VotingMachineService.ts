@@ -2,7 +2,7 @@ import {
   ChainId,
   VotingMachineDataHelperService,
   VotingMachineProposal,
-} from '@aave/contract-helpers';
+} from '@eden-labs/contract-helpers';
 import { ZERO_ADDRESS } from 'src/modules/governance/utils/formatProposal';
 import { governanceV3Config } from 'src/ui-config/governanceConfig';
 import { getProvider } from 'src/utils/marketsAndNetworksConfig';

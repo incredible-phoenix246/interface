@@ -1,4 +1,4 @@
-import { ChainId } from '@aave/contract-helpers';
+import { ChainId } from '@eden-labs/contract-helpers';
 import { SafeAppConnector } from '@gnosis.pm/safe-apps-web3-react';
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import { UnsupportedChainIdError } from '@web3-react/core';

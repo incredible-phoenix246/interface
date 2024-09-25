@@ -1,10 +1,10 @@
-import { ChainId } from '@aave/contract-helpers';
 import {
   AaveV3Arbitrum,
   AaveV3ArbitrumSepolia,
   AaveV3Ethereum,
   AaveV3Sepolia,
 } from '@eden-labs/address-book';
+import { ChainId } from '@eden-labs/contract-helpers';
 import { BaseNetworkConfig, networkConfigs } from 'src/ui-config/networksConfig';
 import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
 

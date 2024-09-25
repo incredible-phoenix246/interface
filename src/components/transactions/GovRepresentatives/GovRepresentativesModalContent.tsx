@@ -1,4 +1,4 @@
-import { ChainId } from '@aave/contract-helpers';
+import { ChainId } from '@eden-labs/contract-helpers';
 import { t, Trans } from '@lingui/macro';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import { Box, Checkbox, FormControlLabel, OutlinedInput, Stack, Typography } from '@mui/material';

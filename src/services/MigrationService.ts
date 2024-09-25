@@ -1,4 +1,4 @@
-import { Pool, V3MigrationHelperService } from '@aave/contract-helpers';
+import { Pool, V3MigrationHelperService } from '@eden-labs/contract-helpers';
 import { Provider } from '@ethersproject/providers';
 import {
   MIGRATION_ASSETS_EXCEPTIONS,

@@ -1,4 +1,4 @@
-import { DelegationType } from '@aave/contract-helpers';
+import { DelegationType } from '@eden-labs/contract-helpers';
 import { Box, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import { useEffect } from 'react';

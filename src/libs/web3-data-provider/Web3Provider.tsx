@@ -1,4 +1,4 @@
-import { API_ETH_MOCK_ADDRESS, ERC20Service, transactionType } from '@aave/contract-helpers';
+import { API_ETH_MOCK_ADDRESS, ERC20Service, transactionType } from '@eden-labs/contract-helpers';
 import { SignatureLike } from '@ethersproject/bytes';
 import {
   JsonRpcProvider,

@@ -3,7 +3,8 @@ import { SignatureLike } from '@ethersproject/bytes';
 
 export class StkAbptMigrationService {
   private async getService() {
-    const StkABPTMigrationService = (await import('@aave/contract-helpers')).StkABPTMigratorService;
+    const StkABPTMigrationService = (await import('@eden-labs/contract-helpers'))
+      .StkABPTMigratorService;
     return new StkABPTMigrationService(AaveSafetyModule.STK_ABPT_STK_AAVE_WSTETH_BPTV2_MIGRATOR);
   }
 

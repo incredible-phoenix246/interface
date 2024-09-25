@@ -1,5 +1,5 @@
-import { ChainId } from '@aave/contract-helpers';
 import { normalizeBN } from '@aave/math-utils';
+import { ChainId } from '@eden-labs/contract-helpers';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { Contract } from 'ethers';
 import request, { gql } from 'graphql-request';

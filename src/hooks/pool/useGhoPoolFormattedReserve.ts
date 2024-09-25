@@ -1,5 +1,5 @@
-import { ReservesDataHumanized } from '@aave/contract-helpers';
 import { formatGhoReserveData, GhoReserveData } from '@aave/math-utils';
+import { ReservesDataHumanized } from '@eden-labs/contract-helpers';
 import { MarketDataType } from 'src/ui-config/marketsConfig';
 import { GHO_SYMBOL } from 'src/utils/ghoUtilities';
 

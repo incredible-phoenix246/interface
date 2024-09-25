@@ -4,7 +4,7 @@ import {
   GovDelegate,
   GovDelegateByType,
   GovernancePowerDelegationTokenService,
-} from '@aave/contract-helpers';
+} from '@eden-labs/contract-helpers';
 import { governanceV3Config } from 'src/ui-config/governanceConfig';
 import { getProvider } from 'src/utils/marketsAndNetworksConfig';
 import { StateCreator } from 'zustand';

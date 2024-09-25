@@ -1,4 +1,4 @@
-import { GhoService } from '@aave/contract-helpers';
+import { GhoService } from '@eden-labs/contract-helpers';
 import { Provider } from '@ethersproject/providers';
 import { MarketDataType } from 'src/ui-config/marketsConfig';
 import { GHO_MINTING_MARKETS } from 'src/utils/ghoUtilities';

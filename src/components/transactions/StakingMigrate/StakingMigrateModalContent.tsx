@@ -1,5 +1,5 @@
-import { Stake, valueToWei } from '@aave/contract-helpers';
 import { normalize } from '@aave/math-utils';
+import { Stake, valueToWei } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Box } from '@mui/material';
 import { BigNumber } from 'ethers';

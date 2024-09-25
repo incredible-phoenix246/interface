@@ -1,4 +1,8 @@
-import { PayloadState, ProposalV3State, VotingMachineProposalState } from '@aave/contract-helpers';
+import {
+  PayloadState,
+  ProposalV3State,
+  VotingMachineProposalState,
+} from '@eden-labs/contract-helpers';
 import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';

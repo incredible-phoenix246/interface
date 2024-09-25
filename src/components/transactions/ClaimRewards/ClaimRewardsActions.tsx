@@ -1,4 +1,4 @@
-import { ProtocolAction } from '@aave/contract-helpers';
+import { ProtocolAction } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Reward } from 'src/helpers/types';
 import { useTransactionHandler } from 'src/helpers/useTransactionHandler';

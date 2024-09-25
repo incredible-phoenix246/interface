@@ -7,7 +7,7 @@ import {
   GovernancePowerType,
   Payload,
   PayloadsDataHelperService,
-} from '@aave/contract-helpers';
+} from '@eden-labs/contract-helpers';
 import { BigNumber } from 'ethers';
 import { formatUnits } from 'ethers/lib/utils';
 import { governanceV3Config } from 'src/ui-config/governanceConfig';

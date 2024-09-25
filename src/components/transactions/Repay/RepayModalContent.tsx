@@ -1,14 +1,14 @@
 import {
-  API_ETH_MOCK_ADDRESS,
-  InterestRate,
-  synthetixProxyByChainId,
-} from '@aave/contract-helpers';
-import {
   BigNumberValue,
   calculateHealthFactorFromBalancesBigUnits,
   USD_DECIMALS,
   valueToBigNumber,
 } from '@aave/math-utils';
+import {
+  API_ETH_MOCK_ADDRESS,
+  InterestRate,
+  synthetixProxyByChainId,
+} from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import Typography from '@mui/material/Typography';
 import BigNumber from 'bignumber.js';

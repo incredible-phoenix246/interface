@@ -1,4 +1,4 @@
-import { ReserveDataHumanized } from '@aave/contract-helpers';
+import { ReserveDataHumanized } from '@eden-labs/contract-helpers';
 import { EmodeCategory } from 'src/helpers/types';
 import { CustomMarket, marketsData, NetworkConfig } from 'src/utils/marketsAndNetworksConfig';
 

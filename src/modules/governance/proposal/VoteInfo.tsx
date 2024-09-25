@@ -1,4 +1,4 @@
-import { VotingMachineProposalState } from '@aave/contract-helpers';
+import { VotingMachineProposalState } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Box, Button, Paper, Typography } from '@mui/material';
 import { constants } from 'ethers';

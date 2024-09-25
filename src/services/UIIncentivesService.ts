@@ -1,4 +1,4 @@
-import { UiIncentiveDataProvider } from '@aave/contract-helpers';
+import { UiIncentiveDataProvider } from '@eden-labs/contract-helpers';
 import { Provider } from '@ethersproject/providers';
 import { MarketDataType } from 'src/ui-config/marketsConfig';
 import invariant from 'tiny-invariant';

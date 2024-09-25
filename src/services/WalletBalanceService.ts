@@ -1,5 +1,5 @@
-import { ChainId, WalletBalanceProvider } from '@aave/contract-helpers';
 import { normalize } from '@aave/math-utils';
+import { ChainId, WalletBalanceProvider } from '@eden-labs/contract-helpers';
 import { Provider } from '@ethersproject/providers';
 import { formatUnits } from 'ethers/lib/utils';
 import { governanceV3Config } from 'src/ui-config/governanceConfig';

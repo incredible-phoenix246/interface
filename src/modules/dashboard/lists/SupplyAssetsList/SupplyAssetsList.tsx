@@ -1,5 +1,5 @@
-import { API_ETH_MOCK_ADDRESS } from '@aave/contract-helpers';
 import { USD_DECIMALS, valueToBigNumber } from '@aave/math-utils';
+import { API_ETH_MOCK_ADDRESS } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import BigNumber from 'bignumber.js';

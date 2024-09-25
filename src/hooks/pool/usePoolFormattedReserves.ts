@@ -1,9 +1,9 @@
+import { formatReservesAndIncentives } from '@aave/math-utils';
 import {
   ReserveDataHumanized,
   ReservesDataHumanized,
   ReservesIncentiveDataHumanized,
-} from '@aave/contract-helpers';
-import { formatReservesAndIncentives } from '@aave/math-utils';
+} from '@eden-labs/contract-helpers';
 import dayjs from 'dayjs';
 import memoize from 'micro-memoize';
 import { reserveSortFn } from 'src/store/poolSelectors';

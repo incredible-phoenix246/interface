@@ -1,5 +1,5 @@
-import { InterestRate } from '@aave/contract-helpers';
 import { valueToBigNumber } from '@aave/math-utils';
+import { InterestRate } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Warning } from 'src/components/primitives/Warning';
 import { useModalContext } from 'src/hooks/useModal';

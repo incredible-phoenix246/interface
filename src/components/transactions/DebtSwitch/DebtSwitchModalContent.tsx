@@ -1,5 +1,5 @@
-import { InterestRate } from '@aave/contract-helpers';
 import { valueToBigNumber } from '@aave/math-utils';
+import { InterestRate } from '@eden-labs/contract-helpers';
 import { MaxUint256 } from '@ethersproject/constants';
 import { ArrowDownIcon } from '@heroicons/react/outline';
 import { ArrowNarrowRightIcon } from '@heroicons/react/solid';

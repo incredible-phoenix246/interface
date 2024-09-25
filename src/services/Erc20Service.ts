@@ -1,4 +1,4 @@
-import { ERC20Service as DetailedERC20Service } from '@aave/contract-helpers';
+import { ERC20Service as DetailedERC20Service } from '@eden-labs/contract-helpers';
 import { Provider } from '@ethersproject/providers';
 import { BigNumber, Contract } from 'ethers';
 

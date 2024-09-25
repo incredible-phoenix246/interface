@@ -1,4 +1,4 @@
-import { InterestRate } from '@aave/contract-helpers';
+import { InterestRate } from '@eden-labs/contract-helpers';
 import { ExclamationCircleIcon } from '@heroicons/react/outline';
 import { ArrowNarrowRightIcon, CheckIcon } from '@heroicons/react/solid';
 import { Trans } from '@lingui/macro';

@@ -1,4 +1,4 @@
-import { TokenWrapperServiceInterface } from '@aave/contract-helpers';
+import { TokenWrapperServiceInterface } from '@eden-labs/contract-helpers';
 import { SignatureLike } from '@ethersproject/bytes';
 import { Provider } from '@ethersproject/providers';
 import { BigNumber } from 'ethers';
@@ -17,7 +17,7 @@ export class TokenWrapperService {
 
     if (!this.tokenWrapperService[this.chainId][tokenWrapperAddress]) {
       this.tokenWrapperService[this.chainId][tokenWrapperAddress] = new (
-        await import('@aave/contract-helpers')
+        await import('@eden-labs/contract-helpers')
       ).TokenWrapperService(this.provider, tokenWrapperAddress);
     }
 

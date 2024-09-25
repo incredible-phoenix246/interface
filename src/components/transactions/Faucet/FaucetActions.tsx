@@ -18,7 +18,7 @@ export const FaucetActions = ({ poolReserve, isWrongNetwork, blocked }: FaucetAc
     tryPermit: false,
     handleGetTxns: async () => {
       return mint({
-        tokenSymbol: poolReserve.symbol,
+        tokenSymbol: poolReserve.symbol.toUpperCase(),
         reserve: poolReserve.underlyingAsset,
       });
     },

@@ -1,4 +1,4 @@
-import { ChainId } from '@aave/contract-helpers';
+import { ChainId } from '@eden-labs/contract-helpers';
 import { Network, StaticJsonRpcProvider } from '@ethersproject/providers/src.ts';
 
 import { getNetworkConfig } from '../marketsAndNetworksConfig';

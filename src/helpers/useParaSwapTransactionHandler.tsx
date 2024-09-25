@@ -1,4 +1,4 @@
-import { EthereumTransactionTypeExtended, ProtocolAction } from '@aave/contract-helpers';
+import { EthereumTransactionTypeExtended, ProtocolAction } from '@eden-labs/contract-helpers';
 import { SignatureLike } from '@ethersproject/bytes';
 import { TransactionResponse } from '@ethersproject/providers';
 import { useQueryClient } from '@tanstack/react-query';

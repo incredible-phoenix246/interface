@@ -1,11 +1,11 @@
+import { normalizeBN, valueToBigNumber } from '@aave/math-utils';
 import {
   Payload,
   PayloadState,
   ProposalV3State,
   VotingMachineProposal,
   VotingMachineProposalState,
-} from '@aave/contract-helpers';
-import { normalizeBN, valueToBigNumber } from '@aave/math-utils';
+} from '@eden-labs/contract-helpers';
 import BigNumber from 'bignumber.js';
 import {
   EnhancedSubgraphProposal,

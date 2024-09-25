@@ -1,4 +1,3 @@
-import { ChainId } from '@aave/contract-helpers';
 import {
   AaveSafetyModule,
   AaveV3Ethereum,
@@ -13,6 +12,7 @@ import {
   GovernanceV3Polygon,
   GovernanceV3Scroll,
 } from '@eden-labs/address-book';
+import { ChainId } from '@eden-labs/contract-helpers';
 
 export const ipfsGateway = 'https://cloudflare-ipfs.com/ipfs';
 export const fallbackIpfsGateway = 'https://ipfs.io/ipfs';

@@ -1,6 +1,6 @@
-import { Stake } from '@aave/contract-helpers';
-import { StakeTokenUIData } from '@aave/contract-helpers/dist/esm/V3-uiStakeDataProvider-contract/types';
 import { normalize } from '@aave/math-utils';
+import { Stake } from '@eden-labs/contract-helpers';
+import { StakeTokenUIData } from '@eden-labs/contract-helpers/dist/esm/V3-uiStakeDataProvider-contract/types';
 import { useQuery } from '@tanstack/react-query';
 import { BigNumber } from 'ethers';
 import { formatUnits } from 'ethers/lib/utils';

@@ -1,5 +1,5 @@
-import { Stake } from '@aave/contract-helpers';
-import { StakeUIUserData } from '@aave/contract-helpers/dist/esm/V3-uiStakeDataProvider-contract/types';
+import { Stake } from '@eden-labs/contract-helpers';
+import { StakeUIUserData } from '@eden-labs/contract-helpers/dist/esm/V3-uiStakeDataProvider-contract/types';
 import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
 import { Box, Button, Grid, Stack, SvgIcon, Typography } from '@mui/material';

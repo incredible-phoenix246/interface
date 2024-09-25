@@ -1,5 +1,5 @@
-import { API_ETH_MOCK_ADDRESS } from '@aave/contract-helpers';
 import { normalize } from '@aave/math-utils';
+import { API_ETH_MOCK_ADDRESS } from '@eden-labs/contract-helpers';
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import { Box, CircularProgress, Stack } from '@mui/material';
 import { BigNumber } from 'ethers/lib/ethers';

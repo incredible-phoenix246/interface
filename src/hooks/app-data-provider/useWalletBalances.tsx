@@ -1,5 +1,5 @@
-import { API_ETH_MOCK_ADDRESS, ReservesDataHumanized } from '@aave/contract-helpers';
 import { nativeToUSD, normalize, USD_DECIMALS } from '@aave/math-utils';
+import { API_ETH_MOCK_ADDRESS, ReservesDataHumanized } from '@eden-labs/contract-helpers';
 import { BigNumber } from 'bignumber.js';
 import { UserPoolTokensBalances } from 'src/services/WalletBalanceService';
 import { useRootStore } from 'src/store/root';

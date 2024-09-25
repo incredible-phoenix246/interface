@@ -1,9 +1,9 @@
-import { API_ETH_MOCK_ADDRESS, InterestRate } from '@aave/contract-helpers';
 import {
   calculateHealthFactorFromBalancesBigUnits,
   USD_DECIMALS,
   valueToBigNumber,
 } from '@aave/math-utils';
+import { API_ETH_MOCK_ADDRESS, InterestRate } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Typography } from '@mui/material';
 import { useState } from 'react';

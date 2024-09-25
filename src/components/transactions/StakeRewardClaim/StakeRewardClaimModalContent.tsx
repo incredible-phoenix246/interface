@@ -1,5 +1,5 @@
-import { ChainId, Stake } from '@aave/contract-helpers';
 import { normalize } from '@aave/math-utils';
+import { ChainId, Stake } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { Typography } from '@mui/material';
 import { parseUnits } from 'ethers/lib/utils';

@@ -1,4 +1,8 @@
-import { ProposalMetadata, ProposalV3State, VotingMachineProposal } from '@aave/contract-helpers';
+import {
+  ProposalMetadata,
+  ProposalV3State,
+  VotingMachineProposal,
+} from '@eden-labs/contract-helpers';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { constants } from 'ethers';
 import request, { gql } from 'graphql-request';

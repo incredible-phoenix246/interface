@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@aave/contract-helpers@1.30.2":
-  version "1.30.2"
-  resolved "https://registry.yarnpkg.com/@aave/contract-helpers/-/contract-helpers-1.30.2.tgz#8da9884ab74b8ad4e0333e0c7fab72b4f97560b4"
-  integrity sha512-0wns4mL0QHHj1cVHqeUf0JYG5BNrXA7l5XCrmVqycdTYs8juQ669Uchr1NdoJ4Qzf9e2cqD2QJbfKGeRun38Rw==
-  dependencies:
-    isomorphic-unfetch "^3.1.0"
-
 "@aave/math-utils@1.30.2":
   version "1.30.2"
   resolved "https://registry.yarnpkg.com/@aave/math-utils/-/math-utils-1.30.2.tgz#3bf96ba8a24a085e50492dc2a760e4263fbc6958"
@@ -1317,11 +1310,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@eden-labs/address-book@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@eden-labs/address-book/-/aave-address-book-3.0.1.tgz#942cef06984ed7b12b5a6694c5010637b505edd3"
-  integrity sha512-dlq/tBbGzmXPK4q94+Oy/XFXsE3qnKq60L9Hd67WlF3f6zCyzuTuQvUCPW/7hpH3Wda9LAnUbOxGunHAt05n6g==
-
 "@coinbase/wallet-sdk@3.1.0", "@coinbase/wallet-sdk@^3.0.4":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@coinbase/wallet-sdk/-/wallet-sdk-3.1.0.tgz#294fbd52cf7262b68137731ac414f0cf5a0580a3"
@@ -1547,10 +1535,17 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@eden-labs/address-book@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@eden-labs/address-book/-/address-book-3.0.2.tgz#7d2b1401fa2a2f2039dd075f0ab1cc4898e5e06c"
-  integrity sha512-u3NTXPGBuqYI6RqBfdWVgQgRvtR3jK/aU29Icoo6KHf3fcBW6cV1V1p0VeknnSO3SR1iHkU0aIjPgkK90S9BfA==
+"@eden-labs/address-book@^3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@eden-labs/address-book/-/address-book-3.4.2.tgz#26a329b2742900ed253299c464dee3d72733b751"
+  integrity sha512-GfO7K0gb6A48FKcREFuDNZ1y1Ancw2d5zmC71DuLOI/s8bnHfjyp4RvCP1/fzRtxcQmFx60oh7nyIHq2qO7EMA==
+
+"@eden-labs/contract-helpers@1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@eden-labs/contract-helpers/-/contract-helpers-1.4.1.tgz#00bcd1e93fc6b4ef3fe3773bb187f65429e7f515"
+  integrity sha512-KPx4Fp8QtcK2aA3cISXxtux/PX86boO4gPGtNhfHQNnMCQpcySBTCi1ca3lStwOHVrvIlTTSGrf3M8fjCXLGlw==
+  dependencies:
+    isomorphic-unfetch "^3.1.0"
 
 "@emotion/babel-plugin@^11.10.0":
   version "11.10.2"

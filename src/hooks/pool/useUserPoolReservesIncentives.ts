@@ -1,4 +1,4 @@
-import { UserReservesIncentivesDataHumanized } from '@aave/contract-helpers';
+import { UserReservesIncentivesDataHumanized } from '@eden-labs/contract-helpers';
 import { useQueries } from '@tanstack/react-query';
 import { useRootStore } from 'src/store/root';
 import { MarketDataType } from 'src/ui-config/marketsConfig';

@@ -1,4 +1,4 @@
-import { PERMISSION, PermissionManager } from '@aave/contract-helpers';
+import { PERMISSION, PermissionManager } from '@eden-labs/contract-helpers';
 import React, { useContext, useEffect, useState } from 'react';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { getProvider, isFeatureEnabled } from 'src/utils/marketsAndNetworksConfig';

@@ -1,6 +1,6 @@
-import { ChainId } from '@aave/contract-helpers';
-import { GetUserStakeUIDataHumanized } from '@aave/contract-helpers/dist/esm/V3-uiStakeDataProvider-contract/types';
 import { valueToBigNumber } from '@aave/math-utils';
+import { ChainId } from '@eden-labs/contract-helpers';
+import { GetUserStakeUIDataHumanized } from '@eden-labs/contract-helpers/dist/esm/V3-uiStakeDataProvider-contract/types';
 import { ExternalLinkIcon, RefreshIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
 import {

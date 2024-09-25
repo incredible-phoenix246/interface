@@ -1,3 +1,4 @@
+import { AaveSafetyModule, AaveV3Ethereum } from '@eden-labs/address-book';
 import {
   AaveTokenV3Service,
   ApproveDelegationType,
@@ -27,20 +28,19 @@ import {
   UserReserveDataHumanized,
   V3FaucetService,
   WithdrawAndSwitchAdapterService,
-} from '@aave/contract-helpers';
+} from '@eden-labs/contract-helpers';
 import {
   LPBorrowParamsType,
   LPSetUsageAsCollateral,
   LPSwapBorrowRateMode,
   LPWithdrawParamsType,
-} from '@aave/contract-helpers/dist/esm/lendingPool-contract/lendingPoolTypes';
+} from '@eden-labs/contract-helpers/dist/esm/lendingPool-contract/lendingPoolTypes';
 import {
   LPRepayWithPermitParamsType,
   LPSignERC20ApprovalType,
   LPSupplyParamsType,
   LPSupplyWithPermitType,
-} from '@aave/contract-helpers/dist/esm/v3-pool-contract/lendingPoolTypes';
-import { AaveSafetyModule, AaveV3Ethereum } from '@eden-labs/address-book';
+} from '@eden-labs/contract-helpers/dist/esm/v3-pool-contract/lendingPoolTypes';
 import { BigNumber, PopulatedTransaction, Signature, utils } from 'ethers';
 import { splitSignature } from 'ethers/lib/utils';
 import { ClaimRewardsActionsProps } from 'src/components/transactions/ClaimRewards/ClaimRewardsActions';

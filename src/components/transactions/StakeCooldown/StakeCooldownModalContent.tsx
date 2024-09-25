@@ -1,5 +1,5 @@
-import { ChainId, Stake } from '@aave/contract-helpers';
 import { valueToBigNumber } from '@aave/math-utils';
+import { ChainId, Stake } from '@eden-labs/contract-helpers';
 import { ArrowDownIcon, CalendarIcon } from '@heroicons/react/outline';
 import { ArrowNarrowRightIcon } from '@heroicons/react/solid';
 import { Trans } from '@lingui/macro';

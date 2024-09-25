@@ -1,10 +1,10 @@
+import { AaveSafetyModule } from '@eden-labs/address-book';
 import {
   ChainId,
   gasLimitRecommendations,
   ProtocolAction,
   valueToWei,
-} from '@aave/contract-helpers';
-import { AaveSafetyModule } from '@eden-labs/address-book';
+} from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { useQueryClient } from '@tanstack/react-query';
 import { PopulatedTransaction } from 'ethers';

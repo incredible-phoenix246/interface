@@ -1,4 +1,4 @@
-import { ChainId } from '@aave/contract-helpers';
+import { ChainId } from '@eden-labs/contract-helpers';
 import { useQuery } from '@tanstack/react-query';
 import request, { gql } from 'graphql-request';
 import {

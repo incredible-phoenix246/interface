@@ -1,4 +1,4 @@
-import { ReservesDataHumanized, ReservesIncentiveDataHumanized } from '@aave/contract-helpers';
+import { ReservesDataHumanized, ReservesIncentiveDataHumanized } from '@eden-labs/contract-helpers';
 import memoize from 'micro-memoize';
 import { UserReservesDataHumanized } from 'src/services/UIPoolService';
 import { PoolReserve } from 'src/store/poolSlice';

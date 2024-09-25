@@ -1,4 +1,4 @@
-import { ChainId, InterestRate, Stake } from '@aave/contract-helpers';
+import { ChainId, InterestRate, Stake } from '@eden-labs/contract-helpers';
 import { createContext, useContext, useState } from 'react';
 import { EmodeModalType } from 'src/components/transactions/Emode/EmodeModalContent';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';

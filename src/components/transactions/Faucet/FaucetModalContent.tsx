@@ -1,5 +1,5 @@
-import { mintAmountsPerToken, valueToWei } from '@aave/contract-helpers';
 import { normalize } from '@aave/math-utils';
+import { mintAmountsPerToken, valueToWei } from '@eden-labs/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { useModalContext } from 'src/hooks/useModal';
 
