@@ -54,7 +54,7 @@ const SwitchModalContentWrapper = ({
       const defaultOutputToken =
         baseTokenList.find(
           (token) =>
-            (token.address === AaveV3Ethereum.ASSETS.GHO.UNDERLYING || token.symbol == 'AAVE') &&
+            (token.address === AaveV3Ethereum.ASSETS.GHO.UNDERLYING || token.symbol == 'EDEN') &&
             token.address !== defaultInputToken.address
         ) || baseTokenList.find((token) => token.address !== defaultInputToken.address);
       invariant(

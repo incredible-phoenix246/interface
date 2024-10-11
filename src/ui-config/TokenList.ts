@@ -185,7 +185,7 @@ export const TOKEN_LIST: TokenList = {
       chainId: 1,
       address: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9',
       name: 'Eden',
-      symbol: 'AAVE',
+      symbol: 'EDEN',
       decimals: 18,
       logoURI:
         'https://assets.coingecko.com/coins/images/12645/standard/aave-token-round.png?1720472354',

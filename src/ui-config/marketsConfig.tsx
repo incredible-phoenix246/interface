@@ -114,20 +114,20 @@ export const marketsData: {
   [key in keyof typeof CustomMarket]: MarketDataType;
 } = {
   [CustomMarket.proto_asset_chain_testnet_v3]: {
-    marketTitle: 'Asset Chain Testnet',
+    marketTitle: 'AssetChain Testnet',
     market: CustomMarket.proto_asset_chain_testnet_v3,
     chainId: AaveV3AssetChainTestnet.CHAIN_ID,
     v3: true,
     enabledFeatures: {
       // governance: true,
-      staking: true,
-      liquiditySwap: true,
-      collateralRepay: true,
+      // staking: true,
+      // liquiditySwap: true,
+      // collateralRepay: true,
       faucet: true,
-      incentives: true,
-      withdrawAndSwitch: true,
-      debtSwitch: true,
-      switch: true,
+      // incentives: true,
+      // withdrawAndSwitch: true,
+      // debtSwitch: true,
+      // switch: true,
     },
     addresses: {
       FAUCET: AaveV3AssetChainTestnet.FAUCET,
