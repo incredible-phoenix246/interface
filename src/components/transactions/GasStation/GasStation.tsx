@@ -72,17 +72,9 @@ export const GasStation: React.FC<GasStationProps> = ({
           state.gasOption,
           state.customGas,
           gasPrice,
-          normalize(
-            poolReserves?.baseCurrencyData.networkBaseTokenPriceInUsd,
-            poolReserves?.baseCurrencyData.networkBaseTokenPriceDecimals
-          )
+          normalize(poolReserves?.baseCurrencyData.networkBaseTokenPriceInUsd, 18)
         )
       : undefined;
-
-  console.log(
-    poolReserves?.baseCurrencyData.networkBaseTokenPriceInUsd,
-    poolReserves?.baseCurrencyData.networkBaseTokenPriceDecimals
-  );
 
   return (
     <Stack gap={6} sx={{ width: '100%' }}>
