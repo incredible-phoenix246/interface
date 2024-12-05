@@ -65,7 +65,6 @@ export const GasStation: React.FC<GasStationProps> = ({
   const { name, baseAssetSymbol } = getNetworkConfig(selectedChainId);
 
   const { loadingTxns } = useModalContext();
-
   const totalGasCostsUsd =
     gasPrice && poolReserves?.baseCurrencyData
       ? getGasCosts(
@@ -79,6 +78,11 @@ export const GasStation: React.FC<GasStationProps> = ({
           )
         )
       : undefined;
+
+  console.log(
+    poolReserves?.baseCurrencyData.networkBaseTokenPriceInUsd,
+    poolReserves?.baseCurrencyData.networkBaseTokenPriceDecimals
+  );
 
   return (
     <Stack gap={6} sx={{ width: '100%' }}>

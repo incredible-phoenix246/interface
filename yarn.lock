@@ -1535,15 +1535,15 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@eden-labs/address-book@^3.4.2":
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/@eden-labs/address-book/-/address-book-3.4.2.tgz#26a329b2742900ed253299c464dee3d72733b751"
-  integrity sha512-GfO7K0gb6A48FKcREFuDNZ1y1Ancw2d5zmC71DuLOI/s8bnHfjyp4RvCP1/fzRtxcQmFx60oh7nyIHq2qO7EMA==
+"@eden-labs/address-book@^3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@eden-labs/address-book/-/address-book-3.5.2.tgz#7d68f42b5ae85c382b2301803c034e9feffe03c6"
+  integrity sha512-fdvWOTE7d+OCmjIo2UA+MmhUJL+NavcTP9BUHahwytzc6z1l2sSqbdg2HxbHxfMXG0ASSMReP8U1Kv9+sBmVAg==
 
-"@eden-labs/contract-helpers@1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@eden-labs/contract-helpers/-/contract-helpers-1.4.1.tgz#00bcd1e93fc6b4ef3fe3773bb187f65429e7f515"
-  integrity sha512-KPx4Fp8QtcK2aA3cISXxtux/PX86boO4gPGtNhfHQNnMCQpcySBTCi1ca3lStwOHVrvIlTTSGrf3M8fjCXLGlw==
+"@eden-labs/contract-helpers@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@eden-labs/contract-helpers/-/contract-helpers-1.4.2.tgz#fc1c3fdd05c95ae013e215619085d09b05f89fc2"
+  integrity sha512-ny7e5J1iTqOXTZVO82Un0smAAVBbpNFUpTj0HfqZzMhdO+m4uQ1MrAq3mWtkTw38jxdWgsz1KfBstgVLXAaOGw==
   dependencies:
     isomorphic-unfetch "^3.1.0"
 

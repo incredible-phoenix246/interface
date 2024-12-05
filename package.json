@@ -32,8 +32,8 @@
   },
   "dependencies": {
     "@aave/math-utils": "1.30.2",
-    "@eden-labs/address-book": "^3.4.2",
-    "@eden-labs/contract-helpers": "1.4.1",
+    "@eden-labs/address-book": "^3.5.2",
+    "@eden-labs/contract-helpers": "^1.4.2",
     "@emotion/cache": "11.10.3",
     "@emotion/react": "11.10.4",
     "@emotion/server": "latest",

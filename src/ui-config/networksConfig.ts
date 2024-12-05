@@ -53,7 +53,17 @@ export type BaseNetworkConfig = Omit<NetworkConfig, 'explorerLinkBuilder'>;
 const ratesHistoryApiUrl = `${process.env.NEXT_PUBLIC_API_BASEURL}/data/rates-history`;
 
 export const networkConfigs: Record<string, BaseNetworkConfig> = {
-  '42421': {
+  [ChainId.assetchain]: {
+    name: 'Asset Chain',
+    publicJsonRPCUrl: ['https://mainnet-rpc.assetchain.org'],
+    baseAssetSymbol: 'RWA',
+    wrappedBaseAssetSymbol: 'WRWA',
+    baseAssetDecimals: 18,
+    explorerLink: 'https://scan.assetchain.org',
+    networkLogoPath: '/icons/networks/rwa.svg',
+    isTestnet: false,
+  },
+  [ChainId.assetchain_test]: {
     name: 'Asset Chain Testnet',
     publicJsonRPCUrl: ['https://enugu-rpc.assetchain.org'],
     baseAssetSymbol: 'RWA',

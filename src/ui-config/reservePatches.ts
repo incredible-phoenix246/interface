@@ -89,6 +89,8 @@ export const SYMBOL_NAME_MAP: { [key: string]: string } = {
   '1INCH': '1inch Network',
   LUSD: 'LUSD Stablecoin',
   cNGN: 'Convexity Stable Coin',
+  WRWA: 'Wrapped RWA',
+  RWA: 'Assetchain',
 };
 
 export interface IconSymbolInterface {

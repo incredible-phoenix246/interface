@@ -18,7 +18,7 @@ import { Link } from '../components/primitives/Link';
 // import { uiConfig } from '../uiConfig';
 import { NavItems } from './components/NavItems';
 import { MobileMenu } from './MobileMenu';
-// import { SettingsMenu } from './SettingsMenu';
+import { SettingsMenu } from './SettingsMenu';
 import WalletWidget from './WalletWidget';
 
 export function AppHeader() {
@@ -35,7 +35,7 @@ export function AppHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('testnetsEnabled', 'true');
+    // localStorage.setItem('testnetsEnabled', 'true');
     if (mobileDrawerOpen && !md) {
       setMobileDrawerOpen(false);
     }
@@ -170,9 +170,9 @@ export function AppHeader() {
         />
       )}
 
-      {/* <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-          <SettingsMenu />
-        </Box> */}
+      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+        <SettingsMenu />
+      </Box>
 
       {!walletWidgetOpen && (
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
