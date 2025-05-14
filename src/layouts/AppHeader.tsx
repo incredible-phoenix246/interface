@@ -1,7 +1,7 @@
 // import { HomeIcon } from '@heroicons/react/outline';
 // import { Trans } from '@lingui/macro';
 import {
-  Button,
+  // Button,
   // SvgIcon,
   // Typography,
   useMediaQuery,
@@ -15,7 +15,7 @@ import { useRootStore } from 'src/store/root';
 
 // import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
 import { Link } from '../components/primitives/Link';
-// import { uiConfig } from '../uiConfig';
+import { uiConfig } from '../uiConfig';
 import { NavItems } from './components/NavItems';
 import { MobileMenu } from './MobileMenu';
 import { SettingsMenu } from './SettingsMenu';
@@ -24,7 +24,7 @@ import WalletWidget from './WalletWidget';
 export function AppHeader() {
   const { breakpoints } = useTheme();
   const md = useMediaQuery(breakpoints.down('md'));
-  const sm = useMediaQuery(breakpoints.down('sm'));
+  // const sm = useMediaQuery(breakpoints.down('sm'));
 
   const [mobileDrawerOpen, setMobileDrawerOpen] = useRootStore((state) => [
     state.mobileDrawerOpen,
@@ -133,27 +133,7 @@ export function AppHeader() {
         }}
         onClick={() => setMobileMenuOpen(false)}
       >
-        {/* <img src={uiConfig.appLogo} alt="AAVE" width={72} height={20} /> */}
-      </Box>
-      <Box sx={{ mr: sm ? 1 : 3 }}>
-        {
-          // <ContentWithTooltip tooltipContent={testnetTooltip} offset={[0, -4]} withoutHover>
-          <Button
-            variant="surface"
-            size="small"
-            color="primary"
-            sx={{
-              backgroundColor: '#9669ED',
-              '&:hover, &.Mui-focusVisible': { backgroundColor: '#9669ED' },
-            }}
-          >
-            EDEN FINANCE
-            {/* <SvgIcon sx={{ marginLeft: '2px', fontSize: '16px' }}>
-              <HomeIcon />
-            </SvgIcon> */}
-          </Button>
-          // </ContentWithTooltip>
-        }
+        <img src={uiConfig.appLogo} alt="Eden" height={30} />
       </Box>
 
       <Box sx={{ display: { xs: 'none', md: 'flex' }, mt: 10 }}>
@@ -163,16 +143,17 @@ export function AppHeader() {
       <Box sx={{ flexGrow: 1 }} />
 
       {!mobileMenuOpen && (
-        <WalletWidget
-          open={walletWidgetOpen}
-          setOpen={toggleWalletWigit}
-          headerHeight={headerHeight}
-        />
+        <Box display={'flex'}>
+          <WalletWidget
+            open={walletWidgetOpen}
+            setOpen={toggleWalletWigit}
+            headerHeight={headerHeight}
+          />
+          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+            <SettingsMenu />
+          </Box>
+        </Box>
       )}
-
-      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-        <SettingsMenu />
-      </Box>
 
       {!walletWidgetOpen && (
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

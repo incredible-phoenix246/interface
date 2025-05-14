@@ -17,7 +17,7 @@ const {
   typography: { pxToRem },
 } = theme;
 
-const FONT = 'Inter, Arial';
+const FONT = 'Space Grotesk, Arial';
 
 declare module '@mui/material/styles/createPalette' {
   interface PaletteColor extends ColorPartial {}
@@ -201,7 +201,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         standardInputLine: getColor('#383D511F', '#EBEBEF6B'),
       },
       gradients: {
-        aaveGradient: 'linear-gradient(248.86deg, #0D131A 10.51%, #9669ED 43.41%)',
+        aaveGradient: 'linear-gradient(248.86deg, #222122 10.51%, #9A74EB 63.41%)',
         newGradient: 'linear-gradient(79.67deg, #0D131A 0%, #007782 95.82%)',
       },
     },

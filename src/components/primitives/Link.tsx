@@ -115,6 +115,7 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link
 
 export const ROUTES = {
   dashboard: '/',
+  leaderboard: 'https://leaderboard.eden-finance.xyz',
   markets: '/market',
   staking: '/staking',
   governance: '/governance',

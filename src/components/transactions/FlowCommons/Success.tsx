@@ -112,7 +112,7 @@ export const TxSuccessView = ({
                   image: !/_/.test(addToken.symbol) ? base64 : undefined,
                 });
               }}
-              variant={theme.palette.mode === 'dark' ? 'gradient' : 'contained'}
+              variant={theme.palette.mode === 'dark' ? 'surface' : 'outlined'}
               size="medium"
               sx={{ mt: '8px', mb: '12px' }}
             >

@@ -4,8 +4,8 @@ import { Box, styled, SvgIcon, Typography } from '@mui/material';
 import { Link } from 'src/components/primitives/Link';
 import { useRootStore } from 'src/store/root';
 
-import DiscordIcon from '/public/icons/discord.svg';
-import LensLogoIcon from '/public/icons/lens-logo.svg';
+// import DiscordIcon from '/public/icons/discord.svg';
+// import LensLogoIcon from '/public/icons/lens-logo.svg';
 
 interface StyledLinkProps {
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
@@ -21,23 +21,23 @@ const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
 }));
 
 const FOOTER_ICONS = [
+  // {
+  //   href: 'https://hey.xyz/u/aave',
+  //   icon: <LensLogoIcon />,
+  //   title: 'Eden',
+  // },
   {
-    href: 'https://hey.xyz/u/aave',
-    icon: <LensLogoIcon />,
-    title: 'Eden',
-  },
-  {
-    href: 'https://twitter.com/aave',
+    href: 'https://twitter.com/0xedenfi',
     icon: <Twitter />,
     title: 'Lens',
   },
+  // {
+  //   href: 'https://discord.com/invite/aave',
+  //   icon: <DiscordIcon />,
+  //   title: 'Discord',
+  // },
   {
-    href: 'https://discord.com/invite/aave',
-    icon: <DiscordIcon />,
-    title: 'Discord',
-  },
-  {
-    href: 'https://github.com/aave',
+    href: 'https://github.com/eden-finance',
     icon: <GitHub />,
     title: 'Github',
   },
@@ -51,22 +51,22 @@ export function AppFooter() {
 
   const FOOTER_LINKS = [
     {
-      href: 'https://eden.finance/term-of-use/',
+      href: 'https://eden-finance.xyz/term-of-use/',
       label: <Trans>Terms</Trans>,
       key: 'Terms',
     },
     {
-      href: 'https://eden.finance/privacy-policy/',
+      href: 'https://eden-finance.xyz/privacy-policy/',
       label: <Trans>Privacy</Trans>,
       key: 'Privacy',
     },
     {
-      href: 'https://docs.eden.finance/hub/',
+      href: 'https://docs.eden-finance.xyz/hub/',
       label: <Trans>Docs</Trans>,
       key: 'Docs',
     },
     {
-      href: 'https://docs.eden.finance/faq/',
+      href: 'https://docs.eden-finance.xyz/faq/',
       label: <Trans>FAQS</Trans>,
       key: 'FAQS',
     },

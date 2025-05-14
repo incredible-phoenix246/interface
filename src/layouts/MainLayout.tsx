@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import React, { ReactNode } from 'react';
 
 // import { FeedbackModal } from 'src/layouts/FeedbackDialog';
-// import { AppFooter } from './AppFooter';
+import { AppFooter } from './AppFooter';
 import { AppHeader } from './AppHeader'; // Sidebar now
 // import TopBarNotify from './TopBarNotify';
 
@@ -27,9 +27,8 @@ export function MainLayout({ children }: { children: ReactNode }) {
           }}
         >
           {children}
+          <AppFooter />
         </Box>
-
-        {/* <AppFooter /> */}
       </Box>
     </>
   );

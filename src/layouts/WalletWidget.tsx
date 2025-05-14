@@ -69,7 +69,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (!connected) {
-      trackEvent(GENERAL.OPEN_MODAL, { modal: 'Connect Waller' });
+      trackEvent(GENERAL.OPEN_MODAL, { modal: 'Connect Wallet' });
       setWalletModalOpen(true);
     } else {
       setOpen(true);

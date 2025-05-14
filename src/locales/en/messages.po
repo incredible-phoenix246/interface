@@ -1365,6 +1365,10 @@ msgstr "Join the community discussion"
 msgid "Language"
 msgstr "Language"
 
+#: src/ui-config/menu-items/index.tsx
+msgid "Leaderboard"
+msgstr "Leaderboard"
+
 #: src/components/caps/DebtCeilingStatus.tsx
 #: src/components/incentives/GhoIncentivesCard.tsx
 #: src/components/infoTooltips/BorrowCapMaxedTooltip.tsx
