@@ -50,7 +50,7 @@ export const navigation: Navigation[] = [
   {
     link: ROUTES.leaderboard,
     title: t`Leaderboard`,
-    isVisible: () => process.env.NEXT_PUBLIC_ENV === 'staging' || ENABLE_TESTNET,
+    isVisible: (data) => (data.chainId === 42420 ? true : false),
   },
 ];
 

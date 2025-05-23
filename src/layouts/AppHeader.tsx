@@ -35,7 +35,7 @@ export function AppHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    // localStorage.setItem('testnetsEnabled', 'true');
+    localStorage.setItem('testnetsEnabled', 'false');
     if (mobileDrawerOpen && !md) {
       setMobileDrawerOpen(false);
     }
@@ -118,7 +118,7 @@ export function AppHeader() {
           sm: 'row',
           md: 'column',
         },
-        // boxShadow: 'inset 0px -1px 0px rgba(242, 243, 247, 0.16)',
+        boxShadow: 'inset 0px -1px 0px rgba(242, 243, 247, 0.16)',
       })}
     >
       <Box

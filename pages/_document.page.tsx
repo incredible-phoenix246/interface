@@ -15,11 +15,11 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          <link rel="icon" href="/favicon.ico" sizes="any" />
-          <link rel="shortcut icon" href="/favicon.ico" />
+          <link rel="icon" href="https://app.eden-finance.xyz/favicon.ico" sizes="any" />
+          <link rel="shortcut icon" href="https://app.eden-finance.xyz/favicon.ico" />
           <link rel="apple-touch-icon" sizes="16x16" href="/icon1.png" />
           <link rel="apple-touch-icon" sizes="32x32" href="/icon1.png" />
-          <link rel="shortcut icon" sizes="32x32" href="/favicon.ico" />
+          <link rel="shortcut icon" sizes="32x32" href="https://app.eden-finance.xyz/favicon.ico" />
           {/* <link rel="apple-touch-icon" sizes="64x64" href="/favicon64.png" />
           <link rel="apple-touch-icon" sizes="180x180" href="/aave_icon180.png" /> */}
 
