@@ -152,7 +152,7 @@ export const marketsData: {
       // governance: true,
       // staking: true,
       // liquiditySwap: true,
-      collateralRepay: true,
+      collateralRepay: false,
       faucet: false,
       // incentives: true,
       // withdrawAndSwitch: true,

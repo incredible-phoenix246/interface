@@ -63,16 +63,16 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
     networkLogoPath: '/icons/networks/rwa.svg',
     isTestnet: false,
   },
-  // [ChainId.assetchain_test]: {
-  //   name: 'Asset Chain Testnet',
-  //   publicJsonRPCUrl: ['https://enugu-rpc.assetchain.org'],
-  //   baseAssetSymbol: 'RWA',
-  //   wrappedBaseAssetSymbol: 'WRWA',
-  //   baseAssetDecimals: 18,
-  //   explorerLink: 'https://scan-testnet.assetchain.org',
-  //   networkLogoPath: '/icons/networks/rwa.svg',
-  //   isTestnet: true,
-  // },
+  [ChainId.assetchain_test]: {
+    name: 'Asset Chain Testnet',
+    publicJsonRPCUrl: ['https://enugu-rpc.assetchain.org'],
+    baseAssetSymbol: 'RWA',
+    wrappedBaseAssetSymbol: 'WRWA',
+    baseAssetDecimals: 18,
+    explorerLink: 'https://scan-testnet.assetchain.org',
+    networkLogoPath: '/icons/networks/rwa.svg',
+    isTestnet: true,
+  },
   [ChainId.sepolia]: {
     name: 'Ethereum Sepolia',
     publicJsonRPCUrl: [
