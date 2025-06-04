@@ -178,16 +178,18 @@ export const WalletSelector = () => {
         walletType={WalletType.INJECTED}
       />
       <WalletRow
-        key="walletconnect_wallet"
-        walletName="WalletConnect"
-        walletType={WalletType.WALLET_CONNECT}
-      />
-      <WalletRow
         key="walletlink_wallet"
         walletName="Coinbase Wallet"
         walletType={WalletType.WALLET_LINK}
       />
       <WalletRow key="torus_wallet" walletName="Torus" walletType={WalletType.TORUS} />
+      {/* <WalletRow
+        key="walletconnect_wallet"
+        walletName="WalletConnect"
+        walletType={WalletType.WALLET_CONNECT}
+      />
+     
+   
       {/* <WalletRow key="frame_wallet" walletName="Frame" walletType={WalletType.FRAME} /> */}
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 1, padding: '10px 0' }}>
         <Typography variant="subheader1" color="text.secondary">

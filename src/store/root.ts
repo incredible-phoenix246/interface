@@ -52,6 +52,9 @@ if (typeof document !== 'undefined') {
   document.onreadystatechange = function () {
     localStorage.setItem('selectedMarket', 'proto_asset_chain_testnet_v3');
     if (document.readyState == 'complete') {
+      const setCurrentMarket = useRootStore.getState().setCurrentMarket;
+      setCurrentMarket('proto_asset_chain_v3' as CustomMarket, true);
+
       const selectedMarket =
         getQueryParameter('marketName') || localStorage.getItem('selectedMarket');
 
@@ -63,11 +66,13 @@ if (typeof document !== 'undefined') {
         }
       } else {
         const setCurrentMarket = useRootStore.getState().setCurrentMarket;
-        setCurrentMarket('proto_asset_chain_testnet_v3' as CustomMarket, true);
+        setCurrentMarket('proto_asset_chain_v3' as CustomMarket, true);
       }
-      if (selectedMarket !== 'proto_asset_chain_testnet_v3') {
-        window.location.reload();
-      }
+      // if (selectedMarket !== 'proto_asset_chain_v3') {
+      //   const setCurrentMarket = useRootStore.getState().setCurrentMarket;
+      //   setCurrentMarket('proto_asset_chain_v3' as CustomMarket, true);
+      //   window.location.reload();
+      // }
     }
   };
 }
