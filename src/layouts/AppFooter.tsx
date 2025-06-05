@@ -51,27 +51,27 @@ export function AppFooter() {
 
   const FOOTER_LINKS = [
     {
-      href: 'https://eden-finance.xyz/term-of-use/',
+      href: 'https://edenfinance.org/term-of-use/',
       label: <Trans>Terms</Trans>,
       key: 'Terms',
     },
     {
-      href: 'https://eden-finance.xyz/privacy-policy/',
+      href: 'https://edenfinance.org/privacy-policy/',
       label: <Trans>Privacy</Trans>,
       key: 'Privacy',
     },
     {
-      href: 'https://docs.eden-finance.xyz/hub/',
+      href: 'https://docs.edenfinance.org/hub/',
       label: <Trans>Docs</Trans>,
       key: 'Docs',
     },
     {
-      href: 'https://docs.eden-finance.xyz/faq/',
+      href: 'https://docs.edenfinance.org/#faq',
       label: <Trans>FAQS</Trans>,
       key: 'FAQS',
     },
     {
-      href: 'https://discord.com/invite/aave',
+      href: 'https://t.me/edenfinanceRWA',
       label: <Trans>Send feedback</Trans>,
       key: 'Send feedback',
       onClick: (event: React.MouseEvent) => {
@@ -94,7 +94,7 @@ export function AppFooter() {
     <Box
       sx={(theme) => ({
         display: 'flex',
-        padding: ['22px 0px 40px 0px', '0 22px 0 40px', '20px 22px'],
+        padding: ['22px 0px 40px 0px', '0 22px 0 40px', '10px 160px 50px 22px'],
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
