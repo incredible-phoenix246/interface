@@ -142,6 +142,20 @@ export default function MyApp(props: MyAppProps) {
             `,
           }}
         />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MCCB3CJSSB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MCCB3CJSSB');
+</script>`,
+          }}
+        />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Meta
