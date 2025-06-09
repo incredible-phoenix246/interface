@@ -10,6 +10,7 @@ import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
 import { AddressBlocked } from 'src/components/AddressBlocked';
 import { Meta } from 'src/components/Meta';
@@ -23,6 +24,7 @@ import { SharedDependenciesProvider } from 'src/ui-config/SharedDependenciesProv
 
 import createEmotionCache from '../src/createEmotionCache';
 import { AppGlobalStyles } from '../src/layouts/AppGlobalStyles';
+import * as gtag from '../src/libs/gtag';
 import { LanguageProvider } from '../src/libs/LanguageProvider';
 
 const SwitchModal = dynamic(() =>
@@ -104,6 +106,19 @@ export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const getLayout = Component.getLayout ?? ((page: ReactNode) => page);
   const initializeMixpanel = useRootStore((store) => store.initializeMixpanel);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -127,35 +142,6 @@ export default function MyApp(props: MyAppProps) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-              (function(){
-              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-              s1.async=true;
-              s1.src='https://embed.tawk.to/68409fd6468ee7190935d89a/1isu70o50';
-              s1.charset='UTF-8';
-              s1.setAttribute('crossorigin','*');
-              s0.parentNode.insertBefore(s1,s0);
-              })();
-            `,
-          }}
-        />
-
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MCCB3CJSSB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MCCB3CJSSB');
-</script>`,
-          }}
-        />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Meta
