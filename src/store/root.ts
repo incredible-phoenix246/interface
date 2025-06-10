@@ -1,5 +1,6 @@
 import { enableMapSet } from 'immer';
 import { CustomMarket } from 'src/ui-config/marketsConfig';
+import { PROD_ENV } from 'src/utils/marketsAndNetworksConfig';
 import create from 'zustand';
 import { devtools, subscribeWithSelector } from 'zustand/middleware';
 
@@ -50,10 +51,16 @@ export const useRootStore = create<RootStore>()(
 // hydrate state from localeStorage to not break on ssr issues
 if (typeof document !== 'undefined') {
   document.onreadystatechange = function () {
-    localStorage.setItem('selectedMarket', 'proto_asset_chain_testnet_v3');
     if (document.readyState == 'complete') {
+      let marketName = 'proto_asset_chain_testnet_v3';
+      if (PROD_ENV) {
+        marketName = 'proto_asset_chain_v3';
+      }
+
+      localStorage.setItem('selectedMarket', marketName);
+
       const setCurrentMarket = useRootStore.getState().setCurrentMarket;
-      setCurrentMarket('proto_asset_chain_v3' as CustomMarket, true);
+      setCurrentMarket(marketName as CustomMarket, true);
 
       const selectedMarket =
         getQueryParameter('marketName') || localStorage.getItem('selectedMarket');
@@ -66,13 +73,8 @@ if (typeof document !== 'undefined') {
         }
       } else {
         const setCurrentMarket = useRootStore.getState().setCurrentMarket;
-        setCurrentMarket('proto_asset_chain_v3' as CustomMarket, true);
+        setCurrentMarket(marketName as CustomMarket, true);
       }
-      // if (selectedMarket !== 'proto_asset_chain_v3') {
-      //   const setCurrentMarket = useRootStore.getState().setCurrentMarket;
-      //   setCurrentMarket('proto_asset_chain_v3' as CustomMarket, true);
-      //   window.location.reload();
-      // }
     }
   };
 }
