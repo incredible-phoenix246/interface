@@ -1,6 +1,6 @@
 import { enableMapSet } from 'immer';
 import { CustomMarket } from 'src/ui-config/marketsConfig';
-import { PROD_ENV } from 'src/utils/marketsAndNetworksConfig';
+import { STAGING_ENV } from 'src/utils/marketsAndNetworksConfig';
 import create from 'zustand';
 import { devtools, subscribeWithSelector } from 'zustand/middleware';
 
@@ -53,7 +53,7 @@ if (typeof document !== 'undefined') {
   document.onreadystatechange = function () {
     if (document.readyState == 'complete') {
       let marketName = 'proto_asset_chain_testnet_v3';
-      if (PROD_ENV) {
+      if (STAGING_ENV) {
         marketName = 'proto_asset_chain_v3';
       }
 
