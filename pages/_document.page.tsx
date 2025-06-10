@@ -33,24 +33,8 @@ export default class MyDocument extends Document {
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-MCCB3CJSSB" />
         </Head>
         <body>
-          <div id="tawk_68409fd6468ee7190935d89a" />
           <Main />
           <NextScript />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-    
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date(); Tawk_API.embedded='tawk_68409fd6468ee7190935d89a';
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/68409fd6468ee7190935d89a/1itcl1hij';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);})();
-            `,
-            }}
-          />
         </body>
       </Html>
     );
