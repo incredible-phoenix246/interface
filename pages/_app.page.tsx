@@ -11,6 +11,7 @@ import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 import { ReactNode, useEffect, useState } from 'react';
 import { AddressBlocked } from 'src/components/AddressBlocked';
 import { Meta } from 'src/components/Meta';
@@ -24,7 +25,6 @@ import { SharedDependenciesProvider } from 'src/ui-config/SharedDependenciesProv
 
 import createEmotionCache from '../src/createEmotionCache';
 import { AppGlobalStyles } from '../src/layouts/AppGlobalStyles';
-import * as gtag from '../src/libs/gtag';
 import { LanguageProvider } from '../src/libs/LanguageProvider';
 
 const SwitchModal = dynamic(() =>
@@ -111,8 +111,13 @@ export default function MyApp(props: MyAppProps) {
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
-      gtag.pageview(url);
+      if (window.gtag) {
+        window.gtag('config', 'G-MCCB3CJSSB', {
+          page_path: url,
+        });
+      }
     };
+
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
@@ -142,21 +147,6 @@ export default function MyApp(props: MyAppProps) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-                      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-                      (function(){
-                      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                      s1.async=true;
-                      s1.src='https://embed.tawk.to/68409fd6468ee7190935d89a/1isu70o50';
-                      s1.charset='UTF-8';
-                      s1.setAttribute('crossorigin','*');
-                      s0.parentNode.insertBefore(s1,s0);
-                      })();
-                    `,
-          }}
-        />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Meta
@@ -203,6 +193,43 @@ export default function MyApp(props: MyAppProps) {
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </LanguageProvider>
+
+      <Script
+        id="tawkto"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+         
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68409fd6468ee7190935d89a/1itd5oksg';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+          `,
+        }}
+      />
+
+      <Script
+        id="gtag"
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-MCCB3CJSSB"
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MCCB3CJSSB');
+          `,
+        }}
+      />
     </CacheProvider>
   );
 }
