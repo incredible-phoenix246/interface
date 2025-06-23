@@ -52,6 +52,11 @@ export const navigation: Navigation[] = [
     title: t`Leaderboard`,
     isVisible: (data) => (data.chainId === 42420 ? true : false),
   },
+  {
+    link: ROUTES.profile,
+    title: t`Profile`,
+    dataCy: 'menuProfile',
+  },
 ];
 
 interface MoreMenuItem extends Navigation {

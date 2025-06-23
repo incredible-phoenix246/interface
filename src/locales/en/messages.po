@@ -1874,6 +1874,10 @@ msgstr "Price impact {0}%"
 msgid "Privacy"
 msgstr "Privacy"
 
+#: src/ui-config/menu-items/index.tsx
+msgid "Profile"
+msgstr "Profile"
+
 #: src/modules/governance/proposal/ProposalLifecycle.tsx
 msgid "Proposal details"
 msgstr "Proposal details"
