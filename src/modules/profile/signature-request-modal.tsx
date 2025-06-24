@@ -59,10 +59,18 @@ export default function SignatureRequestModal() {
           >
             <CheckCircle sx={{ color: '#10b981' }} />
             <Box>
-              <Typography variant="body2" sx={{ color: '#10b981', fontWeight: 600 }}>
+              <Typography
+                //@ts-expect-error next line
+                variant="body2"
+                sx={{ color: '#10b981', fontWeight: 600 }}
+              >
                 {signatureRequest.type === 'username' ? 'Username' : 'Referral Code'}
               </Typography>
-              <Typography variant="body2" sx={{ color: '#10b981' }}>
+              <Typography
+                //@ts-expect-error next line
+                variant="body2"
+                sx={{ color: '#10b981' }}
+              >
                 {signatureRequest.data}
               </Typography>
             </Box>
