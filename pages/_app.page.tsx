@@ -13,6 +13,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import { ReactNode, useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { AddressBlocked } from 'src/components/AddressBlocked';
 import { Meta } from 'src/components/Meta';
 import { TransactionEventHandler } from 'src/components/TransactionEventHandler';
@@ -20,6 +21,8 @@ import { GasStationProvider } from 'src/components/transactions/GasStation/GasSt
 import { AppDataProvider } from 'src/hooks/app-data-provider/useAppDataProvider';
 import { ModalContextProvider } from 'src/hooks/useModal';
 import { Web3ContextProvider } from 'src/libs/web3-data-provider/Web3Provider';
+import CustomReferralDialog from 'src/modules/profile/custom-referral-dialog';
+import SignatureRequestModal from 'src/modules/profile/signature-request-modal';
 import { useRootStore } from 'src/store/root';
 import { SharedDependenciesProvider } from 'src/ui-config/SharedDependenciesProvider';
 
@@ -168,6 +171,9 @@ export default function MyApp(props: MyAppProps) {
                         <GasStationProvider>
                           {getLayout(<Component {...pageProps} />)}
                           <SupplyModal />
+                          <Toaster />
+                          <SignatureRequestModal />
+                          <CustomReferralDialog />
                           <WithdrawModal />
                           <BorrowModal />
                           <RepayModal />

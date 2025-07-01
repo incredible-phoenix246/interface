@@ -19,11 +19,10 @@ import {
   Typography,
 } from '@mui/material';
 import type React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 
-import CustomReferralDialog from './custom-referral-dialog';
 import { useProfileStore } from './profile-store';
-import SignatureRequestModal from './signature-request-modal';
 
 export default function ProfilePage() {
   const {
@@ -44,11 +43,58 @@ export default function ProfilePage() {
     deleteReferralCode,
   } = useProfileStore();
 
+  const { currentAccount, signAuthTxData } = useWeb3Context();
+
   const [formData, setFormData] = useState({
     username,
     firstName,
     lastName,
   });
+
+  useEffect(() => {
+    const signIn = async () => {
+      if (!currentAccount) return;
+
+      const timestamp = new Date().toISOString();
+
+      const message = `Authenticate: ${timestamp}`;
+
+      try {
+        const signature = await signAuthTxData(message);
+
+        console.log('Signature:', signature);
+
+        const data = {
+          wallet_address: currentAccount,
+          timestamp,
+          signature,
+        };
+
+        const response = await fetch(
+          'https://testnet-api.eden-finance.xyz/api/v1/user/wallet/auth',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || 'Failed to authenticate wallet');
+        }
+
+        console.log('Authentication successful:', result);
+      } catch (error) {
+        console.dir(error, { depth: null });
+      }
+    };
+
+    signIn();
+  }, [currentAccount]);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -432,9 +478,6 @@ export default function ProfilePage() {
           </Grid>
         </Grid>
       </Container>
-
-      <SignatureRequestModal />
-      <CustomReferralDialog />
     </Box>
   );
 }

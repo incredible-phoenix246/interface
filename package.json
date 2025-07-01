@@ -82,6 +82,7 @@
     "react": "latest",
     "react-cookie-consent": "^8.0.1",
     "react-dom": "latest",
+    "react-hot-toast": "^2.5.2",
     "react-infinite-scroller": "^1.2.6",
     "react-lazy-load": "^4.0.1",
     "react-markdown": "^8.0.7",
