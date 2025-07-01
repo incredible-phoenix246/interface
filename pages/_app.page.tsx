@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import '/public/fonts/inter/inter.css';
 import '/src/styles/variables.css';
 

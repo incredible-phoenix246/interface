@@ -6,7 +6,6 @@ import { AppHeader } from './AppHeader';
 
 export function MainLayout({ children }: { children: ReactNode }) {
   // const APP_BANNER_VERSION = '1.0.0';
-
   return (
     <>
       <Box sx={{ height: '100vh', maxWidth: '100vw' }}>

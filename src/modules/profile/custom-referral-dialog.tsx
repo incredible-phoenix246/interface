@@ -1,7 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+'use client';
+
 import { Close as CloseIcon } from '@mui/icons-material';
 import {
   Button,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -9,11 +11,14 @@ import {
   IconButton,
   TextField,
 } from '@mui/material';
-import { useEffect, useState } from 'react';
+import type React from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 
 import { useProfileStore } from './profile-store';
+
+const API_BASE_URL = 'https://testnet-api.eden-finance.xyz/api/v1';
 
 export default function CustomReferralDialog() {
   const {
@@ -21,159 +26,381 @@ export default function CustomReferralDialog() {
     customReferralCode,
     setCustomReferralDialog,
     setCustomReferralCode,
-    createCustomReferralCode,
-    openSignatureRequest,
   } = useProfileStore();
+
   const { currentAccount, signReferalTxData, signAuthTxData } = useWeb3Context();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  useEffect(() => {
-    const authenticateAndLink = async () => {
-      if (!currentAccount || isAuthenticated) return;
+  const authAttemptedRef = useRef<string | null>(null);
+  const hasAttemptedAuth = authAttemptedRef.current === currentAccount;
 
-      const token = localStorage.getItem('access_token');
-      if (token) {
-        setIsAuthenticated(true);
-        return;
+  const checkAuthStatus = useCallback(() => {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      setIsAuthenticated(true);
+      return true;
+    }
+    return false;
+  }, []);
+
+  const authenticateUser = useCallback(async () => {
+    if (!currentAccount || !signAuthTxData) return null;
+
+    try {
+      const timestamp = new Date().toISOString();
+      const authMessage = `Authenticate: ${timestamp}`;
+      const authSignature = await signAuthTxData(authMessage);
+
+      const response = await fetch(`${API_BASE_URL}/user/wallet/auth`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          wallet_address: currentAccount,
+          timestamp,
+          signature: authSignature,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Authentication failed');
       }
 
+      if (result.access_token) {
+        localStorage.setItem('access_token', result.access_token);
+        setIsAuthenticated(true);
+        return result;
+      }
+
+      return null;
+    } catch (error) {
+      console.error('Authentication error:', error);
+      throw error;
+    }
+  }, [currentAccount, signAuthTxData]);
+
+  const linkReferralCode = useCallback(
+    async (referralCode: string) => {
+      if (!currentAccount || !signReferalTxData || !referralCode.trim()) return null;
+
       try {
-        const timestamp = new Date().toISOString();
-        const authMessage = `Authenticate: ${timestamp}`;
-        const authSignature = await signAuthTxData(authMessage);
-
-        const authResponse = await fetch(
-          'https://testnet-api.eden-finance.xyz/api/v1/user/wallet/auth',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              wallet_address: currentAccount,
-              timestamp,
-              signature: authSignature,
-            }),
-          }
-        );
-
-        const authResult = await authResponse.json();
-
-        if (!authResponse.ok) {
-          toast.error(authResult.message || 'Wallet authentication failed');
-          setCustomReferralDialog(true);
-          return;
-        }
-
-        if (authResult.access_token) {
-          localStorage.setItem('access_token', authResult.access_token);
-          setIsAuthenticated(true);
-        }
-
         const linkMessage = 'Link referral for EdenFinance';
         const linkSignature = await signReferalTxData(linkMessage);
 
-        const linkResponse = await fetch(
-          'https://testnet-api.eden-finance.xyz/api/v1/user/wallet/link',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              wallet_address: currentAccount,
-              referral_code: 'codemon', // replace with dynamic if needed
-              signature: linkSignature,
-            }),
-          }
-        );
+        const response = await fetch(`${API_BASE_URL}/user/wallet/link`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            wallet_address: currentAccount,
+            referral_code: referralCode,
+            signature: linkSignature,
+          }),
+        });
 
-        const linkResult = await linkResponse.json();
+        const result = await response.json();
 
-        if (!linkResponse.ok) {
-          toast.error(linkResult.message || 'Referral linking failed');
-          setCustomReferralDialog(true);
-          return;
+        if (!response.ok) {
+          throw new Error(result.message || 'Referral linking failed');
         }
 
-        console.log('Referral link successful:', linkResult);
+        return result;
       } catch (error) {
-        console.error('Auth/link error:', error);
-        toast.error('Unexpected error occurred');
+        console.error('Referral linking error:', error);
+        throw error;
+      }
+    },
+    [currentAccount, signReferalTxData]
+  );
+
+  const handleSaveAndSign = async () => {
+    if (!customReferralCode.trim() || isLoading) return;
+
+    try {
+      setIsLoading(true);
+      setErrorMessage(null);
+
+      await linkReferralCode(customReferralCode);
+      toast.success('Referral code linked successfully!');
+
+      await authenticateUser();
+      toast.success('Authentication successful!');
+
+      setCustomReferralDialog(false);
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
+      setErrorMessage('Wrong referral code. Please confirm your code is correct.');
+      toast.error(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSaveAndSign();
+  };
+
+  const handleClose = () => {
+    if (!isLoading) {
+      setCustomReferralDialog(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !isLoading && customReferralCode.trim()) {
+      e.preventDefault();
+      handleSaveAndSign();
+    }
+  };
+
+  useEffect(() => {
+    const attemptInitialAuth = async () => {
+      if (!currentAccount || isAuthenticated || hasAttemptedAuth || checkAuthStatus()) {
+        return;
+      }
+
+      authAttemptedRef.current = currentAccount;
+
+      try {
+        setIsLoading(true);
+        await authenticateUser();
+        setCustomReferralDialog(false);
+      } catch (error) {
+        toast.error('Wallet authentication required. Please link a referral code.');
         setCustomReferralDialog(true);
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    authenticateAndLink();
-  }, [currentAccount, signAuthTxData, signReferalTxData, setCustomReferralDialog]);
+    attemptInitialAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentAccount]);
 
-  const handleSaveAndSign = () => {
-    if (customReferralCode.trim()) {
-      openSignatureRequest('referralCode', customReferralCode);
-      createCustomReferralCode(customReferralCode);
+  useEffect(() => {
+    if (authAttemptedRef.current !== currentAccount) {
+      authAttemptedRef.current = null;
+      setIsAuthenticated(false);
     }
-  };
+  }, [currentAccount]);
 
   return (
     <Dialog
       open={customReferralDialog}
-      onClose={() => setCustomReferralDialog(false)}
-      maxWidth="sm"
-      fullWidth
+      onClose={handleClose}
+      maxWidth="xs"
       PaperProps={{
         sx: {
-          bgcolor: '#1a2332',
+          bgcolor: '#1e293b',
           color: 'white',
           borderRadius: 2,
+          p: 0,
         },
       }}
     >
-      <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        Create Custom Referral Code
-        <IconButton onClick={() => setCustomReferralDialog(false)} sx={{ color: 'white' }}>
-          <CloseIcon />
-        </IconButton>
-      </DialogTitle>
-
-      <DialogContent>
-        <TextField
-          fullWidth
-          placeholder="Enter custom code (e.g. codemon)"
-          value={customReferralCode}
-          onChange={(e) => setCustomReferralCode(e.target.value)}
+      <form onSubmit={handleFormSubmit}>
+        {/* Header */}
+        <DialogTitle
           sx={{
-            '& .MuiOutlinedInput-root': {
-              bgcolor: '#0f172a',
-              color: 'white',
-              '& fieldset': { borderColor: '#374151' },
-              '&:hover fieldset': { borderColor: '#6b7280' },
-              '&.Mui-focused fieldset': { borderColor: '#10b981' },
-            },
-            '& .MuiInputBase-input::placeholder': {
-              color: '#6b7280',
-              opacity: 1,
-            },
-          }}
-        />
-      </DialogContent>
-
-      <DialogActions sx={{ p: 3 }}>
-        <Button
-          fullWidth
-          variant="contained"
-          onClick={handleSaveAndSign}
-          disabled={!customReferralCode.trim()}
-          sx={{
-            bgcolor: '#4f46e5',
-            '&:hover': { bgcolor: '#4338ca' },
-            '&:disabled': { bgcolor: '#374151' },
-            py: 1.5,
-            borderRadius: 1,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            pb: 2,
+            fontSize: '1.25rem',
+            fontWeight: 500,
           }}
         >
-          Save and Sign
-        </Button>
-      </DialogActions>
+          Link Referral Code
+          <IconButton onClick={handleClose} sx={{ color: '#94a3b8' }} disabled={isLoading}>
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+
+        <DialogContent sx={{ px: 3, pb: 0 }}>
+          <div
+            style={{
+              backgroundColor: '#21A88C2B',
+              borderRadius: '8px',
+              padding: '16px',
+              marginBottom: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div
+                style={{
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  backgroundColor: '#10b981',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <span style={{ color: 'white', fontSize: '16px', fontWeight: 'bold' }}>✓</span>
+              </div>
+              <div>
+                <div style={{ color: '#21A88C', fontWeight: 600, fontSize: '14px' }}>
+                  Wallet Connected
+                </div>
+                <div style={{ color: '#21A88C', fontSize: '12px' }}>
+                  {currentAccount
+                    ? `${currentAccount.slice(0, 6)}...${currentAccount.slice(-4)}`
+                    : ''}
+                </div>
+              </div>
+            </div>
+            <div
+              style={{
+                backgroundColor: '#201B1373',
+                color: '#FFA828',
+                padding: '4px 8px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                fontWeight: 600,
+              }}
+            >
+              No Linked Referral Code
+            </div>
+          </div>
+
+          {/* Input Section */}
+          <div style={{ marginBottom: '24px' }}>
+            <h3
+              style={{
+                color: '#C6C6C6',
+                fontSize: '16px',
+                fontWeight: 600,
+                marginBottom: '8px',
+                margin: 0,
+              }}
+            >
+              Input Referral Code
+            </h3>
+            <p
+              style={{
+                color: '#A0A0A0',
+                fontSize: '14px',
+                marginBottom: '16px',
+                lineHeight: 1.5,
+                margin: '8px 0 16px 0',
+              }}
+            >
+              Your wallet is not linked to a referral code. Please enter a valid referral code to
+              continue
+            </p>
+            <TextField
+              fullWidth
+              placeholder="Enter Referral Code (e.g. EDEN-123456)"
+              value={customReferralCode}
+              onChange={(e) => {
+                setCustomReferralCode(e.target.value);
+                if (errorMessage) setErrorMessage(null);
+              }}
+              onKeyPress={handleKeyPress}
+              disabled={isLoading}
+              autoFocus
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  bgcolor: '#334155',
+                  color: 'white',
+                  borderRadius: '8px',
+                  '& fieldset': { borderColor: errorMessage ? '#DC2626' : '#475569' },
+                  '&:hover fieldset': { borderColor: errorMessage ? '#DC2626' : '#64748b' },
+                  '&.Mui-focused fieldset': { borderColor: errorMessage ? '#DC2626' : '#21A88C' },
+                },
+                '& .MuiInputBase-input': {
+                  padding: '12px 16px',
+                },
+                '& .MuiInputBase-input::placeholder': {
+                  color: '#94a3b8',
+                  opacity: 1,
+                },
+              }}
+            />
+          </div>
+        </DialogContent>
+
+        <DialogActions sx={{ p: 3, pt: 0, flexDirection: 'column', gap: 2 }}>
+          <Button
+            fullWidth
+            type="submit"
+            variant="contained"
+            disabled={!customReferralCode.trim() || isLoading}
+            sx={{
+              bgcolor: '#475569',
+              color: 'white',
+              '&:hover': { bgcolor: '#64748b' },
+              '&:disabled': { bgcolor: '#334155', color: '#64748b' },
+              py: 1.5,
+              borderRadius: '8px',
+              fontSize: '14px',
+              fontWeight: 600,
+              textTransform: 'none',
+            }}
+          >
+            {isLoading ? (
+              <>
+                <CircularProgress size={20} sx={{ mr: 1, color: 'white' }} />
+                Processing...
+              </>
+            ) : (
+              'Link Referral Code'
+            )}
+          </Button>
+
+          {errorMessage && (
+            <div
+              style={{
+                borderRadius: '8px',
+                padding: '12px 16px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                width: '100%',
+              }}
+            >
+              <div
+                style={{
+                  width: '20px',
+                  height: '20px',
+                  borderRadius: '50%',
+                  backgroundColor: '#DC2626',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}
+              >
+                <span style={{ color: 'white', fontSize: '12px', fontWeight: 'bold' }}>!</span>
+              </div>
+              <div style={{ color: '#FCA5A5', fontSize: '14px', fontWeight: 500 }}>
+                {errorMessage}
+              </div>
+            </div>
+          )}
+
+          <p
+            style={{
+              color: '#64748b',
+              fontSize: '12px',
+              textAlign: 'center',
+              lineHeight: 1.4,
+              margin: 0,
+              width: '100%',
+            }}
+          >
+            Connect your wallet to verify your referral. Please note that your referral only binds
+            to the wallet you connect.
+          </p>
+        </DialogActions>
+      </form>
     </Dialog>
   );
 }
