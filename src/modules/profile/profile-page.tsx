@@ -20,9 +20,10 @@ import {
 } from '@mui/material';
 import type React from 'react';
 import { useEffect, useState } from 'react';
-import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 
 import { useProfileStore } from './profile-store';
+
+const API_BASE_URL = 'https://testnet-api.eden-finance.xyz/api/v1';
 
 export default function ProfilePage() {
   const {
@@ -38,12 +39,9 @@ export default function ProfilePage() {
     updateProfile,
     toggleConnection,
     generateReferralCode,
-    openSignatureRequest,
     setCustomReferralDialog,
     deleteReferralCode,
   } = useProfileStore();
-
-  const { currentAccount, signAuthTxData } = useWeb3Context();
 
   const [formData, setFormData] = useState({
     username,
@@ -51,56 +49,85 @@ export default function ProfilePage() {
     lastName,
   });
 
+  const [isEditing, setIsEditing] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
   useEffect(() => {
-    const signIn = async () => {
-      if (!currentAccount) return;
-
-      const timestamp = new Date().toISOString();
-
-      const message = `Authenticate: ${timestamp}`;
+    const fetchUserProfile = async () => {
+      const token = localStorage.getItem('access_token');
+      if (!token) return;
 
       try {
-        const signature = await signAuthTxData(message);
+        const res = await fetch(`${API_BASE_URL}/user/me`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
 
-        console.log('Signature:', signature);
+        const result = await res.json();
+        console.log('Fetched profile:', result);
 
-        const data = {
-          wallet_address: currentAccount,
-          timestamp,
-          signature,
-        };
+        if (res.ok && result.status && result.data) {
+          const data = result.data;
 
-        const response = await fetch(
-          'https://testnet-api.eden-finance.xyz/api/v1/user/wallet/auth',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-          }
-        );
+          useProfileStore.setState((state) => ({
+            ...state,
+            username: data.username || '',
+            avatar: data.avatar || '/placeholder.svg?height=80&width=80',
+            points: data.lifetimePoints || 0,
+            referrals: data.referredCount || 0,
+            referralCodes: data.referralCode ? [{ code: data.referralCode, used: false }] : [],
+          }));
 
-        const result = await response.json();
-
-        if (!response.ok) {
-          throw new Error(result.message || 'Failed to authenticate wallet');
+          setFormData({
+            username: data.username || '',
+            firstName: data.firstName || '',
+            lastName: data.lastName || '',
+          });
         }
-
-        console.log('Authentication successful:', result);
       } catch (error) {
-        console.dir(error, { depth: null });
+        console.error('Failed to fetch profile:', error);
       }
     };
 
-    signIn();
-  }, [currentAccount]);
+    fetchUserProfile();
+  }, []);
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const handleSave = async () => {
+    const token = localStorage.getItem('access_token');
+    if (!token) return;
 
-  const handleSave = () => {
-    updateProfile(formData);
-    openSignatureRequest('username', formData.username);
+    try {
+      const res = await fetch(`${API_BASE_URL}/user/me`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+        }),
+      });
+
+      const result = await res.json();
+      console.log('Profile updated:', result);
+
+      if (res.ok && result.status) {
+        updateProfile({
+          username: formData.username,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+        });
+        setIsEditing(false); // Disable editing after saving
+      } else {
+        console.error('Failed to update profile:', result.message || 'Unknown error');
+      }
+    } catch (err) {
+      console.error('Error updating profile:', err);
+    }
   };
 
   const handleGenerateCode = () => {
@@ -121,12 +148,9 @@ export default function ProfilePage() {
     handleMenuClose();
   };
 
-  //   const canGenerateCode = referralCodes.length < maxReferralCodes;
-
   return (
     <Box sx={{ minHeight: '100vh', color: 'white' }}>
       <Container maxWidth="xl" sx={{ py: 4 }}>
-        {/* Header Section */}
         <Box
           sx={{ mb: 4, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}
         >
@@ -191,7 +215,8 @@ export default function ProfilePage() {
                   '&:hover': { borderColor: '#059669', bgcolor: 'rgba(16, 185, 129, 0.1)' },
                 }}
               >
-                Generate Referral Code • {maxReferralCodes - referralCodes.length} left
+                Generate Referral Code •
+                {(referralCodes && maxReferralCodes - referralCodes.length) ?? 0} left
               </Button>
 
               <Menu
@@ -218,8 +243,7 @@ export default function ProfilePage() {
               </Menu>
             </Box>
 
-            {/* Referral Codes List - positioned in right side area */}
-            {referralCodes.length > 0 && (
+            {referralCodes && referralCodes.length > 0 && (
               <Box sx={{ width: '100%' }}>
                 {referralCodes.map((code, index) => (
                   <Box
@@ -288,7 +312,6 @@ export default function ProfilePage() {
         </Box>
 
         <Grid container spacing={3}>
-          {/* Profile Details */}
           <Grid item xs={12} md={6}>
             <Paper
               sx={{
@@ -308,99 +331,82 @@ export default function ProfilePage() {
               </Typography>
 
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
-                <Box>
-                  <Typography
-                    // @ts-expect-error next line
-                    variant="body2"
-                    sx={{ mb: 1, color: '#9ca3af' }}
-                  >
-                    Username
-                  </Typography>
-                  <TextField
-                    fullWidth
-                    value={formData.username}
-                    onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                    sx={{
-                      '& .MuiOutlinedInput-root': {
-                        bgcolor: '#111827',
-                        color: 'white',
-                        '& fieldset': { borderColor: '#374151' },
-                        '&:hover fieldset': { borderColor: '#6b7280' },
-                        '&.Mui-focused fieldset': { borderColor: '#10b981' },
-                      },
-                    }}
-                  />
-                </Box>
+                {['username', 'firstName', 'lastName'].map((field) => (
+                  <Box key={field}>
+                    <Typography
+                      // @ts-expect-error next line
+                      variant="body2"
+                      sx={{ mb: 1, color: '#9ca3af' }}
+                    >
+                      {field === 'firstName'
+                        ? 'First Name'
+                        : field === 'lastName'
+                        ? 'Last Name'
+                        : 'Username'}
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      disabled={!isEditing}
+                      value={formData[field as keyof typeof formData]}
+                      onChange={(e) =>
+                        setFormData((prev) => ({ ...prev, [field]: e.target.value }))
+                      }
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          bgcolor: '#111827',
+                          color: 'white',
+                          '& fieldset': { borderColor: '#374151' },
+                          '&:hover fieldset': { borderColor: '#6b7280' },
+                          '&.Mui-focused fieldset': { borderColor: '#10b981' },
+                        },
+                      }}
+                    />
+                  </Box>
+                ))}
 
-                <Box>
-                  <Typography
-                    // @ts-expect-error next line
-                    variant="body2"
-                    sx={{ mb: 1, color: '#9ca3af' }}
-                  >
-                    First name
-                  </Typography>
-                  <TextField
+                {isEditing ? (
+                  <Button
+                    variant="contained"
+                    onClick={handleSave}
                     fullWidth
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     sx={{
-                      '& .MuiOutlinedInput-root': {
-                        bgcolor: '#111827',
-                        color: 'white',
-                        '& fieldset': { borderColor: '#374151' },
-                        '&:hover fieldset': { borderColor: '#6b7280' },
-                        '&.Mui-focused fieldset': { borderColor: '#10b981' },
-                      },
+                      bgcolor: '#6366f1',
+                      '&:hover': { bgcolor: '#5b21b6' },
+                      py: 1.5,
+                      borderRadius: 1,
+                      mt: 1,
+                      textTransform: 'none',
+                      fontSize: '1rem',
                     }}
-                  />
-                </Box>
-
-                <Box>
-                  <Typography
-                    // @ts-expect-error next line
-                    variant="body2"
-                    sx={{ mb: 1, color: '#9ca3af' }}
                   >
-                    Last Name
-                  </Typography>
-                  <TextField
+                    Save
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outlined"
+                    onClick={() => setIsEditing(true)}
                     fullWidth
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                     sx={{
-                      '& .MuiOutlinedInput-root': {
-                        bgcolor: '#111827',
-                        color: 'white',
-                        '& fieldset': { borderColor: '#374151' },
-                        '&:hover fieldset': { borderColor: '#6b7280' },
-                        '&.Mui-focused fieldset': { borderColor: '#10b981' },
+                      borderColor: '#10b981',
+                      color: '#10b981',
+                      '&:hover': {
+                        borderColor: '#059669',
+                        bgcolor: 'rgba(16, 185, 129, 0.1)',
                       },
+                      py: 1.5,
+                      borderRadius: 1,
+                      mt: 1,
+                      textTransform: 'none',
+                      fontSize: '1rem',
                     }}
-                  />
-                </Box>
-
-                <Button
-                  variant="contained"
-                  onClick={handleSave}
-                  fullWidth
-                  sx={{
-                    bgcolor: '#6366f1',
-                    '&:hover': { bgcolor: '#5b21b6' },
-                    py: 1.5,
-                    borderRadius: 1,
-                    mt: 1,
-                    textTransform: 'none',
-                    fontSize: '1rem',
-                  }}
-                >
-                  Save
-                </Button>
+                  >
+                    Edit Profile
+                  </Button>
+                )}
               </Box>
             </Paper>
           </Grid>
 
-          {/* Connections */}
           <Grid item xs={12} md={6}>
             <Paper
               sx={{
@@ -420,59 +426,51 @@ export default function ProfilePage() {
               </Typography>
 
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {connections.map((connection) => (
-                  <Box
-                    key={connection.id}
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      py: 2,
-                      px: 0,
-                    }}
-                  >
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                      <Box
-                        sx={{
-                          width: 24,
-                          height: 24,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: '16px',
-                        }}
-                      >
-                        {connection.id === 'wallet' && '💎'}
-                        {connection.id === 'twitter' && '𝕏'}
-                        {connection.id === 'discord' && '💬'}
-                      </Box>
-                      <Typography
-                        // @ts-expect-error next line
-                        variant="body1"
-                        sx={{ color: 'white', fontWeight: 500 }}
-                      >
-                        {connection.connected ? connection.username : connection.name}
-                      </Typography>
-                    </Box>
-                    <Button
-                      variant="outlined"
-                      size="small"
-                      onClick={() => toggleConnection(connection.id)}
+                {connections &&
+                  connections.map((connection) => (
+                    <Box
+                      key={connection.id}
                       sx={{
-                        borderColor: '#6b7280',
-                        color: '#6b7280',
-                        textTransform: 'none',
-                        fontSize: '0.875rem',
-                        '&:hover': {
-                          borderColor: '#4b5563',
-                          bgcolor: 'rgba(107, 114, 128, 0.1)',
-                        },
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        py: 2,
+                        px: 0,
                       }}
                     >
-                      {connection.connected ? 'Disconnect' : 'Connect'}
-                    </Button>
-                  </Box>
-                ))}
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                        <Box sx={{ width: 24, height: 24, display: 'flex', alignItems: 'center' }}>
+                          {connection.id === 'wallet' && '💎'}
+                          {connection.id === 'twitter' && '𝕏'}
+                          {connection.id === 'discord' && '💬'}
+                        </Box>
+                        <Typography
+                          // @ts-expect-error next line
+                          variant="body1"
+                          sx={{ color: 'white', fontWeight: 500 }}
+                        >
+                          {connection.username || connection.name}
+                        </Typography>
+                      </Box>
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        onClick={() => toggleConnection(connection.id)}
+                        sx={{
+                          borderColor: '#6b7280',
+                          color: '#6b7280',
+                          textTransform: 'none',
+                          fontSize: '0.875rem',
+                          '&:hover': {
+                            borderColor: '#4b5563',
+                            bgcolor: 'rgba(107, 114, 128, 0.1)',
+                          },
+                        }}
+                      >
+                        {connection.connected ? 'Disconnect' : 'Connect'}
+                      </Button>
+                    </Box>
+                  ))}
               </Box>
             </Paper>
           </Grid>

@@ -32,7 +32,6 @@ export default function CustomReferralDialog() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
   const authAttemptedRef = useRef<string | null>(null);
   const hasAttemptedAuth = authAttemptedRef.current === currentAccount;
 
@@ -43,6 +42,29 @@ export default function CustomReferralDialog() {
       return true;
     }
     return false;
+  }, []);
+
+  const checkWalletReferralCode = useCallback(async (walletAddress: string) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/user/wallet/${walletAddress}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      const result = await response.json();
+
+      console.log('Wallet referral code check result:', result);
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Failed to check wallet referral code');
+      }
+      const hasReferral = result.data?.hasReferral;
+      const referralCode = result.data?.referralCode;
+      return hasReferral && referralCode ? referralCode : false;
+    } catch (error) {
+      console.error('Error checking wallet referral code:', error);
+      return false;
+    }
   }, []);
 
   const authenticateUser = useCallback(async () => {
@@ -65,14 +87,18 @@ export default function CustomReferralDialog() {
 
       const result = await response.json();
 
+      console.log('Authentication result:', result);
+
       if (!response.ok) {
         throw new Error(result.message || 'Authentication failed');
       }
 
-      if (result.access_token) {
-        localStorage.setItem('access_token', result.access_token);
+      const token = result.data?.token;
+
+      if (token) {
+        localStorage.setItem('access_token', token);
         setIsAuthenticated(true);
-        return result;
+        return result.data;
       }
 
       return null;
@@ -127,7 +153,6 @@ export default function CustomReferralDialog() {
 
       await authenticateUser();
       toast.success('Authentication successful!');
-
       setCustomReferralDialog(false);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
@@ -157,7 +182,7 @@ export default function CustomReferralDialog() {
   };
 
   useEffect(() => {
-    const attemptInitialAuth = async () => {
+    const checkWalletAndAuthenticate = async () => {
       if (!currentAccount || isAuthenticated || hasAttemptedAuth || checkAuthStatus()) {
         return;
       }
@@ -166,17 +191,25 @@ export default function CustomReferralDialog() {
 
       try {
         setIsLoading(true);
-        await authenticateUser();
-        setCustomReferralDialog(false);
+        const hasReferralCode = await checkWalletReferralCode(currentAccount);
+        if (hasReferralCode) {
+          await authenticateUser();
+          setCustomReferralDialog(false);
+          toast.success('Wallet authenticated successfully!');
+        } else {
+          toast.error('Wallet authentication required. Please link a referral code.');
+          setCustomReferralDialog(true);
+        }
       } catch (error) {
-        toast.error('Wallet authentication required. Please link a referral code.');
+        console.error('Error in wallet check and authentication:', error);
+        toast.error('Failed to check wallet status. Please try again.');
         setCustomReferralDialog(true);
       } finally {
         setIsLoading(false);
       }
     };
 
-    attemptInitialAuth();
+    checkWalletAndAuthenticate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentAccount]);
 
