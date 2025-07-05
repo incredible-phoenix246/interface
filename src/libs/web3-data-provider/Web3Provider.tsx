@@ -11,6 +11,7 @@ import { TorusConnector } from '@web3-react/torus-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
 import { BigNumber, PopulatedTransaction, providers } from 'ethers';
 import React, { ReactElement, useCallback, useEffect, useState } from 'react';
+import { useProfileStore } from 'src/store/profile-store';
 import { useRootStore } from 'src/store/root';
 import { getNetworkConfig } from 'src/utils/marketsAndNetworksConfig';
 import { hexToAscii } from 'src/utils/utils';
@@ -43,6 +44,14 @@ export type Web3Data = {
   addERC20Token: (args: ERC20TokenType) => Promise<boolean>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   signTxData: (unsignedData: string) => Promise<SignatureLike>;
+  signAuthTxData: (unsignedData: string) => Promise<SignatureLike>;
+  signUpdateProfile: (args: {
+    username: string;
+    timestamp: string;
+    account: string;
+  }) => Promise<SignatureLike>;
+
+  signReferalTxData: (unsignedData: string) => Promise<SignatureLike>;
   error: Error | undefined;
   switchNetworkError: Error | undefined;
   setSwitchNetworkError: (err: Error | undefined) => void;
@@ -75,16 +84,8 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   ]);
   const setAccountLoading = useRootStore((store) => store.setAccountLoading);
   const setWalletType = useRootStore((store) => store.setWalletType);
-  // for now we use network changed as it returns the chain string instead of hex
-  // const handleChainChanged = (chainId: number) => {
-  //   console.log('chainChanged', chainId);
-  //   if (selectedWallet) {
-  //     connectWallet(selectedWallet);
-  //   }
-  // };
+  const {} = useProfileStore();
 
-  // Wallet connection and disconnection
-  // clean local storage
   const cleanConnectorStorage = useCallback((): void => {
     if (connector instanceof WalletConnectConnector) {
       localStorage.removeItem('walletconnect');
@@ -164,6 +165,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
         localStorage.setItem('walletProvider', wallet.toString());
         setDeactivated(false);
         setLoading(false);
+        console.log('activated wallet', wallet.toString(), account?.toString());
       } catch (e) {
         console.log('error on activation', e);
         setError(e);
@@ -338,6 +340,46 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     throw new Error('Error initializing permit signature');
   };
 
+  const signAuthTxData = async (unsignedData: string): Promise<SignatureLike> => {
+    if (provider && account) {
+      const msg = `0x${Buffer.from(unsignedData, 'utf8').toString('hex')}`;
+
+      const signature: SignatureLike = await provider.send('personal_sign', [msg, account]);
+
+      return signature;
+    }
+    throw new Error('Error initializing permit signature');
+  };
+
+  const signReferalTxData = async (unsignedData: string): Promise<SignatureLike> => {
+    if (provider && account) {
+      const msg = `0x${Buffer.from(unsignedData, 'utf8').toString('hex')}`;
+
+      const signature: SignatureLike = await provider.send('personal_sign', [msg, account]);
+
+      return signature;
+    }
+    throw new Error('Error initializing permit signature');
+  };
+
+  const signUpdateProfile = async ({
+    username,
+    timestamp,
+    account,
+  }: {
+    username: string;
+    timestamp: string;
+    account: string;
+  }): Promise<SignatureLike> => {
+    if (provider && account) {
+      const unsignedData = `Update username to ${username} for ${account} at ${timestamp}`;
+      const msg = `0x${Buffer.from(unsignedData, 'utf8').toString('hex')}`;
+      const signature: SignatureLike = await provider.send('personal_sign', [msg, account]);
+      return signature;
+    }
+    throw new Error('Error initializing permit signature');
+  };
+
   const switchNetwork = async (newChainId: number) => {
     if (provider) {
       try {
@@ -449,7 +491,10 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
           connected: active,
           loading,
           chainId: chainId || 1,
+          signAuthTxData,
           switchNetwork,
+          signReferalTxData,
+          signUpdateProfile,
           getTxError,
           sendTx,
           signTxData,

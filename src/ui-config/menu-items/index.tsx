@@ -56,6 +56,7 @@ export const navigation: Navigation[] = [
     link: ROUTES.profile,
     title: t`Profile`,
     dataCy: 'menuProfile',
+    isVisible: () => typeof window !== 'undefined' && !!localStorage.getItem('access_token'),
   },
 ];
 

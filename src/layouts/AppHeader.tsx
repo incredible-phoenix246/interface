@@ -24,6 +24,7 @@ import WalletWidget from './WalletWidget';
 export function AppHeader() {
   const { breakpoints } = useTheme();
   const md = useMediaQuery(breakpoints.down('md'));
+
   // const sm = useMediaQuery(breakpoints.down('sm'));
 
   const [mobileDrawerOpen, setMobileDrawerOpen] = useRootStore((state) => [

@@ -1,6 +1,7 @@
 import { useLingui } from '@lingui/react';
 import { Button, List, ListItem, Typography, useMediaQuery, useTheme } from '@mui/material';
 import * as React from 'react';
+// import { useEffect, useState } from 'react';
 import { useRootStore } from 'src/store/root';
 import { NAV_BAR } from 'src/utils/mixPanelEvents';
 
@@ -16,7 +17,12 @@ interface NavItemsProps {
 export const NavItems = ({ setOpen }: NavItemsProps) => {
   const { i18n } = useLingui();
   const { currentMarketData } = useProtocolDataContext();
+  // const [isLgoggedIn, setIsLoggedIn] = useState(false);
 
+  // useEffect(() => {
+  //   const token = localStorage.getItem('access_token');
+  //   setIsLoggedIn(!!token);
+  // }, []);
   const { breakpoints } = useTheme();
   const md = useMediaQuery(breakpoints.down('md'));
   const trackEvent = useRootStore((store) => store.trackEvent);
