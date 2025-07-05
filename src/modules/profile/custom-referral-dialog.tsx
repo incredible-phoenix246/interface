@@ -11,16 +11,18 @@ import {
   IconButton,
   TextField,
 } from '@mui/material';
+import { useRouter } from 'next/router';
 import type React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 
-import { useProfileStore } from './profile-store';
+import { useProfileStore } from '../../store/profile-store';
 
 const API_BASE_URL = 'https://testnet-api.eden-finance.xyz/api/v1';
 
 export default function CustomReferralDialog() {
+  const router = useRouter();
   const {
     customReferralDialog,
     customReferralCode,
@@ -97,6 +99,7 @@ export default function CustomReferralDialog() {
 
       if (token) {
         localStorage.setItem('access_token', token);
+        router.reload();
         setIsAuthenticated(true);
         return result.data;
       }
@@ -223,7 +226,11 @@ export default function CustomReferralDialog() {
   return (
     <Dialog
       open={customReferralDialog}
-      onClose={handleClose}
+      onClose={(_, reason) => {
+        if (!isLoading && reason !== 'backdropClick' && reason !== 'escapeKeyDown') {
+          setCustomReferralDialog(false);
+        }
+      }}
       maxWidth="xs"
       PaperProps={{
         sx: {
