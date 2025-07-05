@@ -1,6 +1,6 @@
 import create from 'zustand';
 
-export interface Connection {
+interface Connection {
   id: string;
   name: string;
   icon: string;
@@ -8,7 +8,7 @@ export interface Connection {
   username?: string;
 }
 
-export interface ReferralCode {
+interface ReferralCode {
   code: string;
   used: boolean;
 }
@@ -41,15 +41,7 @@ interface ProfileState {
   customReferralCode: string;
 
   // Actions
-  updateProfile: (data: {
-    avatar?: string;
-    username?: string;
-    firstName?: string;
-    lastName?: string;
-    referralCodes?: ReferralCode[];
-    points?: number;
-    referrals?: number;
-  }) => void;
+  updateProfile: (data: { username?: string; firstName?: string; lastName?: string }) => void;
   toggleConnection: (id: string) => void;
   generateReferralCode: () => void;
   createCustomReferralCode: (code: string) => void;
@@ -70,7 +62,7 @@ export const useProfileStore = create<ProfileState>((set, get) => ({
   avatar: '/placeholder.svg?height=80&width=80',
 
   connections: [
-    // { id: 'wallet', name: 'Wallet', icon: '💎', connected: true, username: '0x3de...84bft' },
+    { id: 'wallet', name: 'Wallet', icon: '💎', connected: true, username: '0x3de...84bft' },
     {
       id: 'twitter',
       name: 'X (Formerly Twitter)',

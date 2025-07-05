@@ -19,11 +19,11 @@ import {
   Typography,
 } from '@mui/material';
 import type React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { Connection, ReferralCode, useProfileStore } from './profile-store';
-
-const API_BASE_URL = 'https://testnet-api.eden-finance.xyz/api/v1';
+import CustomReferralDialog from './custom-referral-dialog';
+import { useProfileStore } from './profile-store';
+import SignatureRequestModal from './signature-request-modal';
 
 export default function ProfilePage() {
   const {
@@ -39,6 +39,7 @@ export default function ProfilePage() {
     updateProfile,
     toggleConnection,
     generateReferralCode,
+    openSignatureRequest,
     setCustomReferralDialog,
     deleteReferralCode,
   } = useProfileStore();
@@ -49,84 +50,11 @@ export default function ProfilePage() {
     lastName,
   });
 
-  const [isEditing, setIsEditing] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      const token = localStorage.getItem('access_token');
-      if (!token) return;
-
-      try {
-        const res = await fetch(`${API_BASE_URL}/user/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        });
-
-        const result = await res.json();
-        console.log('Fetched profile:', result);
-
-        if (res.ok && result.status && result.data) {
-          const data = result.data;
-
-          updateProfile({
-            username: data.username || '',
-            avatar: data.avatar || '/placeholder.svg?height=80&width=80',
-            points: data.lifetimePoints || 0,
-            referrals: data.referredCount || 0,
-            referralCodes: data.referralCode ? [{ code: data.referralCode, used: false }] : [],
-          });
-
-          setFormData({
-            username: data.username || '',
-            firstName: data.firstName || '',
-            lastName: data.lastName || '',
-          });
-        }
-      } catch (error) {
-        console.error('Failed to fetch profile:', error);
-      }
-    };
-
-    fetchUserProfile();
-  }, []);
-
-  const handleSave = async () => {
-    const token = localStorage.getItem('access_token');
-    if (!token) return;
-
-    try {
-      const res = await fetch(`${API_BASE_URL}/user/me`, {
-        method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: formData.username,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-        }),
-      });
-
-      const result = await res.json();
-      console.log('Profile updated:', result);
-
-      if (res.ok && result.status) {
-        updateProfile({
-          username: formData.username,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-        });
-        setIsEditing(false); // Disable editing after saving
-      } else {
-        console.error('Failed to update profile:', result.message || 'Unknown error');
-      }
-    } catch (err) {
-      console.error('Error updating profile:', err);
-    }
+  const handleSave = () => {
+    updateProfile(formData);
+    openSignatureRequest('username', formData.username);
   };
 
   const handleGenerateCode = () => {
@@ -147,42 +75,19 @@ export default function ProfilePage() {
     handleMenuClose();
   };
 
+  //   const canGenerateCode = referralCodes.length < maxReferralCodes;
+
   return (
     <Box sx={{ minHeight: '100vh', color: 'white' }}>
-      <Container
-        maxWidth="xl"
-        sx={{ py: { xs: 2, md: 4, lg: 6 }, px: { xs: 2, md: 3 }, mt: { xs: 8, lg: 8 } }}
-      >
+      <Container maxWidth="xl" sx={{ py: 4 }}>
         {/* Header Section */}
-
         <Box
-          sx={{
-            mb: { xs: 3, md: 4 },
-            display: 'flex',
-            flexDirection: { xs: 'column', lg: 'row' },
-            alignItems: { xs: 'stretch', lg: 'flex-start' },
-            justifyContent: { xs: 'flex-start', lg: 'space-between' },
-            gap: { xs: 3, lg: 0 },
-          }}
+          sx={{ mb: 4, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 2, md: 3 } }}>
-            <Avatar
-              src={avatar}
-              sx={{
-                width: { xs: 60, md: 80 },
-                height: { xs: 60, md: 80 },
-                bgcolor: '#10b981',
-              }}
-            />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+            <Avatar src={avatar} sx={{ width: 80, height: 80, bgcolor: '#10b981' }} />
             <Box>
-              <Typography
-                variant="h4"
-                sx={{
-                  fontWeight: 'bold',
-                  mb: 1,
-                  fontSize: { xs: '1.5rem', md: '2.125rem' },
-                }}
-              >
+              <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 1 }}>
                 {username}
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
@@ -208,30 +113,26 @@ export default function ProfilePage() {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              alignItems: { xs: 'stretch', lg: 'flex-end' },
+              alignItems: 'flex-end',
               gap: 2,
-              minWidth: { xs: 'auto', lg: 400 },
-              width: { xs: '100%', lg: 'auto' },
+              minWidth: 400,
             }}
           >
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', sm: 'row' },
-                alignItems: { xs: 'stretch', sm: 'center' },
-                gap: 2,
-                width: '100%',
-              }}
-            >
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, width: '100%' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <PeopleIcon sx={{ color: '#6b7280' }} />
                 <Typography
                   // @ts-expect-error next line
                   variant="body2"
+                  sx={{ color: '#6b7280' }}
                 >
                   Referrals
                 </Typography>
-                <Chip label={referrals} size="small" sx={{ color: 'white', minWidth: 24 }} />
+                <Chip
+                  label={referrals}
+                  size="small"
+                  sx={{ bgcolor: '#7c3aed', color: 'white', minWidth: 24 }}
+                />
               </Box>
 
               <Button
@@ -241,17 +142,10 @@ export default function ProfilePage() {
                 sx={{
                   borderColor: '#10b981',
                   color: '#10b981',
-                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                  px: { xs: 2, sm: 3 },
                   '&:hover': { borderColor: '#059669', bgcolor: 'rgba(16, 185, 129, 0.1)' },
                 }}
               >
-                <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
-                  Generate Referral Code • {maxReferralCodes - referralCodes.length} left
-                </Box>
-                <Box component="span" sx={{ display: { xs: 'inline', sm: 'none' } }}>
-                  Generate Code • {maxReferralCodes - referralCodes.length} left
-                </Box>
+                Generate Referral Code • {maxReferralCodes - referralCodes.length} left
               </Button>
 
               <Menu
@@ -278,9 +172,10 @@ export default function ProfilePage() {
               </Menu>
             </Box>
 
-            {referralCodes && referralCodes.length > 0 && (
+            {/* Referral Codes List - positioned in right side area */}
+            {referralCodes.length > 0 && (
               <Box sx={{ width: '100%' }}>
-                {referralCodes.map((code: ReferralCode, index: number) => (
+                {referralCodes.map((code, index) => (
                   <Box
                     key={index}
                     sx={{
@@ -298,13 +193,7 @@ export default function ProfilePage() {
                     <Typography
                       // @ts-expect-error next line
                       variant="body2"
-                      sx={{
-                        color: 'white',
-                        fontFamily: 'monospace',
-                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                      }}
+                      sx={{ color: 'white', fontFamily: 'monospace' }}
                     >
                       {code.code}
                     </Typography>
@@ -352,150 +241,151 @@ export default function ProfilePage() {
           </Box>
         </Box>
 
-        <Grid container spacing={{ xs: 2, md: 3 }} sx={{ alignItems: 'stretch' }}>
+        <Grid container spacing={3}>
           {/* Profile Details */}
-          <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
+          <Grid item xs={12} md={6}>
             <Paper
               sx={{
                 bgcolor: '#1f2937',
-                p: { xs: 2, md: 3 },
+                p: 3,
                 borderRadius: 2,
                 border: '1px solid #374151',
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'column',
+                height: 'fit-content',
               }}
             >
               <Typography
                 // @ts-expect-error next line
                 variant="h6"
-                sx={{
-                  mb: { xs: 4, md: 8 },
-                  fontWeight: 'bold',
-                  color: 'white',
-                  fontSize: { xs: '1.125rem', md: '1.25rem' },
-                }}
+                sx={{ mb: 3, fontWeight: 'bold', color: 'white' }}
               >
                 Profile Details
               </Typography>
 
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
-                {['username', 'firstName', 'lastName'].map((field) => (
-                  <Box key={field}>
-                    <Typography
-                      // @ts-expect-error next line
-                      variant="body2"
-                      sx={{ mb: 1, color: '#9ca3af' }}
-                    >
-                      {field === 'firstName'
-                        ? 'First Name'
-                        : field === 'lastName'
-                        ? 'Last Name'
-                        : 'Username'}
-                    </Typography>
-                    <TextField
-                      fullWidth
-                      disabled={!isEditing}
-                      value={formData[field as keyof typeof formData]}
-                      onChange={(e) =>
-                        setFormData((prev) => ({ ...prev, [field]: e.target.value }))
-                      }
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          bgcolor: '#111827',
-                          color: 'white',
-                          '& fieldset': { borderColor: '#374151' },
-                          '&:hover fieldset': { borderColor: '#6b7280' },
-                          '&.Mui-focused fieldset': { borderColor: '#10b981' },
-                        },
-                      }}
-                    />
-                  </Box>
-                ))}
-
-                {isEditing ? (
-                  <Button
-                    variant="contained"
-                    onClick={handleSave}
-                    fullWidth
-                    sx={{
-                      py: { xs: 1.25, md: 1.5 },
-                      borderRadius: 1,
-                      mt: 1,
-                      textTransform: 'none',
-                      fontSize: { xs: '0.875rem', md: '1rem' },
-                    }}
+                <Box>
+                  <Typography
+                    // @ts-expect-error next line
+                    variant="body2"
+                    sx={{ mb: 1, color: '#9ca3af' }}
                   >
-                    Save
-                  </Button>
-                ) : (
-                  <Button
-                    variant="outlined"
-                    onClick={() => setIsEditing(true)}
+                    Username
+                  </Typography>
+                  <TextField
                     fullWidth
+                    value={formData.username}
+                    onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                     sx={{
-                      borderColor: '#10b981',
-                      color: '#10b981',
-                      '&:hover': {
-                        borderColor: '#059669',
-                        bgcolor: 'rgba(16, 185, 129, 0.1)',
+                      '& .MuiOutlinedInput-root': {
+                        bgcolor: '#111827',
+                        color: 'white',
+                        '& fieldset': { borderColor: '#374151' },
+                        '&:hover fieldset': { borderColor: '#6b7280' },
+                        '&.Mui-focused fieldset': { borderColor: '#10b981' },
                       },
-                      py: 1.5,
-                      borderRadius: 1,
-                      mt: 1,
-                      textTransform: 'none',
-                      fontSize: '1rem',
                     }}
+                  />
+                </Box>
+
+                <Box>
+                  <Typography
+                    // @ts-expect-error next line
+                    variant="body2"
+                    sx={{ mb: 1, color: '#9ca3af' }}
                   >
-                    Edit Profile
-                  </Button>
-                )}
+                    First name
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        bgcolor: '#111827',
+                        color: 'white',
+                        '& fieldset': { borderColor: '#374151' },
+                        '&:hover fieldset': { borderColor: '#6b7280' },
+                        '&.Mui-focused fieldset': { borderColor: '#10b981' },
+                      },
+                    }}
+                  />
+                </Box>
+
+                <Box>
+                  <Typography
+                    // @ts-expect-error next line
+                    variant="body2"
+                    sx={{ mb: 1, color: '#9ca3af' }}
+                  >
+                    Last Name
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        bgcolor: '#111827',
+                        color: 'white',
+                        '& fieldset': { borderColor: '#374151' },
+                        '&:hover fieldset': { borderColor: '#6b7280' },
+                        '&.Mui-focused fieldset': { borderColor: '#10b981' },
+                      },
+                    }}
+                  />
+                </Box>
+
+                <Button
+                  variant="contained"
+                  onClick={handleSave}
+                  fullWidth
+                  sx={{
+                    bgcolor: '#6366f1',
+                    '&:hover': { bgcolor: '#5b21b6' },
+                    py: 1.5,
+                    borderRadius: 1,
+                    mt: 1,
+                    textTransform: 'none',
+                    fontSize: '1rem',
+                  }}
+                >
+                  Save
+                </Button>
               </Box>
             </Paper>
           </Grid>
 
           {/* Connections */}
-          <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
+          <Grid item xs={12} md={6}>
             <Paper
               sx={{
                 bgcolor: '#1f2937',
-                p: { xs: 2, md: 3 },
+                p: 3,
                 borderRadius: 2,
                 border: '1px solid #374151',
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'column',
+                height: 'fit-content',
               }}
             >
               <Typography
                 // @ts-expect-error next line
                 variant="h6"
-                sx={{
-                  mb: { xs: 4, md: 8 },
-                  fontWeight: 'bold',
-                  color: 'white',
-                  fontSize: { xs: '1.125rem', md: '1.25rem' },
-                }}
+                sx={{ mb: 3, fontWeight: 'bold', color: 'white' }}
               >
                 Connections
               </Typography>
 
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1 }}>
-                {connections.map((connection: Connection) => (
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                {connections.map((connection) => (
                   <Box
                     key={connection.id}
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      py: { xs: 1.5, md: 2 },
+                      py: 2,
                       px: 0,
-                      gap: 2,
                     }}
                   >
-                    <Box
-                      sx={{ display: 'flex', alignItems: 'center', gap: 2, flex: 1, minWidth: 0 }}
-                    >
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                       <Box
                         sx={{
                           width: 24,
@@ -504,7 +394,6 @@ export default function ProfilePage() {
                           alignItems: 'center',
                           justifyContent: 'center',
                           fontSize: '16px',
-                          flexShrink: 0,
                         }}
                       >
                         {connection.id === 'wallet' && '💎'}
@@ -514,14 +403,7 @@ export default function ProfilePage() {
                       <Typography
                         // @ts-expect-error next line
                         variant="body1"
-                        sx={{
-                          color: 'white',
-                          fontWeight: 500,
-                          fontSize: { xs: '0.875rem', md: '1rem' },
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          whiteSpace: 'nowrap',
-                        }}
+                        sx={{ color: 'white', fontWeight: 500 }}
                       >
                         {connection.connected ? connection.username : connection.name}
                       </Typography>
@@ -534,10 +416,7 @@ export default function ProfilePage() {
                         borderColor: '#6b7280',
                         color: '#6b7280',
                         textTransform: 'none',
-                        fontSize: { xs: '0.75rem', md: '0.875rem' },
-                        px: { xs: 1.5, md: 2 },
-                        py: { xs: 0.5, md: 0.75 },
-                        flexShrink: 0,
+                        fontSize: '0.875rem',
                         '&:hover': {
                           borderColor: '#4b5563',
                           bgcolor: 'rgba(107, 114, 128, 0.1)',
@@ -553,6 +432,9 @@ export default function ProfilePage() {
           </Grid>
         </Grid>
       </Container>
+
+      <SignatureRequestModal />
+      <CustomReferralDialog />
     </Box>
   );
 }
