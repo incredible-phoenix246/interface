@@ -1,6 +1,6 @@
 import create from 'zustand';
 
-interface Connection {
+export interface Connection {
   id: string;
   name: string;
   icon: string;
@@ -8,7 +8,7 @@ interface Connection {
   username?: string;
 }
 
-interface ReferralCode {
+export interface ReferralCode {
   code: string;
   used: boolean;
 }
@@ -41,7 +41,15 @@ interface ProfileState {
   customReferralCode: string;
 
   // Actions
-  updateProfile: (data: { username?: string; firstName?: string; lastName?: string }) => void;
+  updateProfile: (data: {
+    avatar?: string;
+    username?: string;
+    firstName?: string;
+    lastName?: string;
+    referralCodes?: ReferralCode[];
+    points?: number;
+    referrals?: number;
+  }) => void;
   toggleConnection: (id: string) => void;
   generateReferralCode: () => void;
   createCustomReferralCode: (code: string) => void;

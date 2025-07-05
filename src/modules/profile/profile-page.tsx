@@ -19,11 +19,11 @@ import {
   Typography,
 } from '@mui/material';
 import type React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import CustomReferralDialog from './custom-referral-dialog';
-import { useProfileStore } from './profile-store';
-import SignatureRequestModal from './signature-request-modal';
+import { Connection, ReferralCode, useProfileStore } from './profile-store';
+
+const API_BASE_URL = 'https://testnet-api.eden-finance.xyz/api/v1';
 
 export default function ProfilePage() {
   const {
@@ -39,7 +39,6 @@ export default function ProfilePage() {
     updateProfile,
     toggleConnection,
     generateReferralCode,
-    openSignatureRequest,
     setCustomReferralDialog,
     deleteReferralCode,
   } = useProfileStore();
@@ -50,11 +49,84 @@ export default function ProfilePage() {
     lastName,
   });
 
+  const [isEditing, setIsEditing] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const handleSave = () => {
-    updateProfile(formData);
-    openSignatureRequest('username', formData.username);
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      const token = localStorage.getItem('access_token');
+      if (!token) return;
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/user/me`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const result = await res.json();
+        console.log('Fetched profile:', result);
+
+        if (res.ok && result.status && result.data) {
+          const data = result.data;
+
+          updateProfile({
+            username: data.username || '',
+            avatar: data.avatar || '/placeholder.svg?height=80&width=80',
+            points: data.lifetimePoints || 0,
+            referrals: data.referredCount || 0,
+            referralCodes: data.referralCode ? [{ code: data.referralCode, used: false }] : [],
+          });
+
+          setFormData({
+            username: data.username || '',
+            firstName: data.firstName || '',
+            lastName: data.lastName || '',
+          });
+        }
+      } catch (error) {
+        console.error('Failed to fetch profile:', error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  const handleSave = async () => {
+    const token = localStorage.getItem('access_token');
+    if (!token) return;
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/user/me`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+        }),
+      });
+
+      const result = await res.json();
+      console.log('Profile updated:', result);
+
+      if (res.ok && result.status) {
+        updateProfile({
+          username: formData.username,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+        });
+        setIsEditing(false); // Disable editing after saving
+      } else {
+        console.error('Failed to update profile:', result.message || 'Unknown error');
+      }
+    } catch (err) {
+      console.error('Error updating profile:', err);
+    }
   };
 
   const handleGenerateCode = () => {
@@ -75,8 +147,6 @@ export default function ProfilePage() {
     handleMenuClose();
   };
 
-  //   const canGenerateCode = referralCodes.length < maxReferralCodes;
-
   return (
     <Box sx={{ minHeight: '100vh', color: 'white' }}>
       <Container
@@ -84,6 +154,7 @@ export default function ProfilePage() {
         sx={{ py: { xs: 2, md: 4, lg: 6 }, px: { xs: 2, md: 3 }, mt: { xs: 8, lg: 8 } }}
       >
         {/* Header Section */}
+
         <Box
           sx={{
             mb: { xs: 3, md: 4 },
@@ -207,10 +278,9 @@ export default function ProfilePage() {
               </Menu>
             </Box>
 
-            {/* Referral Codes List - positioned in right side area */}
-            {referralCodes.length > 0 && (
+            {referralCodes && referralCodes.length > 0 && (
               <Box sx={{ width: '100%' }}>
-                {referralCodes.map((code, index) => (
+                {referralCodes.map((code: ReferralCode, index: number) => (
                   <Box
                     key={index}
                     sx={{
@@ -309,33 +379,41 @@ export default function ProfilePage() {
                 Profile Details
               </Typography>
 
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5, flex: 1 }}>
-                <Box>
-                  <Typography
-                    // @ts-expect-error next line
-                    variant="body2"
-                    sx={{ mb: 1, color: '#9ca3af' }}
-                  >
-                    Username
-                  </Typography>
-                  <TextField
-                    fullWidth
-                    value={formData.username}
-                    onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                    sx={{
-                      '& .MuiOutlinedInput-root': {
-                        bgcolor: '#111827',
-                        color: 'white',
-                        fontSize: { xs: '0.875rem', md: '1rem' },
-                        '& fieldset': { borderColor: '#374151' },
-                        '&:hover fieldset': { borderColor: '#6b7280' },
-                        '&.Mui-focused fieldset': { borderColor: '#10b981' },
-                      },
-                    }}
-                  />
-                </Box>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                {['username', 'firstName', 'lastName'].map((field) => (
+                  <Box key={field}>
+                    <Typography
+                      // @ts-expect-error next line
+                      variant="body2"
+                      sx={{ mb: 1, color: '#9ca3af' }}
+                    >
+                      {field === 'firstName'
+                        ? 'First Name'
+                        : field === 'lastName'
+                        ? 'Last Name'
+                        : 'Username'}
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      disabled={!isEditing}
+                      value={formData[field as keyof typeof formData]}
+                      onChange={(e) =>
+                        setFormData((prev) => ({ ...prev, [field]: e.target.value }))
+                      }
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          bgcolor: '#111827',
+                          color: 'white',
+                          '& fieldset': { borderColor: '#374151' },
+                          '&:hover fieldset': { borderColor: '#6b7280' },
+                          '&.Mui-focused fieldset': { borderColor: '#10b981' },
+                        },
+                      }}
+                    />
+                  </Box>
+                ))}
 
-                <Box sx={{ mt: 'auto' }}>
+                {isEditing ? (
                   <Button
                     variant="contained"
                     onClick={handleSave}
@@ -350,7 +428,28 @@ export default function ProfilePage() {
                   >
                     Save
                   </Button>
-                </Box>
+                ) : (
+                  <Button
+                    variant="outlined"
+                    onClick={() => setIsEditing(true)}
+                    fullWidth
+                    sx={{
+                      borderColor: '#10b981',
+                      color: '#10b981',
+                      '&:hover': {
+                        borderColor: '#059669',
+                        bgcolor: 'rgba(16, 185, 129, 0.1)',
+                      },
+                      py: 1.5,
+                      borderRadius: 1,
+                      mt: 1,
+                      textTransform: 'none',
+                      fontSize: '1rem',
+                    }}
+                  >
+                    Edit Profile
+                  </Button>
+                )}
               </Box>
             </Paper>
           </Grid>
@@ -382,7 +481,7 @@ export default function ProfilePage() {
               </Typography>
 
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1 }}>
-                {connections.map((connection) => (
+                {connections.map((connection: Connection) => (
                   <Box
                     key={connection.id}
                     sx={{
@@ -454,9 +553,6 @@ export default function ProfilePage() {
           </Grid>
         </Grid>
       </Container>
-
-      <SignatureRequestModal />
-      <CustomReferralDialog />
     </Box>
   );
 }
