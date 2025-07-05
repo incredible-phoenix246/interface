@@ -79,15 +79,39 @@ export default function ProfilePage() {
 
   return (
     <Box sx={{ minHeight: '100vh', color: 'white' }}>
-      <Container maxWidth="xl" sx={{ py: 4 }}>
+      <Container
+        maxWidth="xl"
+        sx={{ py: { xs: 2, md: 4, lg: 6 }, px: { xs: 2, md: 3 }, mt: { xs: 8, lg: 8 } }}
+      >
         {/* Header Section */}
         <Box
-          sx={{ mb: 4, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}
+          sx={{
+            mb: { xs: 3, md: 4 },
+            display: 'flex',
+            flexDirection: { xs: 'column', lg: 'row' },
+            alignItems: { xs: 'stretch', lg: 'flex-start' },
+            justifyContent: { xs: 'flex-start', lg: 'space-between' },
+            gap: { xs: 3, lg: 0 },
+          }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-            <Avatar src={avatar} sx={{ width: 80, height: 80, bgcolor: '#10b981' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 2, md: 3 } }}>
+            <Avatar
+              src={avatar}
+              sx={{
+                width: { xs: 60, md: 80 },
+                height: { xs: 60, md: 80 },
+                bgcolor: '#10b981',
+              }}
+            />
             <Box>
-              <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 1 }}>
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: 'bold',
+                  mb: 1,
+                  fontSize: { xs: '1.5rem', md: '2.125rem' },
+                }}
+              >
                 {username}
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
@@ -113,26 +137,30 @@ export default function ProfilePage() {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'flex-end',
+              alignItems: { xs: 'stretch', lg: 'flex-end' },
               gap: 2,
-              minWidth: 400,
+              minWidth: { xs: 'auto', lg: 400 },
+              width: { xs: '100%', lg: 'auto' },
             }}
           >
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, width: '100%' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                alignItems: { xs: 'stretch', sm: 'center' },
+                gap: 2,
+                width: '100%',
+              }}
+            >
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <PeopleIcon sx={{ color: '#6b7280' }} />
                 <Typography
                   // @ts-expect-error next line
                   variant="body2"
-                  sx={{ color: '#6b7280' }}
                 >
                   Referrals
                 </Typography>
-                <Chip
-                  label={referrals}
-                  size="small"
-                  sx={{ bgcolor: '#7c3aed', color: 'white', minWidth: 24 }}
-                />
+                <Chip label={referrals} size="small" sx={{ color: 'white', minWidth: 24 }} />
               </Box>
 
               <Button
@@ -142,10 +170,17 @@ export default function ProfilePage() {
                 sx={{
                   borderColor: '#10b981',
                   color: '#10b981',
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  px: { xs: 2, sm: 3 },
                   '&:hover': { borderColor: '#059669', bgcolor: 'rgba(16, 185, 129, 0.1)' },
                 }}
               >
-                Generate Referral Code • {maxReferralCodes - referralCodes.length} left
+                <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
+                  Generate Referral Code • {maxReferralCodes - referralCodes.length} left
+                </Box>
+                <Box component="span" sx={{ display: { xs: 'inline', sm: 'none' } }}>
+                  Generate Code • {maxReferralCodes - referralCodes.length} left
+                </Box>
               </Button>
 
               <Menu
@@ -193,7 +228,13 @@ export default function ProfilePage() {
                     <Typography
                       // @ts-expect-error next line
                       variant="body2"
-                      sx={{ color: 'white', fontFamily: 'monospace' }}
+                      sx={{
+                        color: 'white',
+                        fontFamily: 'monospace',
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
                     >
                       {code.code}
                     </Typography>
@@ -241,27 +282,34 @@ export default function ProfilePage() {
           </Box>
         </Box>
 
-        <Grid container spacing={3}>
+        <Grid container spacing={{ xs: 2, md: 3 }} sx={{ alignItems: 'stretch' }}>
           {/* Profile Details */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
             <Paper
               sx={{
                 bgcolor: '#1f2937',
-                p: 3,
+                p: { xs: 2, md: 3 },
                 borderRadius: 2,
                 border: '1px solid #374151',
-                height: 'fit-content',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
               <Typography
                 // @ts-expect-error next line
                 variant="h6"
-                sx={{ mb: 3, fontWeight: 'bold', color: 'white' }}
+                sx={{
+                  mb: { xs: 4, md: 8 },
+                  fontWeight: 'bold',
+                  color: 'white',
+                  fontSize: { xs: '1.125rem', md: '1.25rem' },
+                }}
               >
                 Profile Details
               </Typography>
 
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5, flex: 1 }}>
                 <Box>
                   <Typography
                     // @ts-expect-error next line
@@ -278,6 +326,7 @@ export default function ProfilePage() {
                       '& .MuiOutlinedInput-root': {
                         bgcolor: '#111827',
                         color: 'white',
+                        fontSize: { xs: '0.875rem', md: '1rem' },
                         '& fieldset': { borderColor: '#374151' },
                         '&:hover fieldset': { borderColor: '#6b7280' },
                         '&.Mui-focused fieldset': { borderColor: '#10b981' },
@@ -286,94 +335,53 @@ export default function ProfilePage() {
                   />
                 </Box>
 
-                <Box>
-                  <Typography
-                    // @ts-expect-error next line
-                    variant="body2"
-                    sx={{ mb: 1, color: '#9ca3af' }}
-                  >
-                    First name
-                  </Typography>
-                  <TextField
+                <Box sx={{ mt: 'auto' }}>
+                  <Button
+                    variant="contained"
+                    onClick={handleSave}
                     fullWidth
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     sx={{
-                      '& .MuiOutlinedInput-root': {
-                        bgcolor: '#111827',
-                        color: 'white',
-                        '& fieldset': { borderColor: '#374151' },
-                        '&:hover fieldset': { borderColor: '#6b7280' },
-                        '&.Mui-focused fieldset': { borderColor: '#10b981' },
-                      },
+                      py: { xs: 1.25, md: 1.5 },
+                      borderRadius: 1,
+                      mt: 1,
+                      textTransform: 'none',
+                      fontSize: { xs: '0.875rem', md: '1rem' },
                     }}
-                  />
-                </Box>
-
-                <Box>
-                  <Typography
-                    // @ts-expect-error next line
-                    variant="body2"
-                    sx={{ mb: 1, color: '#9ca3af' }}
                   >
-                    Last Name
-                  </Typography>
-                  <TextField
-                    fullWidth
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    sx={{
-                      '& .MuiOutlinedInput-root': {
-                        bgcolor: '#111827',
-                        color: 'white',
-                        '& fieldset': { borderColor: '#374151' },
-                        '&:hover fieldset': { borderColor: '#6b7280' },
-                        '&.Mui-focused fieldset': { borderColor: '#10b981' },
-                      },
-                    }}
-                  />
+                    Save
+                  </Button>
                 </Box>
-
-                <Button
-                  variant="contained"
-                  onClick={handleSave}
-                  fullWidth
-                  sx={{
-                    bgcolor: '#6366f1',
-                    '&:hover': { bgcolor: '#5b21b6' },
-                    py: 1.5,
-                    borderRadius: 1,
-                    mt: 1,
-                    textTransform: 'none',
-                    fontSize: '1rem',
-                  }}
-                >
-                  Save
-                </Button>
               </Box>
             </Paper>
           </Grid>
 
           {/* Connections */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
             <Paper
               sx={{
                 bgcolor: '#1f2937',
-                p: 3,
+                p: { xs: 2, md: 3 },
                 borderRadius: 2,
                 border: '1px solid #374151',
-                height: 'fit-content',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
               <Typography
                 // @ts-expect-error next line
                 variant="h6"
-                sx={{ mb: 3, fontWeight: 'bold', color: 'white' }}
+                sx={{
+                  mb: { xs: 4, md: 8 },
+                  fontWeight: 'bold',
+                  color: 'white',
+                  fontSize: { xs: '1.125rem', md: '1.25rem' },
+                }}
               >
                 Connections
               </Typography>
 
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1 }}>
                 {connections.map((connection) => (
                   <Box
                     key={connection.id}
@@ -381,11 +389,14 @@ export default function ProfilePage() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      py: 2,
+                      py: { xs: 1.5, md: 2 },
                       px: 0,
+                      gap: 2,
                     }}
                   >
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                    <Box
+                      sx={{ display: 'flex', alignItems: 'center', gap: 2, flex: 1, minWidth: 0 }}
+                    >
                       <Box
                         sx={{
                           width: 24,
@@ -394,6 +405,7 @@ export default function ProfilePage() {
                           alignItems: 'center',
                           justifyContent: 'center',
                           fontSize: '16px',
+                          flexShrink: 0,
                         }}
                       >
                         {connection.id === 'wallet' && '💎'}
@@ -403,7 +415,14 @@ export default function ProfilePage() {
                       <Typography
                         // @ts-expect-error next line
                         variant="body1"
-                        sx={{ color: 'white', fontWeight: 500 }}
+                        sx={{
+                          color: 'white',
+                          fontWeight: 500,
+                          fontSize: { xs: '0.875rem', md: '1rem' },
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                        }}
                       >
                         {connection.connected ? connection.username : connection.name}
                       </Typography>
@@ -416,7 +435,10 @@ export default function ProfilePage() {
                         borderColor: '#6b7280',
                         color: '#6b7280',
                         textTransform: 'none',
-                        fontSize: '0.875rem',
+                        fontSize: { xs: '0.75rem', md: '0.875rem' },
+                        px: { xs: 1.5, md: 2 },
+                        py: { xs: 0.5, md: 0.75 },
+                        flexShrink: 0,
                         '&:hover': {
                           borderColor: '#4b5563',
                           bgcolor: 'rgba(107, 114, 128, 0.1)',
