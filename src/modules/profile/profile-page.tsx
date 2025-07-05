@@ -24,7 +24,7 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 
-import { useProfileStore } from '../../store/profile-store';
+import { useProfileStore } from '../../store/profileSlice';
 
 const API_BASE_URL = 'https://testnet-api.eden-finance.xyz/api/v1';
 
@@ -160,7 +160,10 @@ export default function ProfilePage() {
 
   return (
     <Box sx={{ minHeight: '100vh', color: 'white' }}>
-      <Container maxWidth="xl" sx={{ py: { xs: 2, md: 4 } }}>
+      <Container
+        maxWidth="xl"
+        sx={{ py: { xs: 2, md: 4, lg: 6 }, px: { xs: 2, md: 3 }, mt: { xs: 0, lg: 4 } }}
+      >
         <Box
           sx={{
             mb: 4,
