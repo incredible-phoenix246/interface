@@ -163,7 +163,7 @@ export default function ProfilePage() {
       >
         <Box
           sx={{
-            mb: 4,
+            mb: 12,
             display: 'flex',
             flexDirection: { xs: 'column', lg: 'row' },
             alignItems: { xs: 'flex-start', lg: 'flex-start' },
@@ -247,11 +247,7 @@ export default function ProfilePage() {
                 >
                   Referrals
                 </Typography>
-                <Chip
-                  label={referrals}
-                  size="small"
-                  sx={{ bgcolor: '#7c3aed', color: 'white', minWidth: 24 }}
-                />
+                <Chip label={referrals} size="small" sx={{ color: 'white', minWidth: 24 }} />
               </Box>
               <Button
                 variant="gradient"
@@ -300,7 +296,6 @@ export default function ProfilePage() {
               sx={{
                 bgcolor: '#1f2937',
                 p: { md: 6, xs: 4 },
-                borderRadius: 2,
                 border: '1px solid #374151',
                 height: 'fit-content',
               }}
@@ -388,7 +383,6 @@ export default function ProfilePage() {
               sx={{
                 bgcolor: '#1f2937',
                 p: { md: 6, xs: 4 },
-                borderRadius: 2,
                 border: '1px solid #374151',
                 height: 'fit-content',
               }}
@@ -432,7 +426,7 @@ export default function ProfilePage() {
                             wordBreak: 'break-all',
                           }}
                         >
-                          {code.code}
+                          {index + 1}. {code.code}
                         </Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                           {code.used && (
