@@ -4,7 +4,6 @@ import {
   ArrowForward as ArrowForwardIcon,
   ContentCopy as ContentCopyIcon,
   Delete as DeleteIcon,
-  MoreVert as MoreVertIcon,
   People as PeopleIcon,
 } from '@mui/icons-material';
 import {
@@ -36,11 +35,9 @@ export default function ProfilePage() {
     points,
     referrals,
     avatar,
-    connections,
     referralCodes,
     maxReferralCodes,
     updateProfile,
-    toggleConnection,
     generateReferralCode,
     setCustomReferralDialog,
     deleteReferralCode,
@@ -162,7 +159,7 @@ export default function ProfilePage() {
     <Box sx={{ minHeight: '100vh', color: 'white' }}>
       <Container
         maxWidth="xl"
-        sx={{ py: { xs: 2, md: 4, lg: 6 }, px: { xs: 2, md: 3 }, mt: { xs: 0, lg: 4 } }}
+        sx={{ py: { xs: 2, md: 4, lg: 6 }, px: { xs: 2, md: 3 }, mt: { xs: 4, lg: 10 } }}
       >
         <Box
           sx={{
@@ -235,9 +232,10 @@ export default function ProfilePage() {
                 alignItems: 'center',
                 gap: 2,
                 width: '100%',
-                flexDirection: { xs: 'column', sm: 'row' },
+                flexDirection: { xs: 'row', sm: 'row' },
+                justifyContent: 'space-between',
                 // @ts-expect-error next line
-                alignItems: { xs: 'flex-start', sm: 'center' },
+                alignItems: { xs: 'center', sm: 'center' },
               }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -256,20 +254,19 @@ export default function ProfilePage() {
                 />
               </Box>
               <Button
-                variant="outlined"
+                variant="gradient"
                 onClick={handleMenuClick}
-                endIcon={<MoreVertIcon />}
+                // endIcon={<MoreVertIcon />}
                 sx={{
-                  borderColor: '#10b981',
-                  color: '#10b981',
+                  // borderColor: '#10b981',
+                  // color: '#10b981',
                   fontSize: { xs: '0.75rem', sm: '0.875rem' },
                   px: { xs: 1, sm: 2 },
                   width: { xs: '100%', sm: 'auto' },
                   '&:hover': { borderColor: '#059669', bgcolor: 'rgba(16, 185, 129, 0.1)' },
                 }}
               >
-                Generate Referral Code •
-                {(referralCodes && maxReferralCodes - referralCodes.length) ?? 0} left
+                Generate Referral Code
               </Button>
               <Menu
                 anchorEl={anchorEl}
@@ -294,79 +291,6 @@ export default function ProfilePage() {
                 </MenuItem>
               </Menu>
             </Box>
-
-            {referralCodes && referralCodes.length > 0 && (
-              <Box sx={{ width: '100%' }}>
-                {referralCodes.map((code, index) => (
-                  <Box
-                    key={index}
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      py: 1.5,
-                      px: { xs: 1, sm: 2 },
-                      mb: 1,
-                      bgcolor: '#1f2937',
-                      borderRadius: 1,
-                      border: '1px solid #374151',
-                      flexDirection: { xs: 'column', sm: 'row' },
-                      gap: { xs: 1, sm: 0 },
-                    }}
-                  >
-                    <Typography
-                      // @ts-expect-error next line
-                      variant="body2"
-                      sx={{
-                        color: 'white',
-                        fontFamily: 'monospace',
-                        fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                        wordBreak: 'break-all',
-                      }}
-                    >
-                      {code.code}
-                    </Typography>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      {code.used && (
-                        <Chip
-                          label="Used"
-                          size="small"
-                          sx={{
-                            bgcolor: '#10b981',
-                            color: 'white',
-                            fontSize: '0.75rem',
-                            height: 20,
-                          }}
-                        />
-                      )}
-                      <Button
-                        size="small"
-                        sx={{
-                          color: '#6b7280',
-                          minWidth: 'auto',
-                          p: 0.5,
-                          '&:hover': { bgcolor: 'rgba(107, 114, 128, 0.1)' },
-                        }}
-                      >
-                        <ContentCopyIcon fontSize="small" />
-                      </Button>
-                      <Button
-                        size="small"
-                        onClick={() => deleteReferralCode(index)}
-                        sx={{
-                          color: '#ef4444',
-                          minWidth: 'auto',
-                          p: 0.5,
-                          '&:hover': { bgcolor: 'rgba(239, 68, 68, 0.1)' },
-                        }}
-                      >
-                        <DeleteIcon fontSize="small" />
-                      </Button>
-                    </Box>
-                  </Box>
-                ))}
-              </Box>
-            )}
           </Box>
         </Box>
 
@@ -375,7 +299,7 @@ export default function ProfilePage() {
             <Paper
               sx={{
                 bgcolor: '#1f2937',
-                p: { xs: 2, md: 3 },
+                p: { md: 6, xs: 4 },
                 borderRadius: 2,
                 border: '1px solid #374151',
                 height: 'fit-content',
@@ -385,7 +309,7 @@ export default function ProfilePage() {
                 // @ts-expect-error next line
                 variant="h6"
                 sx={{
-                  mb: 3,
+                  mb: 7,
                   fontWeight: 'bold',
                   color: 'white',
                   fontSize: { xs: '1.125rem', md: '1.25rem' },
@@ -394,12 +318,12 @@ export default function ProfilePage() {
                 Profile Details
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
-                {['username', 'firstName', 'lastName'].map((field) => (
+                {['username'].map((field) => (
                   <Box key={field}>
                     <Typography
                       // @ts-expect-error next line
                       variant="body2"
-                      sx={{ mb: 1, color: '#9ca3af' }}
+                      sx={{ mb: 2, color: '#9ca3af' }}
                     >
                       {field === 'firstName'
                         ? 'First Name'
@@ -416,7 +340,7 @@ export default function ProfilePage() {
                       }
                       sx={{
                         '& .MuiOutlinedInput-root': {
-                          bgcolor: '#111827',
+                          // bgcolor: '#111827',
                           color: 'white',
                           '& fieldset': { borderColor: '#374151' },
                           '&:hover fieldset': { borderColor: '#6b7280' },
@@ -431,11 +355,8 @@ export default function ProfilePage() {
                     variant="contained"
                     onClick={handleSave}
                     fullWidth
+                    size="large"
                     sx={{
-                      bgcolor: '#6366f1',
-                      '&:hover': { bgcolor: '#5b21b6' },
-                      py: 1.5,
-                      borderRadius: 1,
                       mt: 1,
                       textTransform: 'none',
                       fontSize: { xs: '0.875rem', md: '1rem' },
@@ -445,18 +366,11 @@ export default function ProfilePage() {
                   </Button>
                 ) : (
                   <Button
-                    variant="outlined"
+                    variant="contained"
                     onClick={() => setIsEditing(true)}
                     fullWidth
+                    size="large"
                     sx={{
-                      borderColor: '#10b981',
-                      color: '#10b981',
-                      '&:hover': {
-                        borderColor: '#059669',
-                        bgcolor: 'rgba(16, 185, 129, 0.1)',
-                      },
-                      py: 1.5,
-                      borderRadius: 1,
                       mt: 1,
                       textTransform: 'none',
                       fontSize: { xs: '0.875rem', md: '1rem' },
@@ -473,7 +387,7 @@ export default function ProfilePage() {
             <Paper
               sx={{
                 bgcolor: '#1f2937',
-                p: { xs: 2, md: 3 },
+                p: { md: 6, xs: 4 },
                 borderRadius: 2,
                 border: '1px solid #374151',
                 height: 'fit-content',
@@ -489,63 +403,78 @@ export default function ProfilePage() {
                   fontSize: { xs: '1.125rem', md: '1.25rem' },
                 }}
               >
-                Connections
+                Referrals & Connections
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {connections &&
-                  connections.map((connection) => (
-                    <Box
-                      key={connection.id}
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        py: 2,
-                        px: 0,
-                        flexDirection: { xs: 'column', sm: 'row' },
-                        gap: { xs: 2, sm: 0 },
-                        // @ts-expect-error next line
-                        alignItems: { xs: 'flex-start', sm: 'center' },
-                      }}
-                    >
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                        <Box sx={{ width: 24, height: 24, display: 'flex', alignItems: 'center' }}>
-                          {connection.id === 'wallet' && '💎'}
-                          {connection.id === 'twitter' && '𝕏'}
-                          {connection.id === 'discord' && '💬'}
-                        </Box>
-                        <Typography
-                          // @ts-expect-error next line
-                          variant="body1"
-                          sx={{
-                            color: 'white',
-                            fontWeight: 500,
-                            fontSize: { xs: '0.875rem', md: '1rem' },
-                          }}
-                        >
-                          {connection.username || connection.name}
-                        </Typography>
-                      </Box>
-                      <Button
-                        variant="outlined"
-                        size="small"
-                        onClick={() => toggleConnection(connection.id)}
+                {referralCodes && referralCodes.length > 0 && (
+                  <Box sx={{ width: '100%' }}>
+                    {referralCodes.map((code, index) => (
+                      <Box
+                        key={index}
                         sx={{
-                          borderColor: '#6b7280',
-                          color: '#6b7280',
-                          textTransform: 'none',
-                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                          width: { xs: '100%', sm: 'auto' },
-                          '&:hover': {
-                            borderColor: '#4b5563',
-                            bgcolor: 'rgba(107, 114, 128, 0.1)',
-                          },
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          py: 1.5,
+
+                          mb: 1,
+                          flexDirection: { xs: 'row', sm: 'row' },
+                          gap: { xs: 1, sm: 0 },
                         }}
                       >
-                        {connection.connected ? 'Disconnect' : 'Connect'}
-                      </Button>
-                    </Box>
-                  ))}
+                        <Typography
+                          // @ts-expect-error next line
+                          variant="body2"
+                          sx={{
+                            color: 'white',
+                            fontFamily: 'monospace',
+                            fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                            wordBreak: 'break-all',
+                          }}
+                        >
+                          {code.code}
+                        </Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          {code.used && (
+                            <Chip
+                              label="Used"
+                              size="small"
+                              sx={{
+                                bgcolor: '#10b981',
+                                color: 'white',
+                                fontSize: '0.75rem',
+                                height: 20,
+                              }}
+                            />
+                          )}
+                          <Button
+                            size="small"
+                            sx={{
+                              color: '#6b7280',
+                              minWidth: 'auto',
+                              p: 0.5,
+                              '&:hover': { bgcolor: 'rgba(107, 114, 128, 0.1)' },
+                            }}
+                          >
+                            <ContentCopyIcon fontSize="small" />
+                          </Button>
+                          <Button
+                            size="small"
+                            onClick={() => deleteReferralCode(index)}
+                            sx={{
+                              color: '#ef4444',
+                              minWidth: 'auto',
+                              p: 0.5,
+                              '&:hover': { bgcolor: 'rgba(239, 68, 68, 0.1)' },
+                            }}
+                          >
+                            <DeleteIcon fontSize="small" />
+                          </Button>
+                        </Box>
+                      </Box>
+                    ))}
+                  </Box>
+                )}
               </Box>
             </Paper>
           </Grid>
