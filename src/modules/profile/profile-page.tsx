@@ -7,7 +7,6 @@ import {
   People as PeopleIcon,
 } from '@mui/icons-material';
 import {
-  Avatar,
   Box,
   Button,
   Chip,
@@ -19,6 +18,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import { blo } from 'blo';
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -35,7 +35,6 @@ export default function ProfilePage() {
     lastName,
     points,
     referrals,
-    avatar,
     referralCodes,
     maxReferralCodes,
     updateProfile,
@@ -171,14 +170,15 @@ export default function ProfilePage() {
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 2, md: 3 } }}>
-            <Avatar
+            {/* <Avatar
               src={avatar}
               sx={{
                 width: { xs: 60, md: 80 },
                 height: { xs: 60, md: 80 },
                 bgcolor: '#10b981',
               }}
-            />
+            /> */}
+            <AddressIcon address={currentAccount as `0x${string}`} />
             <Box>
               <Typography
                 variant="h4"
@@ -503,5 +503,20 @@ function CopyWithFeedbackButton({ code }: { code: string }) {
         <ContentCopyIcon fontSize="small" />
       )}
     </Button>
+  );
+}
+
+function AddressIcon({ address }: { address: `0x${string}` }) {
+  return (
+    <Box
+      component="img"
+      alt={address}
+      src={blo(address)}
+      sx={{
+        width: 80,
+        height: 80,
+        borderRadius: '50%',
+      }}
+    />
   );
 }
