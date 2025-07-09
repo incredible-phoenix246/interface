@@ -1,6 +1,5 @@
 'use client';
 
-// import { Close as CloseIcon } from '@mui/icons-material';
 import {
   Button,
   CircularProgress,
@@ -8,7 +7,6 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  // IconButton,
   TextField,
 } from '@mui/material';
 import { useRouter } from 'next/router';
@@ -16,6 +14,7 @@ import type React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
+import { useGlobalLoadingStore } from 'src/store/loadingSlice';
 
 import { useProfileStore } from '../../store/profileSlice';
 
@@ -23,6 +22,7 @@ const API_BASE_URL = 'https://testnet-api.eden-finance.xyz/api/v1';
 
 export default function CustomReferralDialog() {
   const router = useRouter();
+  const setGlobalLoading = useGlobalLoadingStore((s) => s.setGlobalLoading);
   const {
     customReferralDialog,
     customReferralCode,
@@ -71,7 +71,7 @@ export default function CustomReferralDialog() {
 
   const authenticateUser = useCallback(async () => {
     if (!currentAccount || !signAuthTxData) return null;
-
+    setGlobalLoading(true);
     try {
       const timestamp = new Date().toISOString();
       const authMessage = `Authenticate: ${timestamp}`;
@@ -108,6 +108,8 @@ export default function CustomReferralDialog() {
     } catch (error) {
       console.error('Authentication error:', error);
       throw error;
+    } finally {
+      setGlobalLoading(false);
     }
   }, [currentAccount, signAuthTxData]);
 
@@ -171,12 +173,6 @@ export default function CustomReferralDialog() {
     handleSaveAndSign();
   };
 
-  // const handleClose = () => {
-  //   if (!isLoading) {
-  //     setCustomReferralDialog(false);
-  //   }
-  // };
-
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !isLoading && customReferralCode.trim()) {
       e.preventDefault();
@@ -194,6 +190,7 @@ export default function CustomReferralDialog() {
 
       try {
         setIsLoading(true);
+        setGlobalLoading(true);
         const hasReferralCode = await checkWalletReferralCode(currentAccount);
         if (hasReferralCode) {
           await authenticateUser();
@@ -209,6 +206,7 @@ export default function CustomReferralDialog() {
         setCustomReferralDialog(true);
       } finally {
         setIsLoading(false);
+        setGlobalLoading(false);
       }
     };
 

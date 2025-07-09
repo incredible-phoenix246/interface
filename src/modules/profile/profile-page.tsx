@@ -68,8 +68,6 @@ export default function ProfilePage() {
         });
 
         const result = await res.json();
-        console.log('Fetched profile:', result);
-
         if (res.ok && result.status && result.data) {
           const data = result.data;
           useProfileStore.setState((state) => ({

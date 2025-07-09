@@ -23,7 +23,9 @@ import { AppDataProvider } from 'src/hooks/app-data-provider/useAppDataProvider'
 import { ModalContextProvider } from 'src/hooks/useModal';
 import { Web3ContextProvider } from 'src/libs/web3-data-provider/Web3Provider';
 import CustomReferralDialog from 'src/modules/profile/custom-referral-dialog';
+import { GlobalLoading } from 'src/modules/profile/GlobalLoading';
 import SignatureRequestModal from 'src/modules/profile/signature-request-modal';
+import { useGlobalLoadingStore } from 'src/store/loadingSlice';
 import { useRootStore } from 'src/store/root';
 import { SharedDependenciesProvider } from 'src/ui-config/SharedDependenciesProvider';
 
@@ -147,6 +149,7 @@ export default function MyApp(props: MyAppProps) {
       console.log('no analytics tracking');
     }
   }, []);
+  const isGlobalLoading = useGlobalLoadingStore((state) => state.isGlobalLoading);
 
   return (
     <CacheProvider value={emotionCache}>
@@ -170,6 +173,7 @@ export default function MyApp(props: MyAppProps) {
                     <SharedDependenciesProvider>
                       <AppDataProvider>
                         <GasStationProvider>
+                          {isGlobalLoading && <GlobalLoading />}
                           {getLayout(<Component {...pageProps} />)}
                           <SupplyModal />
                           <Toaster />
