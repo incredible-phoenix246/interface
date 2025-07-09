@@ -1,6 +1,6 @@
 'use client';
 
-import { Close as CloseIcon } from '@mui/icons-material';
+// import { Close as CloseIcon } from '@mui/icons-material';
 import {
   Button,
   CircularProgress,
@@ -8,7 +8,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  IconButton,
+  // IconButton,
   TextField,
 } from '@mui/material';
 import { useRouter } from 'next/router';
@@ -17,7 +17,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 
-import { useProfileStore } from '../../store/profile-store';
+import { useProfileStore } from '../../store/profileSlice';
 
 const API_BASE_URL = 'https://testnet-api.eden-finance.xyz/api/v1';
 
@@ -171,11 +171,11 @@ export default function CustomReferralDialog() {
     handleSaveAndSign();
   };
 
-  const handleClose = () => {
-    if (!isLoading) {
-      setCustomReferralDialog(false);
-    }
-  };
+  // const handleClose = () => {
+  //   if (!isLoading) {
+  //     setCustomReferralDialog(false);
+  //   }
+  // };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !isLoading && customReferralCode.trim()) {
@@ -254,9 +254,6 @@ export default function CustomReferralDialog() {
           }}
         >
           Link Referral Code
-          <IconButton onClick={handleClose} sx={{ color: '#94a3b8' }} disabled={isLoading}>
-            <CloseIcon />
-          </IconButton>
         </DialogTitle>
 
         <DialogContent sx={{ px: 3, pb: 0 }}>
@@ -312,17 +309,6 @@ export default function CustomReferralDialog() {
 
           {/* Input Section */}
           <div style={{ marginBottom: '24px' }}>
-            <h3
-              style={{
-                color: '#C6C6C6',
-                fontSize: '16px',
-                fontWeight: 600,
-                marginBottom: '8px',
-                margin: 0,
-              }}
-            >
-              Input Referral Code
-            </h3>
             <p
               style={{
                 color: '#A0A0A0',
@@ -332,12 +318,12 @@ export default function CustomReferralDialog() {
                 margin: '8px 0 16px 0',
               }}
             >
-              Your wallet is not linked to a referral code. Please enter a valid referral code to
-              continue
+              Your wallet address is not linked to a referral code. Please enter a valid referral
+              code to continue.
             </p>
             <TextField
               fullWidth
-              placeholder="Enter Referral Code (e.g. EDEN-123456)"
+              placeholder="Enter Code"
               value={customReferralCode}
               onChange={(e) => {
                 setCustomReferralCode(e.target.value);

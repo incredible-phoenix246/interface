@@ -11,7 +11,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import { useProfileStore } from '../../store/profile-store';
+import { useProfileStore } from '../../store/profileSlice';
 
 export default function SignatureRequestModal() {
   const { signatureRequest, closeSignatureRequest } = useProfileStore();

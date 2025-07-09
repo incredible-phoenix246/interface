@@ -54,15 +54,15 @@ interface ProfileState {
 
 export const useProfileStore = create<ProfileState>((set, get) => ({
   // Initial state
-  username: 'Codemon',
-  firstName: 'Aired',
-  lastName: 'Bayo',
-  points: 1500,
+  username: '',
+  firstName: '',
+  lastName: '',
+  points: 0,
   referrals: 0,
   avatar: '/placeholder.svg?height=80&width=80',
 
   connections: [
-    { id: 'wallet', name: 'Wallet', icon: '💎', connected: true, username: '0x3de...84bft' },
+    // { id: 'wallet', name: 'Wallet', icon: '💎', connected: true, username: '0x3de...84bft' },
     {
       id: 'twitter',
       name: 'X (Formerly Twitter)',
@@ -70,7 +70,7 @@ export const useProfileStore = create<ProfileState>((set, get) => ({
       connected: true,
       username: 'codemon',
     },
-    { id: 'discord', name: 'Discord', icon: '💬', connected: true, username: 'codemon' },
+    // { id: 'discord', name: 'Discord', icon: '💬', connected: true, username: 'codemon' },
   ],
 
   referralCodes: [],
