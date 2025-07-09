@@ -21,6 +21,7 @@ import {
 } from '@mui/material';
 import type React from 'react';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 
 import { useProfileStore } from '../../store/profileSlice';
@@ -398,80 +399,109 @@ export default function ProfilePage() {
                 Referrals & Connections
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {referralCodes && referralCodes.length > 0 && (
-                  <Box sx={{ width: '100%' }}>
-                    {referralCodes.map((code, index) => (
-                      <Box
-                        key={index}
+                {referralCodes &&
+                  referralCodes.map((code, index) => (
+                    <Box
+                      key={index}
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        py: 1.5,
+                        mb: 1,
+                        flexDirection: { xs: 'row', sm: 'row' },
+                        gap: { xs: 1, sm: 0 },
+                      }}
+                    >
+                      <Typography
+                        // @ts-expect-error next line
+                        variant="body2"
                         sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          py: 1.5,
-
-                          mb: 1,
-                          flexDirection: { xs: 'row', sm: 'row' },
-                          gap: { xs: 1, sm: 0 },
+                          color: 'white',
+                          fontFamily: 'monospace',
+                          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                          wordBreak: 'break-all',
                         }}
                       >
-                        <Typography
-                          // @ts-expect-error next line
-                          variant="body2"
+                        {index + 1}. {code.code}
+                      </Typography>
+
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        {code.used && (
+                          <Chip
+                            label="Used"
+                            size="small"
+                            sx={{
+                              bgcolor: '#10b981',
+                              color: 'white',
+                              fontSize: '0.75rem',
+                              height: 20,
+                            }}
+                          />
+                        )}
+
+                        {/** Copy Icon with Feedback */}
+                        <CopyWithFeedbackButton code={code.code} />
+
+                        <Button
+                          size="small"
+                          onClick={() => deleteReferralCode(index)}
                           sx={{
-                            color: 'white',
-                            fontFamily: 'monospace',
-                            fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                            wordBreak: 'break-all',
+                            color: '#ef4444',
+                            minWidth: 'auto',
+                            p: 0.5,
+                            '&:hover': { bgcolor: 'rgba(239, 68, 68, 0.1)' },
                           }}
                         >
-                          {index + 1}. {code.code}
-                        </Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          {code.used && (
-                            <Chip
-                              label="Used"
-                              size="small"
-                              sx={{
-                                bgcolor: '#10b981',
-                                color: 'white',
-                                fontSize: '0.75rem',
-                                height: 20,
-                              }}
-                            />
-                          )}
-                          <Button
-                            size="small"
-                            sx={{
-                              color: '#6b7280',
-                              minWidth: 'auto',
-                              p: 0.5,
-                              '&:hover': { bgcolor: 'rgba(107, 114, 128, 0.1)' },
-                            }}
-                          >
-                            <ContentCopyIcon fontSize="small" />
-                          </Button>
-                          <Button
-                            size="small"
-                            onClick={() => deleteReferralCode(index)}
-                            sx={{
-                              color: '#ef4444',
-                              minWidth: 'auto',
-                              p: 0.5,
-                              '&:hover': { bgcolor: 'rgba(239, 68, 68, 0.1)' },
-                            }}
-                          >
-                            <DeleteIcon fontSize="small" />
-                          </Button>
-                        </Box>
+                          <DeleteIcon fontSize="small" />
+                        </Button>
                       </Box>
-                    ))}
-                  </Box>
-                )}
+                    </Box>
+                  ))}
               </Box>
             </Paper>
           </Grid>
         </Grid>
       </Container>
     </Box>
+  );
+}
+
+function CopyWithFeedbackButton({ code }: { code: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopied(true);
+      toast.success('Referral code copied to clipboard!', {
+        duration: 2000,
+        position: 'top-center',
+      });
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
+  return (
+    <Button
+      size="small"
+      onClick={handleCopy}
+      sx={{
+        color: copied ? '#10b981' : '#6b7280',
+        minWidth: 'auto',
+        p: 0.5,
+        '&:hover': { bgcolor: 'rgba(107, 114, 128, 0.1)' },
+      }}
+    >
+      {copied ? (
+        <Typography variant="caption" sx={{ fontSize: '0.75rem' }}>
+          Copied
+        </Typography>
+      ) : (
+        <ContentCopyIcon fontSize="small" />
+      )}
+    </Button>
   );
 }
